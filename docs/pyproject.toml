@@ -1,0 +1,18 @@
+[project]
+name = "fabulous-tiles-docs"
+version = "0.1.0"
+description = "Documentation build environment for FABulous Tile Library"
+requires-python = ">=3.12"
+dependencies = [
+  # Sphinx core
+  "Sphinx>=8.0.0",
+  # Sphinx extensions
+  "myst-parser>=3.0.0", # Markdown support (industry standard)
+]
+
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = ["sphinx-autobuild"]

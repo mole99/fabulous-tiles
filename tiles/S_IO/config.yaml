@@ -1,0 +1,16 @@
+meta:
+  version: 2
+  flow: FABulousTile
+  
+# Basics
+DESIGN_NAME: S_IO
+VERILOG_FILES: []
+FABULOUS_EXTERNAL_SIDE: S
+
+# Clock
+CLOCK_PERIOD: 20
+CLOCK_PORT: UserCLK
+
+# Area
+FP_SIZING: absolute
+DIE_AREA: [0, 0, 225, 56.25]

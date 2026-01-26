@@ -1,0 +1,10 @@
+Tile,tiles/8xLUT4_C/8xLUT4_C.csv
+Tile,tiles/8xLUT4_C_MUX8/8xLUT4_C_MUX8.csv
+Tile,tiles/N_IO/N_IO.csv
+Tile,tiles/E_IO/E_IO.csv
+Tile,tiles/S_IO/S_IO.csv
+Tile,tiles/W_IO/W_IO.csv
+Tile,tiles/N_term_single/N_term_single.csv
+Tile,tiles/S_term_single/S_term_single.csv
+,
+#Supertile,tiles/DSP/DSP.csv

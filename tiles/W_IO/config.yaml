@@ -1,0 +1,32 @@
+meta:
+  version: 2
+  flow: FABulousTile
+  substituting_steps:
+    # KLayout runs density check, TODO disable
+    KLayout.DRC: null
+
+FABULOUS_TILE_DIR: dir::. #tiles/W_IO
+
+# Basics
+DESIGN_NAME: W_IO
+VERILOG_FILES:
+  - dir::../../models_pack.v
+  - dir::../../custom.v
+FABULOUS_EXTERNAL_SIDE: W
+
+# Clock
+CLOCK_PERIOD: 20
+CLOCK_PORT: UserCLK
+
+# Area
+FP_SIZING: absolute
+pdk::sky130A:
+    DIE_AREA: [0, 0, 56.25, 225]
+pdk::ihp-sg13g2:
+    #DIE_AREA: [0, 0, 63.75, 255]
+    #DIE_AREA: [0, 0, 50.4, 250.32]
+    
+    DIE_AREA: [0, 0, 68.64, 241.92]
+    
+    PL_TARGET_DENSITY_PCT: 79
+    SYNTH_STRATEGY: "AREA 2" # "AREA 0" "AREA 1" "AREA 2" "AREA 3"

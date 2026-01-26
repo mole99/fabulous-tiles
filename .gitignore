@@ -1,0 +1,22 @@
+# Sphinx build folder
+build
+
+# Virtual environment
+*.venv
+
+# Tiles
+*ConfigMem.csv
+*ConfigMem.v
+*switch_matrix.csv
+*switch_matrix.v
+macro/
+runs/
+
+*.json
+*.png
+*.svg
+
+
+# Python
+*.egg-info/
+__pycache__/
