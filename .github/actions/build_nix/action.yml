@@ -9,6 +9,10 @@ inputs:
     description: "The nix platform string to build for"
     required: true
     default: "x86_64-linux"
+  derivation:
+    description: "The derivation to build"
+    required: false
+    default: ".#devShells.${{ inputs.nix_system }}.default"
 runs:
   using: "composite"
   steps:
