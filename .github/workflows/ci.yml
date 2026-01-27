@@ -41,18 +41,18 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           nix_cache_domain: ${{ vars.NIX_CACHE }}
           nix_public_key: ${{ vars.NIX_PUBLIC_KEY }}
-      - name: Build with Nix
-        uses: ./.github/actions/build_nix
-        with:
-          nix_system: x86_64-linux
-      - name: Check Nix
-        run: |
-          sudo du -hs /nix/store/* | sort -h | tail -n 10
-          sudo tree /nix/store/*-librelane || true
-      - name: Clone the PDK
-        run: |
-          export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          nix develop --command make clone-pdk
+      #- name: Build with Nix
+      #  uses: ./.github/actions/build_nix
+      #  with:
+      #    nix_system: x86_64-linux
+      #- name: Check Nix
+      #  run: |
+      #    sudo du -hs /nix/store/* | sort -h | tail -n 10
+      #    sudo tree /nix/store/*-librelane || true
+      #- name: Clone the PDK
+      #  run: |
+      #    export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      #    nix develop --command make clone-pdk
       - name: Implement the tiles
         run: |
           nix develop github:mole99/librelane_plugin_fabulous --command make all
