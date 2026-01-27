@@ -1,7 +1,6 @@
 MAKEFILE_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 PDK ?= ihp-sg13g2
-PDK_ROOT ?= ~/.ciel
 
 # Get the tile names
 TILES :=  $(patsubst tiles/%,%,$(wildcard tiles/*)) 
@@ -15,13 +14,13 @@ all: $(TILES)
 .PHONY: all
 
 $(TILES):
-	librelane --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk tiles/common/common.yaml tiles/$@/config.yaml
+	librelane --pdk ${PDK} tiles/common/common.yaml tiles/$@/config.yaml
 .PHONY: $(TILES)
 
 $(TILES_OPENROAD):
-	librelane --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk tiles/common/common.yaml tiles/$(subst -openroad,,$@)/config.yaml --last-run --flow OpenInOpenROAD
+	librelane --pdk ${PDK} tiles/common/common.yaml tiles/$(subst -openroad,,$@)/config.yaml --last-run --flow OpenInOpenROAD
 .PHONY: $(TILE_PATHS_OPENROAD)
 
 $(TILES_KLAYOUT):
-	librelane --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk tiles/common/common.yaml tiles/$(subst -klayout,,$@)/config.yaml --last-run --flow OpenInKLayout
+	librelane --pdk ${PDK} tiles/common/common.yaml tiles/$(subst -klayout,,$@)/config.yaml --last-run --flow OpenInKLayout
 .PHONY: $(TILE_PATHS_KLAYOUT)
