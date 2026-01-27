@@ -1,12 +1,6 @@
 meta:
   version: 2
   flow: FABulousTile
-  substituting_steps:
-    # IHP uses cumulative antenna rules
-    # which aren't supported in repair yet
-    OpenROAD.RepairAntennas: null
-    # KLayout runs density check, TODO disable
-    KLayout.DRC: null
 
 FABULOUS_TILE_DIR: dir::. #tiles/N_IO
 

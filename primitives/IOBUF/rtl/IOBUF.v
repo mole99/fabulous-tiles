@@ -15,10 +15,10 @@
 (* FABulous, BelMap,
 EN_REG=0,
 IN_REG=1,
-OUT_REG=2,
+OUT_REG=2
 *)
 module IOBUF #(
-    parameter NoConfigBits = 4
+    parameter NoConfigBits = 3
 )(
     // Fabric side
     input  CLK,
@@ -34,7 +34,7 @@ module IOBUF #(
     // Static configuration bits
     (* FABulous, GLOBAL *) input [NoConfigBits-1:0] ConfigBits
 );
-    logic EN_q, IN_q, OUT_q;
+    logic EN_q, IN_q, OUT_top_q;
 
     always_ff @(posedge CLK) begin
         EN_q  <= EN;

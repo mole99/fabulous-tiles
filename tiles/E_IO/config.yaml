@@ -1,9 +1,6 @@
 meta:
   version: 2
   flow: FABulousTile
-  substituting_steps:
-    KLayout.DRC: null
-    Magic.DRC: null
 
 FABULOUS_TILE_DIR: dir::. #tiles/E_IO
 
@@ -24,4 +21,4 @@ pdk::sky130A:
     DIE_AREA: [0, 0, 56.25, 225]
 pdk::ihp-sg13g2:
     #DIE_AREA: [0, 0, 63.75, 255]
-    DIE_AREA: [0, 0, 59.2, 236.8]
+    DIE_AREA: [0, 0, 68.64, 241.92]

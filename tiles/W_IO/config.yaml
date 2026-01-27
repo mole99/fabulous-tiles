@@ -1,9 +1,6 @@
 meta:
   version: 2
   flow: FABulousTile
-  substituting_steps:
-    # KLayout runs density check, TODO disable
-    KLayout.DRC: null
 
 FABULOUS_TILE_DIR: dir::. #tiles/W_IO
 
