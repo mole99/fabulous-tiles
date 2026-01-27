@@ -27,6 +27,6 @@ runs:
           --accept-flake-config\
           --option system ${{ inputs.nix_system }}\
           --extra-platforms ${{ inputs.nix_system }}\
-          .#devShells.${{ inputs.nix_system }}.default)
+          ${{ inputs.derivation }})
         echo "out-path=$outPath" >> $GITHUB_OUTPUT
         sudo du -hs /nix/store/* | sort -h | tail -n 20
