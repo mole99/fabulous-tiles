@@ -55,4 +55,4 @@ jobs:
           sudo tree /nix/store/*-librelane || true
       - name: Implement the tiles
         run: |
-          PDK=${{ matrix.pdk }} nix develop github:mole99/librelane_plugin_fabulous --command make all
+          PDK=${{ matrix.pdk }} nix develop --command make all
