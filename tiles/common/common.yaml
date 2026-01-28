@@ -57,8 +57,6 @@ pdk::ihp-sg13g2:
     PDN_HSPACING: 4.0
     PDN_HPITCH: 75.6
     PDN_HOFFSET: 13.57
-    
-    #GRT_LAYER_ADJUSTMENTS: [0.00,0.05,0.05,0.05,0.05,0.00,0.00]
 
 pdk::gf180mcuD:
     # Routing
@@ -69,6 +67,9 @@ pdk::gf180mcuD:
     
     # PDK does not have a latch map yet
     SYNTH_LATCH_MAP: dir::../common/latch_map.v
+
+    # Displacement for cells
+    PL_MAX_DISPLACEMENT_Y: 300
 
 # Use the minimum length for pins
 # that satisfies the minimum area constraint
