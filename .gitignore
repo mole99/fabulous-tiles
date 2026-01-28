@@ -1,5 +1,7 @@
 # Sphinx build folder
 build
+all_tiles.md
+all_primitives.md
 
 # Virtual environment
 *.venv
