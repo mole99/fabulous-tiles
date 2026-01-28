@@ -41,9 +41,7 @@ def generate_module_docs(app: Sphinx, conf: Config):
         )
         
         # Primitives
-        
         primitives = []
-        
         for filename in glob(os.path.abspath(os.path.join(doc_root_dir, "../../primitives/**/README.md")), recursive=True):
             with open(filename, "r") as fi:
                 primitive_content = ""
@@ -56,14 +54,11 @@ def generate_module_docs(app: Sphinx, conf: Config):
             primitive_name = os.path.basename(os.path.dirname(filename))
             primitives.append((primitive_name, primitive_content))
 
-        print("0000000000000000000")
         image_path = os.path.abspath(os.path.join(doc_root_dir, "primitives", "images", "svg"))
         for filename in glob(os.path.abspath(os.path.join(doc_root_dir, "../../primitives/**/images/svg/*.svg")), recursive=True):
             image_name = os.path.basename(filename)
             dest = os.path.join(image_path, image_name)
             shutil.copyfile(filename, dest)
-            
-        
 
         template = env.get_template("all_primitives.md")
         with open(
@@ -76,9 +71,7 @@ def generate_module_docs(app: Sphinx, conf: Config):
             )
 
         # Tiles
-        
         tiles = []
-        
         for filename in glob(os.path.abspath(os.path.join(doc_root_dir, "../../tiles/**/README.md")), recursive=True):
             with open(filename, "r") as fi:
                 tile_content = ""
@@ -90,6 +83,12 @@ def generate_module_docs(app: Sphinx, conf: Config):
             
             tile_name = os.path.basename(os.path.dirname(filename))
             tiles.append((tile_name, tile_content))
+
+        image_path = os.path.abspath(os.path.join(doc_root_dir, "tiles", "images", "svg"))
+        for filename in glob(os.path.abspath(os.path.join(doc_root_dir, "../../tiles/**/images/svg/*.svg")), recursive=True):
+            image_name = os.path.basename(filename)
+            dest = os.path.join(image_path, image_name)
+            shutil.copyfile(filename, dest)
 
         template = env.get_template("all_tiles.md")
         with open(

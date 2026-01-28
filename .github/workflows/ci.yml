@@ -30,7 +30,10 @@ concurrency:
 jobs:
   chip:
     runs-on: ubuntu-24.04
-    name: Build the Chip
+    strategy:
+      matrix:
+        pdk: [sky130A, gf180mcuD, ihp-sg13g2]
+    name: Implement the Tiles (${{ matrix.pdk }})
     steps:
       - uses: actions/checkout@v4
         with:
@@ -50,10 +53,6 @@ jobs:
         run: |
           sudo du -hs /nix/store/* | sort -h | tail -n 10
           sudo tree /nix/store/*-librelane || true
-      #- name: Clone the PDK
-      #  run: |
-      #    export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-      #    nix develop --command make clone-pdk
       - name: Implement the tiles
         run: |
-          nix develop github:mole99/librelane_plugin_fabulous --command make all
+          export PDK=${{ matrix.pdk }} nix develop github:mole99/librelane_plugin_fabulous --command make all

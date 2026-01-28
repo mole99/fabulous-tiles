@@ -1,3 +1,5 @@
+# Note: paths are relative to the tile's config.yaml
+
 # PDN
 PDN_MULTILAYER: false
 PDN_CFG: dir::../common/pdn_cfg.tcl
@@ -14,6 +16,12 @@ GRT_ANTENNA_REPAIR_ITERS: 10
 # DRT diode insertion
 DRT_ANTENNA_REPAIR_ITERS: 10
 DRT_ANTENNA_REPAIR_MARGIN: 10 # %
+
+# Save space
+BOTTOM_MARGIN_MULT: 1
+TOP_MARGIN_MULT: 1
+LEFT_MARGIN_MULT: 6
+RIGHT_MARGIN_MULT: 6
 
 # PDK specific
 pdk::sky130A:
@@ -39,12 +47,6 @@ pdk::ihp-sg13g2:
     # Routing
     RT_MAX_LAYER: TopMetal1
 
-    # Save space
-    BOTTOM_MARGIN_MULT: 1
-    TOP_MARGIN_MULT: 1
-    LEFT_MARGIN_MULT: 6
-    RIGHT_MARGIN_MULT: 6
-
     # PDN
     PDN_VWIDTH: 2.2
     PDN_VSPACING: 4.0
@@ -62,14 +64,11 @@ pdk::gf180mcuD:
     # Routing
     RT_MAX_LAYER: Metal4
 
-    # Save space
-    BOTTOM_MARGIN_MULT: 1
-    TOP_MARGIN_MULT: 1
-    LEFT_MARGIN_MULT: 6
-    RIGHT_MARGIN_MULT: 6
-
     # PDN
     PDN_VPITCH: 100
+    
+    # PDK does not have a latch map yet
+    SYNTH_LATCH_MAP: dir::../common/latch_map.v
 
 # Use the minimum length for pins
 # that satisfies the minimum area constraint

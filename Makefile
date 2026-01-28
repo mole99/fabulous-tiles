@@ -5,7 +5,6 @@ PDK ?= ihp-sg13g2
 # Get the tile names
 TILES :=  $(patsubst tiles/%,%,$(wildcard tiles/*)) 
 TILES := $(filter-out common,$(TILES))
-TILES := $(filter-out 8xLUT4_C,$(TILES))
 
 TILES_OPENROAD := $(addsuffix -openroad,$(TILES))
 TILES_KLAYOUT := $(addsuffix -klayout,$(TILES))

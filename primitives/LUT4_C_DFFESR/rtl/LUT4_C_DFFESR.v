@@ -63,10 +63,10 @@ module LUT4_C_DFFESR #(parameter NoConfigBits = 19)(
 
 //CONFout <= c_I0mux;
 
-	//assign I0mux = c_I0mux ? Ci : I0;
+	//assign I0mux = c_I0mux ? CI : I0;
 	cus_mux21 cus_mux21_I0mux(
 	.A0(I[0]),
-	.A1(Ci),
+	.A1(CI),
 	.S(c_I0mux),
 	.X(I0mux)
 	);
@@ -135,7 +135,7 @@ module LUT4_C_DFFESR #(parameter NoConfigBits = 19)(
 	.X(O)
 	);
 	
-	assign Co = (Ci & I[1]) | (Ci & I[2]) | (I[1] & I[2]);// iCE40 like carry chain (as this is supported in Yosys; would normally go for fractured LUT)
+	assign CO = (CI & I[1]) | (CI & I[2]) | (I[1] & I[2]);// iCE40 like carry chain (as this is supported in Yosys; would normally go for fractured LUT)
 
 	always @ (posedge UserCLK) begin
 		if (EN) begin
