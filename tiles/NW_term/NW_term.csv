@@ -1,0 +1,5 @@
+TILE,NW_term,,,,,
+#direction,source_name,X-offset,Y-offset,destination_name,wires,
+NORTH,NULL,0,-1,N_GBUF_END,4,# global buffers
+MATRIX,./NW_term_switch_matrix.list,,,,,
+EndTILE,,,,,,

@@ -67,11 +67,11 @@
         "nix-eda": "nix-eda"
       },
       "locked": {
-        "lastModified": 1769435453,
-        "narHash": "sha256-g6bQMg9W0gbvJzVvO4ESeAtswbBoUVY3NXLK4UdOcGs=",
+        "lastModified": 1770219687,
+        "narHash": "sha256-WG1FFeeimhr+hy3FR/sUa/6wgVlXq9AdscQGEJb11WA=",
         "owner": "librelane",
         "repo": "librelane",
-        "rev": "c277d6ba461200a7c59f6de760850d1f117e7758",
+        "rev": "b1ef9cbd6d756c2bb3fca8b4c7141a9eca84ad57",
         "type": "github"
       },
       "original": {
@@ -86,11 +86,11 @@
         "librelane": "librelane"
       },
       "locked": {
-        "lastModified": 1769534537,
-        "narHash": "sha256-1pWXouYg6BRk1yq+UTMlqtJ7hmrWazalOaGZTXD0fG0=",
+        "lastModified": 1770220019,
+        "narHash": "sha256-+psdNopnGzZefVNylMtcn9zhnhw1YWfMGB0d4CkYthg=",
         "owner": "mole99",
         "repo": "librelane_plugin_fabulous",
-        "rev": "23558bebd238f59886670b41028a3ab95cd39c7a",
+        "rev": "03d2990a41a69fce1a8473456fe02c0ac1ae641d",
         "type": "github"
       },
       "original": {

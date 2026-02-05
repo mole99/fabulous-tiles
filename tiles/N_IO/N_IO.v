@@ -8,10 +8,8 @@ module N_IO
         parameter NoConfigBits=112
     )
     (
- //N
-        output  [3:0] GBUFBEG,        //Port(Name=GBUFBEG,IO=OUTPUT,XOffset=0,YOffset=-1,WireCount=4,Side=N)
  //S
-        input  [3:0] GBUFEND,        //Port(Name=GBUFEND,IO=INPUT,XOffset=0,YOffset=-1,WireCount=4,Side=S)
+        input  [3:0] N_GBUF_END,        //Port(Name=N_GBUF_END,IO=INPUT,XOffset=0,YOffset=-1,WireCount=4,Side=S)
         output  [3:0] S1BEG,        //Port(Name=S1BEG,IO=OUTPUT,XOffset=0,YOffset=1,WireCount=4,Side=S)
         output  [7:0] S2BEG,        //Port(Name=S2BEG,IO=OUTPUT,XOffset=0,YOffset=1,WireCount=8,Side=S)
         output  [7:0] S2BEGb,        //Port(Name=S2BEGb,IO=OUTPUT,XOffset=0,YOffset=1,WireCount=8,Side=S)
@@ -611,10 +609,10 @@ IOBUF Inst_A_IOBUF (
 );
 
 N_IO_switch_matrix Inst_N_IO_switch_matrix (
-    .GBUFEND0(GBUFEND[0]),
-    .GBUFEND1(GBUFEND[1]),
-    .GBUFEND2(GBUFEND[2]),
-    .GBUFEND3(GBUFEND[3]),
+    .N_GBUF_END0(N_GBUF_END[0]),
+    .N_GBUF_END1(N_GBUF_END[1]),
+    .N_GBUF_END2(N_GBUF_END[2]),
+    .N_GBUF_END3(N_GBUF_END[3]),
     .N1END0(N1END[0]),
     .N1END1(N1END[1]),
     .N1END2(N1END[2]),
@@ -669,10 +667,6 @@ N_IO_switch_matrix Inst_N_IO_switch_matrix (
     .NN4END15(NN4END[15]),
     .Ci0(Ci[0]),
     .A_OUT(A_OUT),
-    .GBUFBEG0(GBUFBEG[0]),
-    .GBUFBEG1(GBUFBEG[1]),
-    .GBUFBEG2(GBUFBEG[2]),
-    .GBUFBEG3(GBUFBEG[3]),
     .S1BEG0(S1BEG[0]),
     .S1BEG1(S1BEG[1]),
     .S1BEG2(S1BEG[2]),

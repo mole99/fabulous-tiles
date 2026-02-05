@@ -1,6 +1,6 @@
 TILE,N_IO,,,,,
 #direction,source_name,X-offset,Y-offset,destination_name,wires,
-NORTH,GBUFBEG,0,-1,GBUFEND,4,# global buffers
+NORTH,NULL,0,-1,N_GBUF_END,4,# global buffers
 SOUTH,S1BEG,0,1,NULL,4,
 SOUTH,S2BEG,0,1,NULL,8,
 SOUTH,S2BEGb,0,1,NULL,8,

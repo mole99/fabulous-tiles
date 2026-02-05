@@ -1,4 +1,4 @@
-// Copyright 2026 University of Heidelberg
+// Copyright 2026 FABulous Contributors
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,34 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-(* keep *)
+(* FABulous, BelMap,
+EN_REG=0,
+IN_REG=1
+*)
 module IOBUF #(
-  parameter EN_REG = 1'b0,
-  parameter IN_REG = 1'b0,
-  parameter OUT_REG = 1'b0
-  )(
-  input  CLK,
-  input  EN,
-  input  IN,
-  output OUT,
-  (* iopad_external_pin *) inout PAD
+    parameter NoConfigBits = 2
+)(
+    // Fabric side
+    input  CLK,
+    input  IN,
+    input  EN,
+
+    // External side
+    (* FABulous, EXTERNAL *) output IN_top,
+    (* FABulous, EXTERNAL *) output EN_top,
+
+    // Static configuration bits
+    (* FABulous, GLOBAL *) input [NoConfigBits-1:0] ConfigBits
 );
+    logic EN_q, IN_q;
 
-    reg EN_q, IN_q, PAD_q;
-
-    always @(posedge CLK) begin
+    always_ff @(posedge CLK) begin
         EN_q  <= EN;
         IN_q  <= IN;
-        PAD_q <= PAD;
     end
 
-    wire EN_mux, IN_mux, PAD_mux;
-    
-    assign EN_mux = EN_REG ? EN_q : EN;
-    assign IN_mux = IN_REG ? IN_q : IN;
-    assign PAD_mux = OUT_REG ? PAD_q : PAD;
-
-    assign PAD = EN_mux ? 1'bz : IN_mux;
-    assign OUT = PAD_mux;
+    // Fabric -> External
+    assign IN_top = ConfigBits[1] ? IN_q : IN;
+    assign EN_top = ConfigBits[0] ? EN_q : EN;
 
 endmodule

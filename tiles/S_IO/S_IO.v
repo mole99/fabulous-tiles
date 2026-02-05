@@ -9,7 +9,7 @@ module S_IO
     )
     (
  //N
-        output  [3:0] GBUFBEG,        //Port(Name=GBUFBEG,IO=OUTPUT,XOffset=0,YOffset=-1,WireCount=4,Side=N)
+        output  [3:0] N_GBUF_BEG,        //Port(Name=N_GBUF_BEG,IO=OUTPUT,XOffset=0,YOffset=-1,WireCount=4,Side=N)
         output  [3:0] N1BEG,        //Port(Name=N1BEG,IO=OUTPUT,XOffset=0,YOffset=1,WireCount=4,Side=N)
         output  [7:0] N2BEG,        //Port(Name=N2BEG,IO=OUTPUT,XOffset=0,YOffset=1,WireCount=8,Side=N)
         output  [7:0] N2BEGb,        //Port(Name=N2BEGb,IO=OUTPUT,XOffset=0,YOffset=1,WireCount=8,Side=N)
@@ -21,8 +21,10 @@ module S_IO
         input  [7:0] S2END,        //Port(Name=S2END,IO=INPUT,XOffset=0,YOffset=-1,WireCount=8,Side=N)
         input  [15:0] S4END,        //Port(Name=S4END,IO=INPUT,XOffset=0,YOffset=4,WireCount=4,Side=N)
         input  [15:0] SS4END,        //Port(Name=SS4END,IO=INPUT,XOffset=0,YOffset=-4,WireCount=4,Side=N)
- //S
-        input  [3:0] GBUFEND,        //Port(Name=GBUFEND,IO=INPUT,XOffset=0,YOffset=-1,WireCount=4,Side=S)
+ //E
+        output  [3:0] E_GBUF_BEG,        //Port(Name=E_GBUF_BEG,IO=OUTPUT,XOffset=1,YOffset=0,WireCount=4,Side=E)
+ //W
+        input  [3:0] E_GBUF_END,        //Port(Name=E_GBUF_END,IO=INPUT,XOffset=1,YOffset=0,WireCount=4,Side=W)
         input  A_OUT_top,
         output  A_IN_top,
         output  A_EN_top,
@@ -611,10 +613,10 @@ IOBUF Inst_A_IOBUF (
 );
 
 S_IO_switch_matrix Inst_S_IO_switch_matrix (
-    .GBUFEND0(GBUFEND[0]),
-    .GBUFEND1(GBUFEND[1]),
-    .GBUFEND2(GBUFEND[2]),
-    .GBUFEND3(GBUFEND[3]),
+    .E_GBUF_END0(E_GBUF_END[0]),
+    .E_GBUF_END1(E_GBUF_END[1]),
+    .E_GBUF_END2(E_GBUF_END[2]),
+    .E_GBUF_END3(E_GBUF_END[3]),
     .S1END0(S1END[0]),
     .S1END1(S1END[1]),
     .S1END2(S1END[2]),
@@ -668,10 +670,14 @@ S_IO_switch_matrix Inst_S_IO_switch_matrix (
     .SS4END14(SS4END[14]),
     .SS4END15(SS4END[15]),
     .A_OUT(A_OUT),
-    .GBUFBEG0(GBUFBEG[0]),
-    .GBUFBEG1(GBUFBEG[1]),
-    .GBUFBEG2(GBUFBEG[2]),
-    .GBUFBEG3(GBUFBEG[3]),
+    .N_GBUF_BEG0(N_GBUF_BEG[0]),
+    .N_GBUF_BEG1(N_GBUF_BEG[1]),
+    .N_GBUF_BEG2(N_GBUF_BEG[2]),
+    .N_GBUF_BEG3(N_GBUF_BEG[3]),
+    .E_GBUF_BEG0(E_GBUF_BEG[0]),
+    .E_GBUF_BEG1(E_GBUF_BEG[1]),
+    .E_GBUF_BEG2(E_GBUF_BEG[2]),
+    .E_GBUF_BEG3(E_GBUF_BEG[3]),
     .N1BEG0(N1BEG[0]),
     .N1BEG1(N1BEG[1]),
     .N1BEG2(N1BEG[2]),

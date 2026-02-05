@@ -13,33 +13,28 @@
 // limitations under the License.
 
 (* keep *)
-module IOBUF #(
+module OBUF #(
   parameter EN_REG = 1'b0,
   parameter IN_REG = 1'b0,
-  parameter OUT_REG = 1'b0
   )(
   input  CLK,
   input  EN,
   input  IN,
-  output OUT,
-  (* iopad_external_pin *) inout PAD
+  (* iopad_external_pin *) output PAD
 );
 
-    reg EN_q, IN_q, PAD_q;
+    reg EN_q, IN_q;
 
     always @(posedge CLK) begin
         EN_q  <= EN;
         IN_q  <= IN;
-        PAD_q <= PAD;
     end
 
-    wire EN_mux, IN_mux, PAD_mux;
-    
+    wire EN_mux, IN_mux;
+
     assign EN_mux = EN_REG ? EN_q : EN;
     assign IN_mux = IN_REG ? IN_q : IN;
-    assign PAD_mux = OUT_REG ? PAD_q : PAD;
 
     assign PAD = EN_mux ? 1'bz : IN_mux;
-    assign OUT = PAD_mux;
 
 endmodule

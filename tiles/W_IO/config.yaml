@@ -32,4 +32,4 @@ pdk::ihp-sg13g2:
     # Width should be multiple of 0.48 (Metal2 pitch)
     # Height should be multiple of 0.42 (Metal3 pitch)
     # Standard cell row height: 3.78 (9 Metal3 tracks)
-    DIE_AREA: [0, 0, 68.64, 241.92]
+    DIE_AREA: [0, 0, 68.64, 219.24]

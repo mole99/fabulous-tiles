@@ -1,8 +1,8 @@
 # W_IO
 
 # Global nets
-A_[CLK|CLK|CLK|CLK],GBUFEND[0|1|2|3]
-GBUFBEG[0|1|2|3],GBUFEND[0|1|2|3]
+A_[CLK|CLK|CLK|CLK],N_GBUF_END[0|1|2|3]
+N_GBUF_BEG[0|1|2|3],N_GBUF_END[0|1|2|3]
 
 # Fabric to PAD output multiplexers
 A_[IN|IN|IN|IN|IN|IN|IN|IN],W2MID[0|1|2|3|4|5|6|7]

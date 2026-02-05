@@ -9,7 +9,7 @@ module W_IO
     )
     (
  //N
-        output  [3:0] GBUFBEG,        //Port(Name=GBUFBEG,IO=OUTPUT,XOffset=0,YOffset=-1,WireCount=4,Side=N)
+        output  [3:0] N_GBUF_BEG,        //Port(Name=N_GBUF_BEG,IO=OUTPUT,XOffset=0,YOffset=-1,WireCount=4,Side=N)
  //E
         output  [3:0] E1BEG,        //Port(Name=E1BEG,IO=OUTPUT,XOffset=1,YOffset=0,WireCount=4,Side=E)
         output  [7:0] E2BEG,        //Port(Name=E2BEG,IO=OUTPUT,XOffset=1,YOffset=0,WireCount=8,Side=E)
@@ -22,7 +22,7 @@ module W_IO
         input  [15:0] WW4END,        //Port(Name=WW4END,IO=INPUT,XOffset=-4,YOffset=0,WireCount=4,Side=E)
         input  [11:0] W6END,        //Port(Name=W6END,IO=INPUT,XOffset=-6,YOffset=0,WireCount=2,Side=E)
  //S
-        input  [3:0] GBUFEND,        //Port(Name=GBUFEND,IO=INPUT,XOffset=0,YOffset=-1,WireCount=4,Side=S)
+        input  [3:0] N_GBUF_END,        //Port(Name=N_GBUF_END,IO=INPUT,XOffset=0,YOffset=-1,WireCount=4,Side=S)
         input  A_OUT_top,
         output  A_IN_top,
         output  A_EN_top,
@@ -611,10 +611,10 @@ IOBUF Inst_A_IOBUF (
 );
 
 W_IO_switch_matrix Inst_W_IO_switch_matrix (
-    .GBUFEND0(GBUFEND[0]),
-    .GBUFEND1(GBUFEND[1]),
-    .GBUFEND2(GBUFEND[2]),
-    .GBUFEND3(GBUFEND[3]),
+    .N_GBUF_END0(N_GBUF_END[0]),
+    .N_GBUF_END1(N_GBUF_END[1]),
+    .N_GBUF_END2(N_GBUF_END[2]),
+    .N_GBUF_END3(N_GBUF_END[3]),
     .W1END0(W1END[0]),
     .W1END1(W1END[1]),
     .W1END2(W1END[2]),
@@ -664,10 +664,10 @@ W_IO_switch_matrix Inst_W_IO_switch_matrix (
     .W6END10(W6END[10]),
     .W6END11(W6END[11]),
     .A_OUT(A_OUT),
-    .GBUFBEG0(GBUFBEG[0]),
-    .GBUFBEG1(GBUFBEG[1]),
-    .GBUFBEG2(GBUFBEG[2]),
-    .GBUFBEG3(GBUFBEG[3]),
+    .N_GBUF_BEG0(N_GBUF_BEG[0]),
+    .N_GBUF_BEG1(N_GBUF_BEG[1]),
+    .N_GBUF_BEG2(N_GBUF_BEG[2]),
+    .N_GBUF_BEG3(N_GBUF_BEG[3]),
     .E1BEG0(E1BEG[0]),
     .E1BEG1(E1BEG[1]),
     .E1BEG2(E1BEG[2]),
