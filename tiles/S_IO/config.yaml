@@ -28,7 +28,7 @@ pdk::gf180mcu*:
     # Width should be multiple of 0.56 (Metal2 pitch)
     # Height should be multiple of 0.56 (Metal3 pitch)
     # Standard cell row height: 3.92 (8 Metal3 track)
-    DIE_AREA: [0, 0, 302.96, 73.92]
+    DIE_AREA: [0, 0, 302.96, 77.84]
     PL_TARGET_DENSITY_PCT: 85
 pdk::ihp-sg13*:
     # Width should be multiple of 0.48 (Metal2 pitch)
