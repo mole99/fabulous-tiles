@@ -1,7 +1,7 @@
 TILE,LUT4x8_C,,,,,#carry out
+NORTH,N_GBUF_BEG,0,-1,N_GBUF_END,4,# global buffers
 INCLUDE,../common/Base.csv,,,,,
 #direction,source_name,X-offset,Y-offset,destination_name,wires,
-NORTH,N_GBUF_BEG,0,-1,N_GBUF_END,4,# global buffers
 JUMP,GCLK_BEG,0,0,GCLK_END,1,
 JUMP,GSR_BEG,0,0,GSR_END,1,
 JUMP,GEN_BEG,0,0,GEN_END,1,
