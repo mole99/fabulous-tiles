@@ -1,5 +1,3 @@
-MAKEFILE_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-
 PDK ?= ihp-sg13g2
 
 # Get the tile names
@@ -18,8 +16,8 @@ $(TILES):
 
 $(TILES_OPENROAD):
 	librelane --pdk ${PDK} tiles/common/common.yaml tiles/$(subst -openroad,,$@)/config.yaml --last-run --flow OpenInOpenROAD
-.PHONY: $(TILE_PATHS_OPENROAD)
+.PHONY: $(TILES_OPENROAD)
 
 $(TILES_KLAYOUT):
 	librelane --pdk ${PDK} tiles/common/common.yaml tiles/$(subst -klayout,,$@)/config.yaml --last-run --flow OpenInKLayout
-.PHONY: $(TILE_PATHS_KLAYOUT)
+.PHONY: $(TILES_KLAYOUT)
