@@ -48,6 +48,6 @@ To change the PDK, set the `PDK` environment variable:
 PDK=gf180mcu make all
 ```
 
-## Stitch the Fabrics
+## Stitch the Tiles
 
-To stitch the fabrics, please see the following repository: https://github.com/mole99/fabulous-fabrics
+To stitch the tiles into fabrics, please see the following repository: https://github.com/mole99/fabulous-fabrics
