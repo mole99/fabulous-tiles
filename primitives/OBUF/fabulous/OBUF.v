@@ -16,7 +16,7 @@
 EN_REG=0,
 IN_REG=1
 *)
-module IOBUF #(
+module OBUF #(
     parameter NoConfigBits = 2
 )(
     // Fabric side

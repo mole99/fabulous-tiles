@@ -1,5 +1,6 @@
 TILE,W_IO,,,,,
 #direction,source_name,X-offset,Y-offset,destination_name,wires,
+SOUTH,S_GBUF_FEED_BEG,0,1,S_GBUF_FEED_END,4,# feed global buffers
 NORTH,N_GBUF_BEG,0,-1,N_GBUF_END,4,# global buffers
 EAST,E1BEG,1,0,NULL,4,
 EAST,E2BEG,1,0,NULL,8,
@@ -13,6 +14,6 @@ WEST,NULL,-4,0,WW4END,4,
 WEST,NULL,-6,0,W6END,2,
 JUMP,NULL,0,0,GND,1,
 JUMP,NULL,0,0,VCC,1,
-BEL,../../primitives/IOBUF/rtl/IOBUF.v,A_,,,,
+BEL,../../primitives/IOBUF/fabulous/IOBUF.v,A_,,,,
 MATRIX,./W_IO_switch_matrix.list,,,,,
 EndTILE,,,,,,

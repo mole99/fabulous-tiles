@@ -1,5 +1,11 @@
 # W_IO
 
+# These lines are used to feed the GBUFs in SW_term
+S_GBUF_FEED_BEG[0|1|2|3],S_GBUF_FEED_END[0|1|2|3]
+S_GBUF_FEED_BEG[0|1|2|3],[A_OUT|A_OUT|A_OUT|A_OUT]
+S_GBUF_FEED_BEG[0|1|2|3],W1END[1|2|3|0]
+S_GBUF_FEED_BEG[0|1|2|3],W2END[7|6|5|4]
+
 # Global nets
 A_[CLK|CLK|CLK|CLK],N_GBUF_END[0|1|2|3]
 N_GBUF_BEG[0|1|2|3],N_GBUF_END[0|1|2|3]
