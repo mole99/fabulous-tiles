@@ -28,8 +28,21 @@ __dir__ = os.path.dirname(os.path.realpath(__file__))
 # the first pattern that matches will be used
 tile_sizes = {
     "sky130*": {
+        # High density cells
+        # Width should be multiple of 0.46 (met2 pitch)
+        # Height should be multiple of 0.68 (met3 pitch)
+        # Standard cell row height: 2.72 (4 met3 track)
+    
         "LUT4x8_ha" : (210.80, 223.04),
-        
+
+        "RegFile"       : (210.80+0.46*90, 223.04),
+        "S_term_RegFile": (210.80+0.46*90,  57.12),
+        "N_term_RegFile": (210.80+0.46*90,  57.12),
+
+        "MACC"          : (210.80, 223.04*2),
+        "S_term_MACC"   : (210.80,  57.12),
+        "N_term_MACC"   : (210.80,  57.12),
+
         "NE*"       : ( 56.12,  57.12),
         "NW*"       : ( 56.12,  57.12),
         "SE*"       : ( 56.12,  57.12),
@@ -41,8 +54,22 @@ tile_sizes = {
         "W*"        : ( 56.12, 223.04),
     },
     "gf180mcu*": {
+        # Width should be multiple of 0.56 (Metal2 pitch)
+        # Height should be multiple of 0.56 (Metal3 pitch)
+        # Standard cell row height: 3.92 (8 Metal3 track)
+        # TODO: there seem to be delay buffers in the
+        # framedata signals due to the SDC constraints
+
         "LUT4x8_ha" : (302.96, 302.96),
-        
+
+        "RegFile"       : (302.96+0.56*90, 302.96),
+        "S_term_RegFile": (302.96+0.56*90,  77.84),
+        "N_term_RegFile": (302.96+0.56*90,  77.84),
+
+        "MACC"          : (302.96, 302.96*2),
+        "S_term_MACC"   : (302.96,  77.84),
+        "N_term_MACC"   : (302.96,  77.84),
+
         "NE*"       : ( 72.80,  77.84),
         "NW*"       : ( 72.80,  77.84),
         "SE*"       : ( 72.80,  77.84),
@@ -54,13 +81,17 @@ tile_sizes = {
         "W*"        : ( 72.80, 302.96),
     },
     "ihp-sg13*": {
+        # Width should be multiple of 0.48 (Metal2 pitch)
+        # Height should be multiple of 0.42 (Metal3 pitch)
+        # Standard cell row height: 3.78 (9 Metal3 tracks)
+
         "LUT4x8_ha"     : (219.84, 219.24),
 
-        "RegFile"       : (263.04, 219.24),
-        "S_term_RegFile": (263.04,  56.70),
-        "N_term_RegFile": (263.04,  56.70),
+        "RegFile"       : (219.84+0.48*90, 219.24),
+        "S_term_RegFile": (219.84+0.48*90,  56.70),
+        "N_term_RegFile": (219.84+0.48*90,  56.70),
 
-        "MACC"          : (219.84, 438.48),
+        "MACC"          : (219.84, 219.24*2),
         "S_term_MACC"   : (219.84,  56.70),
         "N_term_MACC"   : (219.84,  56.70),
 
