@@ -1,0 +1,9 @@
+TILE,MACC_top,,,,,,,,,,,,,,,,,
+#direction,source_name,X-offset,Y-offset,destination_name,wires,,,,,,,,,,,,,
+NORTH,N_GBUF_BEG,0,-1,N_GBUF_END,4,# global buffers
+INCLUDE,../../common/Base.csv
+NORTH,NULL,0,-1,bot2top,10,,,,,,,,,,,,,
+SOUTH,top2bot,0,1,NULL,18,,,,,,,,,,,,,
+NORTH,CO,0,-1,CI,1,# ACC carry
+MATRIX,./MACC_top_switch_matrix.list,,,,,,,,,,,,,,,,,
+EndTILE,,,,,,,,,,,,,,,,,,

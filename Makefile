@@ -11,13 +11,16 @@ all: $(TILES)
 .PHONY: all
 
 $(TILES):
-	librelane --pdk ${PDK} tiles/common/common.yaml tiles/$@/config.yaml
+	#librelane --pdk ${PDK} tiles/common/common.yaml tiles/$@/config.yaml
+	PDK=${PDK} python3 implement.py $@
 .PHONY: $(TILES)
 
 $(TILES_OPENROAD):
-	librelane --pdk ${PDK} tiles/common/common.yaml tiles/$(subst -openroad,,$@)/config.yaml --last-run --flow OpenInOpenROAD
+	#librelane --pdk ${PDK} tiles/common/common.yaml tiles/$(subst -openroad,,$@)/config.yaml --last-run --flow OpenInOpenROAD
+	PDK=${PDK} python3 implement.py $(subst -openroad,,$@) --gui openroad
 .PHONY: $(TILES_OPENROAD)
 
 $(TILES_KLAYOUT):
-	librelane --pdk ${PDK} tiles/common/common.yaml tiles/$(subst -klayout,,$@)/config.yaml --last-run --flow OpenInKLayout
+	#librelane --pdk ${PDK} tiles/common/common.yaml tiles/$(subst -klayout,,$@)/config.yaml --last-run --flow OpenInKLayout
+	PDK=${PDK} python3 implement.py $(subst -klayout,,$@) --gui klayout
 .PHONY: $(TILES_KLAYOUT)

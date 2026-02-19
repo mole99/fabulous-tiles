@@ -12,6 +12,47 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+module LUTK #(
+    parameter K=4,
+    parameter LUT_ENTRIES = 2**K
+)(
+    input [K-1:0] I,
+    input [LUT_ENTRIES-1:0] INIT,
+    output O
+);
+
+    generate
+    
+    if (K == 1) begin : LUT1
+        assign O = I ? INIT[1] : INIT[0];
+    end else begin : split_LUT
+        wire lower_O, upper_O;
+    
+        parameter LUT_ENTRIES_HALF = 2**(K-1);
+    
+        LUTK #(
+          .K (K-1)
+        ) LUTK_lower (
+          .I    (I[K-2:0]),
+          .INIT (INIT[LUT_ENTRIES_HALF-1:0]),
+          .O    (lower_O)
+        );
+        
+        LUTK #(
+          .K (K-1)
+        ) LUTK_upper (
+          .I    (I[K-2:0]),
+          .INIT (INIT[LUT_ENTRIES-1:LUT_ENTRIES_HALF]),
+          .O    (upper_O)
+        );
+        
+        assign O = I[K-1] ? upper_O : lower_O;
+    end
+    
+    endgenerate
+
+endmodule
+
 (*FABulous, BelMap,
     INIT=0,
     INIT_1=1,
@@ -69,7 +110,43 @@ module FABULOUS_LC #(
 	  assign LUT_index = {I[K-1:1],I0mux};
 
     // The look-up table
-    assign LUT_out = LUT_values[LUT_index];
+    //assign LUT_out = LUT_values[LUT_index];
+    
+    /*cus_mux161_buf inst_cus_mux161_buf(
+        .A0(LUT_values[0]),
+        .A1(LUT_values[1]),
+        .A2(LUT_values[2]),
+        .A3(LUT_values[3]),
+        .A4(LUT_values[4]),
+        .A5(LUT_values[5]),
+        .A6(LUT_values[6]),
+        .A7(LUT_values[7]),
+        .A8(LUT_values[8]),
+        .A9(LUT_values[9]),
+        .A10(LUT_values[10]),
+        .A11(LUT_values[11]),
+        .A12(LUT_values[12]),
+        .A13(LUT_values[13]),
+        .A14(LUT_values[14]),
+        .A15(LUT_values[15]),
+        .S0 (LUT_index[0]),
+        .S0N(~LUT_index[0]),
+        .S1 (LUT_index[1]),
+        .S1N(~LUT_index[1]),
+        .S2 (LUT_index[2]),
+        .S2N(~LUT_index[2]),
+        .S3 (LUT_index[3]),
+        .S3N(~LUT_index[3]),
+        .X  (LUT_out)
+    );*/
+    
+    LUTK #(
+        .K (4)
+    ) LUT4 (
+        .I    (LUT_index),
+        .INIT (LUT_values),
+        .O    (LUT_out)
+    );
 
 	  assign O = c_out_mux ? LUT_flop : LUT_out;
 	  

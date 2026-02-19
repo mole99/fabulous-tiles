@@ -1,0 +1,52 @@
+meta:
+  version: 2
+  flow: FABulousTile
+  substituting_steps:
+    # Don't resize the buffers
+    OpenROAD.Resizer*: null
+    OpenROAD.RepairDesign*: null
+
+    +OpenROAD.GlobalPlacement: OpenROAD.AddBuffers
+
+FABULOUS_TILE_DIR: dir::.
+
+# Basics
+DESIGN_NAME: RegFile
+VERILOG_FILES:
+  - dir::../../models_pack.v
+  - dir::../../custom.v
+
+# Disable timing driven placement
+# as it would resize the buffers
+PL_TIMING_DRIVEN: false
+
+# "AREA 0" "AREA 1" "AREA 2" "AREA 3"
+SYNTH_STRATEGY: "AREA 2"
+
+# Clock
+CLOCK_PERIOD: 20
+CLOCK_PORT: N_GBUF_END[0]
+
+# Area
+FP_SIZING: absolute
+pdk::sky130*:
+    # High density cells
+    # Width should be multiple of 0.46 (met2 pitch)
+    # Height should be multiple of 0.68 (met3 pitch)
+    # Standard cell row height: 2.72 (4 met3 track)
+    DIE_AREA: [0, 0, 210.80, 223.04]
+    PL_TARGET_DENSITY_PCT: 58
+pdk::gf180mcu*:
+    # Width should be multiple of 0.56 (Metal2 pitch)
+    # Height should be multiple of 0.56 (Metal3 pitch)
+    # Standard cell row height: 3.92 (8 Metal3 track)
+    # TODO: there seem to be delay buffers in the
+    # framedata signals due to the SDC constraints
+    DIE_AREA: [0, 0, 302.96, 302.96]
+    PL_TARGET_DENSITY_PCT: 85
+pdk::ihp-sg13*:
+    # Width should be multiple of 0.48 (Metal2 pitch)
+    # Height should be multiple of 0.42 (Metal3 pitch)
+    # Standard cell row height: 3.78 (9 Metal3 tracks)
+    DIE_AREA: [0, 0, 263.04, 219.24]
+    PL_TARGET_DENSITY_PCT: 80
