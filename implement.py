@@ -134,7 +134,7 @@ tile_densities = {
 }
 
 
-def main(tile, pdk_root="/home/leo/.ciel", pdk=None, tag=None, last_run=None, gui=None):
+def main(tile, pdk_root=None, pdk=None, tag=None, last_run=None, gui=None):
     target_flow = Flow.factory.get("FABulousTile")
 
     # Don't throw exception on hold violations
@@ -200,45 +200,46 @@ def main(tile, pdk_root="/home/leo/.ciel", pdk=None, tag=None, last_run=None, gu
 
     print(design_dir)
 
-    # TODO PDK_ROOT, PDK
-    import ciel
-    from ciel.source import StaticWebDataSource
+    # Fetch the PDK using ciel
+    if pdk_root is None:
+        import ciel
+        from ciel.source import StaticWebDataSource
 
-    opdks_rev = get_pdk_hash(pdk)
-    ciel_home = ciel.get_ciel_home(pdk_root)
-    
-    pdk_family = None
-    if family := ciel.Family.by_name.get(pdk):
-        pdk = family.default_variant
-        pdk_family = family.name
-        verbose(f"Resolved PDK variant {family.default_variant}.")
-    else:
-        for family in ciel.Family.by_name.values():
-            if pdk in family.variants:
-                pdk_family = family.name
-                break
+        opdks_rev = get_pdk_hash(pdk)
+        ciel_home = ciel.get_ciel_home(pdk_root)
+        
+        pdk_family = None
+        if family := ciel.Family.by_name.get(pdk):
+            pdk = family.default_variant
+            pdk_family = family.name
+            verbose(f"Resolved PDK variant {family.default_variant}.")
+        else:
+            for family in ciel.Family.by_name.values():
+                if pdk in family.variants:
+                    pdk_family = family.name
+                    break
 
-    if pdk_family is None:
-        err(f"Could not resolve the PDK '{pdk}'.")
-        exit(1)
-    
-    include_libraries = ["default"]
-    version = ciel.fetch(
-        ciel_home,
-        pdk_family,
-        opdks_rev,
-        data_source=StaticWebDataSource(
-            "https://fossi-foundation.github.io/ciel-releases"
-        ),
-        include_libraries=include_libraries,
-    )
-    pdk_root = version.get_dir(ciel_home)
+        if pdk_family is None:
+            err(f"Could not resolve the PDK '{pdk}'.")
+            exit(1)
+        
+        include_libraries = ["default"]
+        version = ciel.fetch(
+            ciel_home,
+            pdk_family,
+            opdks_rev,
+            data_source=StaticWebDataSource(
+                "https://fossi-foundation.github.io/ciel-releases"
+            ),
+            include_libraries=include_libraries,
+        )
+        pdk_root = version.get_dir(ciel_home)
     
     
     flow = target_flow(
         config,
         design_dir=design_dir,
-        pdk_root=None,
+        pdk_root=pdk_root,
         pdk=pdk,
     )
     
