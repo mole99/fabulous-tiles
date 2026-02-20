@@ -106,7 +106,7 @@ module RAM_32x4_2R_1W #(
         end
     end
     
-    assign B_DOUT = ConfigBits[0] ? B_DOUT_reg : B_DOUT_comb;
+    assign B_DOUT = B_REG ? B_DOUT_reg : B_DOUT_comb;
     
     // Port C - Read
     wire [WIDTH-1:0] C_DOUT_comb;
@@ -120,6 +120,6 @@ module RAM_32x4_2R_1W #(
         end
     end
     
-    assign C_DOUT = ConfigBits[1] ? C_DOUT_reg : C_DOUT_comb;
+    assign C_DOUT = C_REG ? C_DOUT_reg : C_DOUT_comb;
 
 endmodule

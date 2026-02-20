@@ -1,10 +1,11 @@
 (* techmap_celltype = "$__RAM_32x4_2R_1W_[AS][AS]_" *)
-module \$__REGFILE_XX_ (...);
+module \$__RAM_32x4_2R_1W_XX_ (...);
 
     parameter _TECHMAP_CELLTYPE_ = "";
 
-    localparam [0:0] B_SYNC = _TECHMAP_CELLTYPE_[15:8] == "S";
-    localparam [0:0] C_SYNC = _TECHMAP_CELLTYPE_[23:16] == "S";
+    // TODO shouldn't this be swapped?
+    localparam [0:0] C_SYNC = _TECHMAP_CELLTYPE_[15:8] == "S";
+    localparam [0:0] B_SYNC = _TECHMAP_CELLTYPE_[23:16] == "S";
 
     localparam WIDTH = 4;
     localparam ABITS = 5;
