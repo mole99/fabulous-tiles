@@ -53,6 +53,7 @@ module LUTK #(
 
 endmodule
 
+// Note: nextpnr also has support for ASYNC_SR and NEG_CLK
 (*FABulous, BelMap,
     INIT=0,
     INIT_1=1,
@@ -107,39 +108,9 @@ module FABULOUS_LC #(
 
 	  assign I0mux = c_I0mux ? Ci : I[0];
 
-	  assign LUT_index = {I[K-1:1],I0mux};
+	  assign LUT_index = {I[K-1:1], I0mux};
 
     // The look-up table
-    //assign LUT_out = LUT_values[LUT_index];
-    
-    /*cus_mux161_buf inst_cus_mux161_buf(
-        .A0(LUT_values[0]),
-        .A1(LUT_values[1]),
-        .A2(LUT_values[2]),
-        .A3(LUT_values[3]),
-        .A4(LUT_values[4]),
-        .A5(LUT_values[5]),
-        .A6(LUT_values[6]),
-        .A7(LUT_values[7]),
-        .A8(LUT_values[8]),
-        .A9(LUT_values[9]),
-        .A10(LUT_values[10]),
-        .A11(LUT_values[11]),
-        .A12(LUT_values[12]),
-        .A13(LUT_values[13]),
-        .A14(LUT_values[14]),
-        .A15(LUT_values[15]),
-        .S0 (LUT_index[0]),
-        .S0N(~LUT_index[0]),
-        .S1 (LUT_index[1]),
-        .S1N(~LUT_index[1]),
-        .S2 (LUT_index[2]),
-        .S2N(~LUT_index[2]),
-        .S3 (LUT_index[3]),
-        .S3N(~LUT_index[3]),
-        .X  (LUT_out)
-    );*/
-    
     LUTK #(
         .K (4)
     ) LUT4 (
@@ -154,11 +125,11 @@ module FABULOUS_LC #(
 	  assign Co = (Ci & I[1]) | (Ci & I[2]) | (I[1] & I[2]);
 
 	  always @ (posedge CLK) begin
-        if (EN) begin
-            if (SR) begin
-	            LUT_flop <= c_reset_value;
-            end else begin
-	            LUT_flop <= LUT_out;
+        if (SR) begin
+            LUT_flop <= c_reset_value;
+        end else begin
+            if (EN) begin
+                LUT_flop <= LUT_out;
             end
         end
 	  end
