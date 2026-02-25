@@ -1,0 +1,7 @@
+TILE,RegFile,,,,,
+#direction,source_name,X-offset,Y-offset,destination_name,wires,
+NORTH,N_GBUF_BEG,0,-1,N_GBUF_END,4,# global buffers
+INCLUDE,../common/Base.csv
+BEL,../../../primitives/RAM_32x4_2R_1W/fabulous/RAM_32x4_2R_1W.v,,,,,
+MATRIX,./RegFile_switch_matrix.list,A_,,,,
+EndTILE,,,,,,

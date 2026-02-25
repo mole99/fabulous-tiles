@@ -1,0 +1,4 @@
+# NW_term
+
+S_GBUF_FEED_BEG[0|1|2|3],GND[0|0|0|0]
+S_GBUF_FEED_BEG[0|1|2|3],VCC[0|0|0|0]
