@@ -98,9 +98,9 @@ tile_sizes = {
 
         "LUT4x8_ha"     : (219.84, 219.24),
 
-        "RegFile"       : (219.84+0.48*90, 219.24),
-        "S_term_RegFile": (219.84+0.48*90,  56.70),
-        "N_term_RegFile": (219.84+0.48*90,  56.70),
+        "RegFile"       : (219.84+0.48*94, 219.24),
+        "S_term_RegFile": (219.84+0.48*94,  56.70),
+        "N_term_RegFile": (219.84+0.48*94,  56.70),
 
         "MACC"          : (219.84, 219.24*2),
         "S_term_MACC"   : (219.84,  56.70),
@@ -136,9 +136,6 @@ tile_densities = {
 
 def main(tile, pdk_root=None, pdk=None, tag=None, tile_library=None, last_run=None, gui=None):
     target_flow = Flow.factory.get("FABulousTile")
-
-    # Don't throw exception on hold violations
-    #target_flow.Steps.remove(Checker.HoldViolations)
 
     if gui == "openroad":
         target_flow = Flow.factory.get("OpenInOpenROAD")

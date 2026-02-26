@@ -5,6 +5,6 @@ INCLUDE,../../common/Base.csv
 NORTH,bot2top,0,-1,NULL,10,,,,,,,,,,,,,
 SOUTH,NULL,0,1,top2bot,18,,,,,,,,,,,,,
 NORTH,CO,0,-1,CI,1,# ACC carry
-BEL,../../../../primitives/MACC_8x8/fabulous/MACC_8x8.v,,,,,
+BEL,../../../../primitives/MACC_8x8_20/fabulous/MACC_8x8_20.v,,,,,
 MATRIX,./MACC_bot_switch_matrix.list,,,,,,,,,,,,,,,,,
 EndTILE,,,,,,,,,,,,,,,,,,

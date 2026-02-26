@@ -47,7 +47,7 @@ C[9|9|9|9],J[N|E|S|W]2END7
 
 # Carry
 CO0,ACC_CO
-ACC_CI,CI0
+[ACC_CI|ACC_CI],[CI0|GND0]
 
 # pass MSB results directly to top MACC cell
 bot2top[9|8|7|6|5|4|3|2|1|0],[Q19|Q18|Q17|Q16|Q15|Q14|Q13|Q12|Q11|Q10]
