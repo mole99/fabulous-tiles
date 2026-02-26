@@ -16,14 +16,13 @@
 A_REG=0,
 B_REG=1,
 C_REG=2,
-MULTIPLY=3,
-SIGN_EXT=4,
-ACC_SEL=5,
-ACC_OUT=6,
-CLK_INV=7
+SIGN_EXT=3,
+ACC_SEL=4,
+ACC_OUT=5,
+CLK_INV=6
 *)
-module MACC_8x8 #(
-    parameter NoConfigBits = 8
+module MACC_8x8_20 #(
+    parameter NoConfigBits = 7
 )(
     // Fabric side
     input  CLK,
@@ -48,11 +47,10 @@ module MACC_8x8 #(
     assign A_REG = ConfigBits[0];
     assign B_REG = ConfigBits[1];
     assign C_REG = ConfigBits[2];
-    assign MULTIPLY = ConfigBits[3];
-    assign SIGN_EXT = ConfigBits[4];
-    assign ACC_SEL = ConfigBits[5];
-    assign ACC_OUT = ConfigBits[6];
-    assign CLK_INV = ConfigBits[7];
+    assign SIGN_EXT = ConfigBits[3];
+    assign ACC_SEL = ConfigBits[4];
+    assign ACC_OUT = ConfigBits[5];
+    assign CLK_INV = ConfigBits[6];
 
     // Clock inversion
     wire clk;
@@ -83,11 +81,8 @@ module MACC_8x8 #(
     assign product = OPA * OPB;
     
     // Sign extension
-    wire [15:0] to_extend;
-    assign to_extend = MULTIPLY ? product : {OPB, OPA};
-    
     wire [19:0] extended;
-    assign extended = SIGN_EXT ? {{4{to_extend[15]}}, to_extend} : {4'd0, to_extend};
+    assign extended = SIGN_EXT ? {{4{product[15]}}, product} : {4'd0, product};
 
     // Addition
     wire [19:0] sum;
