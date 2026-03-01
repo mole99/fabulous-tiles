@@ -11,6 +11,7 @@ all_primitives.md
 *ConfigMem.v
 *switch_matrix.csv
 *switch_matrix.v
+tiles/**/*.v
 macro/
 runs/
 
