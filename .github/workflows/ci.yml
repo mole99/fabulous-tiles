@@ -33,6 +33,13 @@ jobs:
     strategy:
       matrix:
         pdk: [sky130A, gf180mcuD, ihp-sg13g2]
+        tile_library: [classic, tiny]
+        exclude:
+        # Disably tiny for sky130A and gf180mcuD
+        - tile_library: tiny
+          pdk: sky130A
+        - tile_library: tiny
+          pdk: gf180mcuD
     name: Implement the Tiles (${{ matrix.pdk }})
     steps:
       - uses: actions/checkout@v4
@@ -55,4 +62,4 @@ jobs:
           sudo tree /nix/store/*-librelane || true
       - name: Implement the tiles
         run: |
-          PDK=${{ matrix.pdk }} nix develop --command make all
+          PDK=${{ matrix.pdk }} TILE_LIBRARY=${{ matrix.tile_library }} nix develop --command make all
