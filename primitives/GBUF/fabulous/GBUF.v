@@ -12,12 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-module GBUF (
+(*FABulous, BelMap,
+    INVERT=0
+*)
+module GBUF #(
+    // ConfigBits has to be adjusted manually (we don't use an arithmetic parser for the value)
+    parameter N_CONFIG_BITS = 1
+)(
     // Fabric side
     input  IN,
-    output OUT
+    output OUT,
+    
+    (* FABulous, GLOBAL *) input [N_CONFIG_BITS-1:0] ConfigBits // Config bits as vector
 );
 
-    assign OUT = IN;
+    wire INVERT;
+  	  assign INVERT = ConfigBits[0];
+
+    assign OUT = INVERT ? ~IN : IN;
 
 endmodule

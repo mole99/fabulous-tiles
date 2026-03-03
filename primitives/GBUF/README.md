@@ -15,3 +15,4 @@ The GBUF (global buffer) primitive is used to drive a global net, usually used f
 
 | Name          | Width | Description              |
 |---------------|-------|--------------------------|
+| INVERT        | 1     | Invert the signal.       |
