@@ -1,0 +1,23 @@
+TILE,S_IO4,,,,,
+#direction,source_name,X-offset,Y-offset,destination_name,wires,
+NORTH,N_GBUF_BEG,0,-1,NULL,4,# global buffers
+EAST,E_GBUF_BEG,1,0,E_GBUF_END,4,# global buffers
+NORTH,N1BEG,0,-1,NULL,8,
+NORTH,N2BEG,0,-1,NULL,8,
+NORTH,N2BEGb,0,-1,NULL,8,
+#NORTH,N4BEG,0,-4,NULL,4,
+#NORTH,NN4BEG,0,-4,NULL,4,
+SOUTH,NULL,0,1,S1END,8,
+SOUTH,NULL,0,1,S2MID,8,
+SOUTH,NULL,0,1,S2END,8,
+#SOUTH,NULL,0,4,S4END,4,
+#SOUTH,NULL,0,4,SS4END,4,
+NORTH,Co,0,-1,NULL,1,# carry
+JUMP,NULL,0,0,GND,1,
+JUMP,NULL,0,0,VCC,1,
+BEL,../../../primitives/IOBUF/fabulous/IOBUF.v,A_,,,,
+BEL,../../../primitives/IOBUF/fabulous/IOBUF.v,B_,,,,
+BEL,../../../primitives/IOBUF/fabulous/IOBUF.v,C_,,,,
+BEL,../../../primitives/IOBUF/fabulous/IOBUF.v,D_,,,,
+MATRIX,./S_IO4_switch_matrix.list,,,,,
+EndTILE,,,,,,

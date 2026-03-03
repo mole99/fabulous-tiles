@@ -1,0 +1,20 @@
+# N_IO
+
+# single just go back, we swap bits in vector to get more twists into the graph
+S1BEG[0|1|2|3|4|5|6|7],N1END[7|6|5|4|3|2|1|0]
+S1BEG[0|1|2|3|4|5|6|7],N2END[7|6|5|4|3|2|1|0]
+S1BEG[0|1|2|3|4|5|6|7],N2MID[7|6|5|4|3|2|1|0]
+S1BEG[0|1|2|3|4|5|6|7],[N1END5|N1END3|N2END1|N2END6|N2MID0|Ci0|VCC0|GND0]
+
+# The MID are half way in so they get connected to the longest patch (S2BEG)
+# The END are longest so get on the cascading begin (S2BEGb)
+# on top we twist wire indexes for more entropy
+S2BEGb[0|1|2|3|4|5|6|7],N1END[7|6|5|4|3|2|1|0]
+S2BEGb[0|1|2|3|4|5|6|7],N2END[7|6|5|4|3|2|1|0]
+S2BEGb[0|1|2|3|4|5|6|7],N2MID[7|6|5|4|3|2|1|0]
+S2BEGb[0|1|2|3|4|5|6|7],[N1END5|N1END3|N2END1|N2END6|N2MID0|Ci0|VCC0|GND0]
+
+S2BEG[0|1|2|3|4|5|6|7],N1END[7|6|5|4|3|2|1|0]
+S2BEG[0|1|2|3|4|5|6|7],N2END[7|6|5|4|3|2|1|0]
+S2BEG[0|1|2|3|4|5|6|7],N2MID[7|6|5|4|3|2|1|0]
+S2BEG[0|1|2|3|4|5|6|7],[N1END5|N1END3|N2END1|N2END6|N2MID0|Ci0|VCC0|GND0]
