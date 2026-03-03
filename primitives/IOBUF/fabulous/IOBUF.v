@@ -34,6 +34,14 @@ module IOBUF #(
     // Static configuration bits
     (* FABulous, GLOBAL *) input [NoConfigBits-1:0] ConfigBits
 );
+    // Static configuration
+    wire EN_REG, IN_REG, OUT_REG;
+    
+    assign EN_REG = ConfigBits[0];
+    assign IN_REG = ConfigBits[1];
+    assign OUT_REG = ConfigBits[2];
+
+    // Functionality
     logic EN_q, IN_q, OUT_top_q;
 
     always_ff @(posedge CLK) begin
@@ -43,10 +51,10 @@ module IOBUF #(
     end
 
     // Fabric -> External
-    assign IN_top = ConfigBits[1] ? IN_q : IN;
-    assign EN_top = ConfigBits[0] ? EN_q : EN;
+    assign IN_top = IN_REG ? IN_q : IN;
+    assign EN_top = EN_REG ? EN_q : EN;
 
     // External -> Fabric
-    assign OUT = ConfigBits[2] ? OUT_top_q : OUT_top;
+    assign OUT = OUT_REG ? OUT_top_q : OUT_top;
 
 endmodule
