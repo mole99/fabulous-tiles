@@ -38,73 +38,93 @@ __dir__ = os.path.dirname(os.path.realpath(__file__))
 # The order of the patterns is important:
 # the first pattern that matches will be used
 tile_sizes = {
-    "sky130*": {
-        # High density cells
-        # Width should be multiple of 0.46 (met2 pitch)
-        # Height should be multiple of 0.68 (met3 pitch)
-        # Standard cell row height: 2.72 (4 met3 track)
-    
-        "LUT4x8_ha" : (210.80, 223.04),
-
-        "RegFile"       : (210.80+0.46*90, 223.04),
-        "S_term_RegFile": (210.80+0.46*90,  57.12),
-        "N_term_RegFile": (210.80+0.46*90,  57.12),
-
-        "MACC"          : (210.80, 223.04*2),
-        "S_term_MACC"   : (210.80,  57.12),
-        "N_term_MACC"   : (210.80,  57.12),
-
-        "NE*"       : ( 56.12,  57.12),
-        "NW*"       : ( 56.12,  57.12),
-        "SE*"       : ( 56.12,  57.12),
-        "SW*"       : ( 56.12,  57.12),
+    "classic": {
+        "sky130*": {
+            # High density cells
+            # Width should be multiple of 0.46 (met2 pitch)
+            # Height should be multiple of 0.68 (met3 pitch)
+            # Standard cell row height: 2.72 (4 met3 track)
         
-        "N*"        : (210.80,  57.12),
-        "E*"        : ( 56.12, 223.04),
-        "S*"        : (210.80,  57.12),
-        "W*"        : ( 56.12, 223.04),
+            "LUT4x8_ha" : (210.80, 223.04),
+
+            "RegFile"       : (210.80+0.46*90, 223.04),
+            "S_term_RegFile": (210.80+0.46*90,  57.12),
+            "N_term_RegFile": (210.80+0.46*90,  57.12),
+
+            "MACC"          : (210.80, 223.04*2),
+            "S_term_MACC"   : (210.80,  57.12),
+            "N_term_MACC"   : (210.80,  57.12),
+
+            "NE*"       : ( 56.12,  57.12),
+            "NW*"       : ( 56.12,  57.12),
+            "SE*"       : ( 56.12,  57.12),
+            "SW*"       : ( 56.12,  57.12),
+            
+            "N*"        : (210.80,  57.12),
+            "E*"        : ( 56.12, 223.04),
+            "S*"        : (210.80,  57.12),
+            "W*"        : ( 56.12, 223.04),
+        },
+        "gf180mcu*": {
+            # Width should be multiple of 0.56 (Metal2 pitch)
+            # Height should be multiple of 0.56 (Metal3 pitch)
+            # Standard cell row height: 3.92 (8 Metal3 track)
+            # TODO: there seem to be delay buffers in the
+            # framedata signals due to the SDC constraints
+
+            "LUT4x8_ha" : (302.96, 302.96),
+
+            "RegFile"       : (302.96+0.56*90, 302.96),
+            "S_term_RegFile": (302.96+0.56*90,  77.84),
+            "N_term_RegFile": (302.96+0.56*90,  77.84),
+
+            "MACC"          : (302.96, 302.96*2),
+            "S_term_MACC"   : (302.96,  77.84),
+            "N_term_MACC"   : (302.96,  77.84),
+
+            "NE*"       : ( 72.80,  77.84),
+            "NW*"       : ( 72.80,  77.84),
+            "SE*"       : ( 72.80,  77.84),
+            "SW*"       : ( 72.80,  77.84),
+            
+            "N*"        : (302.96,  77.84),
+            "E*"        : ( 72.80, 302.96),
+            "S*"        : (302.96,  77.84),
+            "W*"        : ( 72.80, 302.96),
+        },
+        "ihp-sg13*": {
+            # Width should be multiple of 0.48 (Metal2 pitch)
+            # Height should be multiple of 0.42 (Metal3 pitch)
+            # Standard cell row height: 3.78 (9 Metal3 tracks)
+
+            "LUT4x8_ha"     : (219.84, 219.24),
+
+            "RegFile"       : (219.84+0.48*94, 219.24),
+            "S_term_RegFile": (219.84+0.48*94,  56.70),
+            "N_term_RegFile": (219.84+0.48*94,  56.70),
+
+            "MACC"          : (219.84, 219.24*2),
+            "S_term_MACC"   : (219.84,  56.70),
+            "N_term_MACC"   : (219.84,  56.70),
+
+            "NE*"       : ( 68.64,  56.70),
+            "NW*"       : ( 68.64,  56.70),
+            "SE*"       : ( 68.64,  56.70),
+            "SW*"       : ( 68.64,  56.70),
+            
+            "N*"        : (219.84,  56.70),
+            "E*"        : ( 68.64, 219.24),
+            "S*"        : (219.84,  56.70),
+            "W*"        : ( 68.64, 219.24),
+        },
     },
-    "gf180mcu*": {
-        # Width should be multiple of 0.56 (Metal2 pitch)
-        # Height should be multiple of 0.56 (Metal3 pitch)
-        # Standard cell row height: 3.92 (8 Metal3 track)
-        # TODO: there seem to be delay buffers in the
-        # framedata signals due to the SDC constraints
-
-        "LUT4x8_ha" : (302.96, 302.96),
-
-        "RegFile"       : (302.96+0.56*90, 302.96),
-        "S_term_RegFile": (302.96+0.56*90,  77.84),
-        "N_term_RegFile": (302.96+0.56*90,  77.84),
-
-        "MACC"          : (302.96, 302.96*2),
-        "S_term_MACC"   : (302.96,  77.84),
-        "N_term_MACC"   : (302.96,  77.84),
-
-        "NE*"       : ( 72.80,  77.84),
-        "NW*"       : ( 72.80,  77.84),
-        "SE*"       : ( 72.80,  77.84),
-        "SW*"       : ( 72.80,  77.84),
-        
-        "N*"        : (302.96,  77.84),
-        "E*"        : ( 72.80, 302.96),
-        "S*"        : (302.96,  77.84),
-        "W*"        : ( 72.80, 302.96),
-    },
-    "ihp-sg13*": {
+    "tiny": {
+        "ihp-sg13*": {
         # Width should be multiple of 0.48 (Metal2 pitch)
         # Height should be multiple of 0.42 (Metal3 pitch)
         # Standard cell row height: 3.78 (9 Metal3 tracks)
 
-        "LUT4x8_ha"     : (219.84, 219.24),
-
-        "RegFile"       : (219.84+0.48*94, 219.24),
-        "S_term_RegFile": (219.84+0.48*94,  56.70),
-        "N_term_RegFile": (219.84+0.48*94,  56.70),
-
-        "MACC"          : (219.84, 219.24*2),
-        "S_term_MACC"   : (219.84,  56.70),
-        "N_term_MACC"   : (219.84,  56.70),
+        "LUT4x8_ha"     : (219.84, 185.22),
 
         "NE*"       : ( 68.64,  56.70),
         "NW*"       : ( 68.64,  56.70),
@@ -112,27 +132,49 @@ tile_sizes = {
         "SW*"       : ( 68.64,  56.70),
         
         "N*"        : (219.84,  56.70),
-        "E*"        : ( 68.64, 219.24),
+        "E*"        : ( 68.64, 185.22),
         "S*"        : (219.84,  56.70),
-        "W*"        : ( 68.64, 219.24),
+        "W*"        : ( 68.64, 185.22),
+        },
     },
 }
 
 tile_densities = {
-    "sky130*": {
-        "LUT4x8_ha" : 58,
-        "*"         : None,
+    "classic": {
+        "sky130*": {
+            "LUT4x8_ha" : 58,
+            "*"         : None,
+        },
+        "gf180mcu*": {
+            "LUT4x8_ha" : 85,
+            "*"         : None,
+        },
+        "ihp-sg13*": {
+            "LUT4x8_ha" : 96,
+            "*"         : None,
+        },
     },
-    "gf180mcu*": {
-        "LUT4x8_ha" : 85,
-        "*"         : None,
-    },
-    "ihp-sg13*": {
-        "LUT4x8_ha" : 96,
-        "*"         : None,
+    "tiny": {
+        "ihp-sg13*": {
+            "LUT4x8_ha" : 96,
+            "*"         : None,
+        },
     },
 }
 
+tile_obstruction_layers = {
+    "*": {
+        "sky130*": {
+            "*"         : ["met1", "met2", "met3", "met4", "met5"],
+        },
+        "gf180mcu*": {
+            "*"         : ["Metal1", "Metal2", "Metal3", "Metal4", "Metal5"],
+        },
+        "ihp-sg13*": {
+            "*"         : ["Metal1", "Metal2", "Metal3", "Metal4", "Metal5", "TopMetal1", "TopMetal2"],
+        },
+    },
+}
 
 def main(tile, pdk_root=None, pdk=None, tag=None, tile_library=None, last_run=None, gui=None):
     target_flow = Flow.factory.get("FABulousTile")
@@ -157,15 +199,27 @@ def main(tile, pdk_root=None, pdk=None, tag=None, tile_library=None, last_run=No
     tile_config = yaml.safe_load(open(tile_config_path))
     config.update(tile_config)
     
-    # Get the tile area
+    if not tile_library in tile_sizes:
+        raise FlowError(f"Error: Couldn't find tile library {tile_library} in tile_sizes") from None
+    if not tile_library in tile_densities:
+        raise FlowError(f"Error: Couldn't find tile library {tile_library} in tile_densities") from None
+
+    # Get the tile size
     tile_size = None
-    for pdk_pattern, tile_values in tile_sizes.items():
-        if fnmatch.fnmatch(pdk, pdk_pattern):
-            print(f"Matched pdk {pdk} with {pdk_pattern}")
-            for tile_pattern, size in tile_values.items():
-                if fnmatch.fnmatch(tile, tile_pattern):
-                    print(f"Matched tile {tile} with {tile_pattern}")
-                    tile_size = size
+    # -> match the tile library
+    for tile_library_pattern, pdk_tile_values in tile_sizes.items():
+        if fnmatch.fnmatch(tile_library, tile_library_pattern):
+            print(f"Matched tile library {tile_library} with {tile_library_pattern}")
+            # -> match the pdk
+            for pdk_pattern, tile_values in pdk_tile_values.items():
+                if fnmatch.fnmatch(pdk, pdk_pattern):
+                    print(f"Matched pdk {pdk} with {pdk_pattern}")
+                    # -> match the tile
+                    for tile_pattern, size in tile_values.items():
+                        if fnmatch.fnmatch(tile, tile_pattern):
+                            print(f"Matched tile {tile} with {tile_pattern}")
+                            tile_size = size
+                            break
                     break
             break
     
@@ -174,18 +228,57 @@ def main(tile, pdk_root=None, pdk=None, tag=None, tile_library=None, last_run=No
 
     # Get the target density
     target_density = None
-    for pdk_pattern, tile_values in tile_densities.items():
-        if fnmatch.fnmatch(pdk, pdk_pattern):
-            print(f"Matched pdk {pdk} with {pdk_pattern}")
-            for tile_pattern, density in tile_values.items():
-                if fnmatch.fnmatch(tile, tile_pattern):
-                    print(f"Matched tile {tile} with {tile_pattern}")
-                    target_density = density
+    # -> match the tile library
+    for tile_library_pattern, pdk_tile_values in tile_densities.items():
+        if fnmatch.fnmatch(tile_library, tile_library_pattern):
+            print(f"Matched tile library {tile_library} with {tile_library_pattern}")
+            # -> match the pdk
+            for pdk_pattern, tile_values in pdk_tile_values.items():
+                if fnmatch.fnmatch(pdk, pdk_pattern):
+                    print(f"Matched pdk {pdk} with {pdk_pattern}")
+                    # -> match the tile
+                    for tile_pattern, density in tile_values.items():
+                        if fnmatch.fnmatch(tile, tile_pattern):
+                            print(f"Matched tile {tile} with {tile_pattern}")
+                            target_density = density
+                            break
+                    break
+            break
+
+    # Get the obstruction layers
+    obs = []
+    # -> match the tile library
+    for tile_library_pattern, pdk_tile_values in tile_obstruction_layers.items():
+        if fnmatch.fnmatch(tile_library, tile_library_pattern):
+            print(f"Matched tile library {tile_library} with {tile_library_pattern}")
+            # -> match the pdk
+            for pdk_pattern, tile_values in pdk_tile_values.items():
+                if fnmatch.fnmatch(pdk, pdk_pattern):
+                    print(f"Matched pdk {pdk} with {pdk_pattern}")
+                    # -> match the tile
+                    for tile_pattern, obstruction_layers in tile_values.items():
+                        if fnmatch.fnmatch(tile, tile_pattern):
+                            print(f"Matched tile {tile} with {tile_pattern}")
+                            target_density = density
+                            # Add blockages
+                            # This ensures that no wire/via is close enough to the edge
+                            # which could lead to DRC violations after stitchign the fabric
+                            for layer in obstruction_layers:
+                                # bottom
+                                obs.append([layer, 0, -1, tile_size[0], 0])
+                                # top
+                                obs.append([layer, 0, tile_size[1], tile_size[0], tile_size[1]+1])
+                                # left
+                                obs.append([layer, -1, 0, 0, tile_size[1]])
+                                # right
+                                obs.append([layer, tile_size[0], 0, tile_size[0]+1, tile_size[1]])
+                            break
                     break
             break
 
     print(f"Tile size: {tile_size}")
     print(f"Tile target density: {target_density}")
+    print(f"Tile obstructions: {obs}")
     
     config["FP_SIZING"] = "absolute"
     config["DIE_AREA"] = [0, 0, tile_size[0], tile_size[1]]
@@ -193,11 +286,13 @@ def main(tile, pdk_root=None, pdk=None, tag=None, tile_library=None, last_run=No
     if target_density:
         config["PL_TARGET_DENSITY_PCT"] = target_density
 
-    print(config)
+    if obs:
+        config["ROUTING_OBSTRUCTIONS"] = obs
+
+    print(f"config: {config}")
 
     design_dir = os.path.join(__dir__, "tiles", tile_library, tile)
-
-    print(design_dir)
+    print(f"design_dir: {design_dir}")
 
     # Fetch the PDK using ciel
     if pdk_root is None:
