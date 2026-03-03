@@ -143,6 +143,7 @@ tile_densities = {
     "classic": {
         "sky130*": {
             "LUT4x8_ha" : 58,
+            "S_term_RegFile": 10, # prevent numerical instability during GPL
             "*"         : None,
         },
         "gf180mcu*": {
