@@ -13,11 +13,13 @@
 // limitations under the License.
 
 (* keep *)
-module GBUF (
-  input  IN,
-  output OUT
+module GBUF #(
+    parameter INVERT = 1'b0
+)(
+    input  IN,
+    output OUT
 );
 
-    assign OUT = IN;
+    assign OUT = INVERT ? ~IN : IN;
 
 endmodule
