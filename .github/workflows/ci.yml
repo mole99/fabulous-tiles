@@ -40,7 +40,7 @@ jobs:
           pdk: sky130A
         - tile_library: tiny
           pdk: gf180mcuD
-    name: Implement the Tiles (${{ matrix.tile_library }}/${{ matrix.pdk }})
+    name: Tiles (${{ matrix.tile_library }}/${{ matrix.pdk }})
     steps:
       - uses: actions/checkout@v4
         with:
