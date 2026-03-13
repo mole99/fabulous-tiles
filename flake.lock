@@ -32,11 +32,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764011051,
-        "narHash": "sha256-M7SZyPZiqZUR/EiiBJnmyUbOi5oE/03tCeFrTiUZchI=",
+        "lastModified": 1768818222,
+        "narHash": "sha256-460jc0+CZfyaO8+w8JNtlClB2n4ui1RbHfPTLkpwhU8=",
         "owner": "numtide",
         "repo": "devshell",
-        "rev": "17ed8d9744ebe70424659b0ef74ad6d41fc87071",
+        "rev": "255a2b1725a20d060f566e4755dbf571bbbb5f76",
         "type": "github"
       },
       "original": {
@@ -52,7 +52,7 @@
         "rev": "ff81ac966bb2cae68946d5ed5fc4994f96d0ffec",
         "revCount": 69,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/edolstra/flake-compat/1.1.0/01948eb7-9cba-704f-bbf3-3fa956735b52/source.tar.gz?rev=ff81ac966bb2cae68946d5ed5fc4994f96d0ffec&revCount=69"
+        "url": "https://api.flakehub.com/f/pinned/edolstra/flake-compat/1.1.0/01948eb7-9cba-704f-bbf3-3fa956735b52/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -67,11 +67,11 @@
         "nix-eda": "nix-eda"
       },
       "locked": {
-        "lastModified": 1771486901,
-        "narHash": "sha256-ZtjThlRj4yc7PLItFB8iWRk18rCdOZT3/bOxJHsdccI=",
+        "lastModified": 1773385605,
+        "narHash": "sha256-jY60vhR9aX/sMkLr67I9cipFKR138eM1rYjFtWMfCvI=",
         "owner": "librelane",
         "repo": "librelane",
-        "rev": "45a1d35b18935a5faa07c7179a893092ae0a16dd",
+        "rev": "b44bfb47e27cfa84c0a1899afbf01804fc1e0f7d",
         "type": "github"
       },
       "original": {
@@ -86,16 +86,16 @@
         "librelane": "librelane"
       },
       "locked": {
-        "lastModified": 1771839031,
-        "narHash": "sha256-qVMV8/YGPEHlfINLd1s4/8PJqlE7iZ+2Vj7od0l2LrM=",
+        "lastModified": 1773389967,
+        "narHash": "sha256-RyEgQFzgs0+4ep3yN3wLkNUmtY0QXsOE18IMK8IR+xM=",
         "owner": "mole99",
         "repo": "librelane_plugin_fabulous",
-        "rev": "a597fec859ac29d31d9e015f8836a16b14092d6e",
+        "rev": "f828bc5f80efa9c535df6ea8c61e080d5e36a662",
         "type": "github"
       },
       "original": {
         "owner": "mole99",
-        "ref": "update-flow",
+        "ref": "1.4.0",
         "repo": "librelane_plugin_fabulous",
         "type": "github"
       }
@@ -105,16 +105,16 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1768614091,
-        "narHash": "sha256-UElQINIEz44UlEXP9eIJmjMuCIkP9fS8+WitJwyTYzw=",
+        "lastModified": 1773303822,
+        "narHash": "sha256-Aey3PT/xisIHj8y696NiS65xzNxpW5rDzm2iK9X2DSw=",
         "owner": "fossi-foundation",
         "repo": "nix-eda",
-        "rev": "8d6f4ea82716b59bc6eff6b070304e1b916b2c75",
+        "rev": "691472a25cf4d6c1a6e9975b9149f32deba6e0c7",
         "type": "github"
       },
       "original": {
         "owner": "fossi-foundation",
-        "ref": "6.0.2",
+        "ref": "6.9.0",
         "repo": "nix-eda",
         "type": "github"
       }
