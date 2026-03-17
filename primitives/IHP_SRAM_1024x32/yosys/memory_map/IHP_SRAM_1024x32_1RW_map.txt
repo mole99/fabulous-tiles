@@ -1,0 +1,11 @@
+# SRAM with one read/write port
+
+ram distributed $__RAM_1024x32_1RW_ {
+    abits 10;
+    width 32;
+    cost 100;
+    port srsw "A" {
+        clock posedge;
+        wrtrans all old;
+    }
+}
