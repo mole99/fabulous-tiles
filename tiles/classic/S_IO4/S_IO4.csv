@@ -1,4 +1,4 @@
-TILE,S_IO,,,,,
+TILE,S_IO4,,,,,
 #direction,source_name,X-offset,Y-offset,destination_name,wires,
 WEST,W_GBUF_FEED_BEG,-1,0,W_GBUF_FEED_END,4,# feed global buffers
 NORTH,N_GBUF_BEG,0,-1,NULL,4,# global buffers
@@ -17,5 +17,8 @@ NORTH,Co,0,-1,NULL,1,# carry
 JUMP,NULL,0,0,GND,1,
 JUMP,NULL,0,0,VCC,1,
 BEL,../../../primitives/IOBUF/fabulous/IOBUF.v,A_,,,,
-MATRIX,./S_IO_switch_matrix.list,,,,,
+BEL,../../../primitives/IOBUF/fabulous/IOBUF.v,B_,,,,
+BEL,../../../primitives/IOBUF/fabulous/IOBUF.v,C_,,,,
+BEL,../../../primitives/IOBUF/fabulous/IOBUF.v,D_,,,,
+MATRIX,./S_IO4_switch_matrix.list,,,,,
 EndTILE,,,,,,

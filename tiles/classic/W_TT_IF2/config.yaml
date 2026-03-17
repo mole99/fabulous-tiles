@@ -5,18 +5,19 @@ meta:
 FABULOUS_TILE_DIR: dir::.
 
 # Basics
-DESIGN_NAME: MACC
+DESIGN_NAME: W_TT_IF2
 FABULOUS_SUPERTILE: true
 VERILOG_FILES:
   - dir::../../../models_pack.v
   - dir::../../../custom.v
+FABULOUS_EXTERNAL_SIDE: W
 
 # Disable timing driven placement
 # as it would resize the buffers
 PL_TIME_DRIVEN: false
 
-# "AREA 0" "AREA 1" "AREA 2" "AREA 3"
-SYNTH_STRATEGY: "AREA 2"
+# Seems to add a few buffers too
+PL_ROUTABILITY_DRIVEN: false
 
 # Clock
 CLOCK_PERIOD: 20

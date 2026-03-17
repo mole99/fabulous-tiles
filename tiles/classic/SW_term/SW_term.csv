@@ -1,6 +1,7 @@
 TILE,SW_term,,,,,
 #direction,source_name,X-offset,Y-offset,destination_name,wires,
 SOUTH,NULL,0,1,S_GBUF_FEED_END,4,# feed global buffers
+WEST,NULL,-1,0,W_GBUF_FEED_END,4,# feed global buffers
 NORTH,N_GBUF_BEG,0,-1,NULL,4,# global buffers begin
 EAST,E_GBUF_BEG,1,0,NULL,4,# global buffers begin
 JUMP,NULL,0,0,GND,1,
