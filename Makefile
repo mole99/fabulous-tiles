@@ -5,6 +5,10 @@ TILE_LIBRARY ?= classic
 TILES :=  $(patsubst tiles/${TILE_LIBRARY}/%/,%,$(wildcard tiles/${TILE_LIBRARY}/*/))
 TILES := $(filter-out common,$(TILES))
 
+ifneq ($(PDK),ihp-sg13g2)
+TILES := $(filter-out E_IHP_SRAM,$(TILES))
+endif
+
 $(info Available tiles for tile library $(TILE_LIBRARY): $(TILES))
 
 TILES_OPENROAD := $(addsuffix -openroad,$(TILES))

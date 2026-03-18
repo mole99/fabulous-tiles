@@ -25,6 +25,7 @@ module IHP_SRAM_1024x32_1RW (
     	output [(32 - 1) : 0] DOUT,
 
     // External side
+    (* FABulous, EXTERNAL *) output                CLK_SRAM,
     (* FABulous, EXTERNAL *) output [(10 - 1) : 0] ADDR_SRAM,
     (* FABulous, EXTERNAL *) output [(32 - 1) : 0] DIN_SRAM,
     (* FABulous, EXTERNAL *) output [(32 - 1) : 0] BM_SRAM,
@@ -32,8 +33,6 @@ module IHP_SRAM_1024x32_1RW (
     (* FABulous, EXTERNAL *) output                MEN_SRAM,
     (* FABulous, EXTERNAL *) output                REN_SRAM,
     (* FABulous, EXTERNAL *) input  [(32 - 1) : 0] DOUT_SRAM,
-    
-    (* FABulous, EXTERNAL *) output                CLK_SRAM,
     
     (* FABulous, EXTERNAL *) output                TIE_HIGH_SRAM,
     (* FABulous, EXTERNAL *) output                TIE_LOW_SRAM,
