@@ -1,5 +1,15 @@
 # S_term_single
 
+# These lines are used to feed the GBUFs in SW_term
+W_GBUF_FEED_BEG[0|1|2|3],W_GBUF_FEED_END[0|1|2|3]
+W_GBUF_FEED_BEG[0|1|2|3],S1END[1|2|3|0]
+W_GBUF_FEED_BEG[0|1|2|3],S2END[7|6|5|4]
+W_GBUF_FEED_BEG[0|1|2|3],S4END[1|2|3|0]
+
+# Global nets
+E_GBUF_BEG[0|1|2|3],E_GBUF_END[0|1|2|3]
+N_GBUF_BEG[0|1|2|3],E_GBUF_END[0|1|2|3]
+
 # single just go back, we swap bits in vector to get more twists into the graph
 N1BEG[0|1|2|3],S1END[3|2|1|0]
 

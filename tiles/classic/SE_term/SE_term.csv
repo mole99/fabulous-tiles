@@ -1,6 +1,9 @@
 TILE,SE_term,,,,,
 #direction,source_name,X-offset,Y-offset,destination_name,wires,
+WEST,W_GBUF_FEED_BEG,-1,0,NULL,4,# feed global buffers
 NORTH,N_GBUF_BEG,0,-1,NULL,4,# global buffers begin
 EAST,NULL,1,0,E_GBUF_END,4,# global buffers end
+JUMP,NULL,0,0,GND,1,
+JUMP,NULL,0,0,VCC,1,
 MATRIX,./SE_term_switch_matrix.list,,,,,
 EndTILE,,,,,,

@@ -1,12 +1,6 @@
 meta:
   version: 2
   flow: FABulousTile
-  substituting_steps:
-    # Don't resize the buffers
-    OpenROAD.Resizer*: null
-    OpenROAD.RepairDesign*: null
-
-    +OpenROAD.GlobalPlacement: OpenROAD.AddBuffers
 
 FABULOUS_TILE_DIR: dir::.
 
