@@ -9,6 +9,16 @@ TILES_OPENROAD := $(addsuffix -openroad,$(TILES))
 TILES_KLAYOUT := $(addsuffix -klayout,$(TILES))
 TILES_CLEAN := $(addsuffix -clean,$(TILES))
 
+N := $(patsubst -j%,%,$(filter -j%,$(MAKEFLAGS)))
+$(info Number of parallel targets (if empty, then one): $(N))
+
+# If we run several make targets in parallel,
+# set the number of threads for each run to 1
+ifneq ($(N),)
+	JOBS = --jobs 1
+endif
+$(info LibreLane jobs (all if empty): $(JOBS))
+
 all: $(TILES)
 .PHONY: all
 

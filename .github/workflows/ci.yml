@@ -62,4 +62,4 @@ jobs:
           sudo tree /nix/store/*-librelane || true
       - name: Implement the tiles
         run: |
-          PDK=${{ matrix.pdk }} TILE_LIBRARY=${{ matrix.tile_library }} nix develop --command make all
+          PDK=${{ matrix.pdk }} TILE_LIBRARY=${{ matrix.tile_library }} nix develop --command make all --jobs $(shell nproc)
