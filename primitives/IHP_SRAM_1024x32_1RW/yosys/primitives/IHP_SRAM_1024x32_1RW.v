@@ -123,7 +123,7 @@ module IHP_SRAM_1024x32_1RW (
     output       DOUT28,
     output       DOUT29,
     output       DOUT30,
-    output       DOUT31,
+    output       DOUT31
 );
     localparam WIDTH = 32;
     localparam DEPTH = 10;
