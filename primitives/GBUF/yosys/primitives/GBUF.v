@@ -17,7 +17,7 @@ module GBUF #(
     parameter INVERT = 1'b0
 )(
     input  IN,
-    output OUT
+    (* clkbuf_driver *) output OUT
 );
 
     assign OUT = INVERT ? ~IN : IN;
