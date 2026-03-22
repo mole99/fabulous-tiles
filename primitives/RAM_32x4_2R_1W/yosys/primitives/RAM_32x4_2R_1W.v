@@ -18,7 +18,7 @@ module RAM_32x4_2R_1W #(
   parameter C_REG = 1'b0
   )(
     // Port A - Write
-    input        A_CLK,
+    (* clkbuf_sink *) input        A_CLK,
     input        A_ADDR0,
     input        A_ADDR1,
     input        A_ADDR2,
@@ -31,7 +31,7 @@ module RAM_32x4_2R_1W #(
     input        A_DIN3,
 
     // Port B - Read
-    input        B_CLK,
+    (* clkbuf_sink *) input        B_CLK,
     input        B_ADDR0,
     input        B_ADDR1,
     input        B_ADDR2,
@@ -44,7 +44,7 @@ module RAM_32x4_2R_1W #(
     output       B_DOUT3,
 
     // Port C - Read
-    input        C_CLK,
+    (* clkbuf_sink *) input        C_CLK,
     input        C_ADDR0,
     input        C_ADDR1,
     input        C_ADDR2,

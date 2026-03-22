@@ -14,7 +14,7 @@
 
 (* keep *)
 module IHP_SRAM_1024x32_1RW (
-    input        CLK,
+    (* clkbuf_sink *) input        CLK,
     input        ADDR0,
     input        ADDR1,
     input        ADDR2,

@@ -17,7 +17,7 @@ module OBUF #(
   parameter EN_REG = 1'b0,
   parameter IN_REG = 1'b0,
   )(
-  input  CLK,
+  (* clkbuf_sink *) input  CLK,
   input  EN,
   input  IN,
   (* iopad_external_pin *) output PAD

@@ -16,7 +16,7 @@
 module IBUF #(
   parameter OUT_REG = 1'b0
   )(
-  input  CLK,
+  (* clkbuf_sink *) input  CLK,
   output OUT,
   (* iopad_external_pin *) input PAD
 );

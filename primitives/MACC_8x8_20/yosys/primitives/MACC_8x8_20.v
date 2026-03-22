@@ -11,7 +11,7 @@ module MACC_8x8_20 #(
     parameter ACC_OUT = 1'b0,
     parameter CLK_INV = 1'b0
   )(
-    input  CLK,
+    (* clkbuf_sink *) input  CLK,
     input  EN,
 
     input  ACC_RST,

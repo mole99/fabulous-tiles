@@ -61,7 +61,7 @@ module TT_PROJECT (
     output UIO_OE7,
         
     input  ENA,
-    input  CLK,
+    (* clkbuf_sink *) input  CLK,
     input  RST_N
 );
 
