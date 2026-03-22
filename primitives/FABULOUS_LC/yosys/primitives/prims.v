@@ -69,7 +69,7 @@ module LUT55_FCY (output O, Co, input I0, I1, I2, I3, I4, Ci);
   assign Co = comb1 ? Ci : comb2;
 endmodule
 
-module LUTFF(input CLK, D, output reg O);
+module LUTFF((* clkbuf_sink *) input CLK, input D, output reg O);
   initial O = 1'bx;
   always @ (posedge CLK) begin
     O <= D;
@@ -111,7 +111,8 @@ endmodule
 
 module LUTFF_E (
   output reg O,
-  input CLK, E, D
+  (* clkbuf_sink *) input CLK,
+  input E, D
 );
   initial O = 1'bx;
   always @(posedge CLK)
@@ -121,7 +122,8 @@ endmodule
 
 module LUTFF_SR (
   output reg O,
-  input CLK, R, D
+  (* clkbuf_sink *) input CLK,
+  input R, D
 );
   initial O = 1'bx;
   always @(posedge CLK)
@@ -133,7 +135,8 @@ endmodule
 
 module LUTFF_SS (
   output reg O,
-  input CLK, S, D
+  (* clkbuf_sink *) input CLK,
+  input S, D
 );
   initial O = 1'bx;
   always @(posedge CLK)
@@ -145,7 +148,8 @@ endmodule
 
 module LUTFF_SRE (
   output reg O,
-  input CLK, E, R, D
+  (* clkbuf_sink *) input CLK,
+  input E, R, D
 );
   initial O = 1'bx;
   always @(posedge CLK) begin
@@ -161,7 +165,8 @@ endmodule
 
 module LUTFF_SSE (
   output reg O,
-  input CLK, E, S, D
+  (* clkbuf_sink *) input CLK,
+  input E, S, D
 );
   initial O = 1'bx;
   always @(posedge CLK) begin

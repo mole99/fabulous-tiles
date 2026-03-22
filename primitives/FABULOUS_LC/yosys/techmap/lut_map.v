@@ -30,5 +30,3 @@ module \$lut (A, Y);
     end
   endgenerate
 endmodule
-
-module  \$_DFF_P_ (input D, C, output Q); LUTFF _TECHMAP_REPLACE_ (.D(D), .O(Q), .CLK(C)); endmodule
