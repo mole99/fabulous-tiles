@@ -1,11 +1,35 @@
 # SRAM with one read/write port
 
-ram distributed $__RAM_1024x32_1RW_ {
+ram block $__RAM_1024x32_1RW_ {
+    # Has 10 address bits = 1024 rows
     abits 10;
+    # Has 32 data bits
     width 32;
+    # Cost for the selection heuristic.
     cost 100;
+    # No initialization possible
+    init none;
+    
+    # Has a write enable signal with 1 bit for every 1 data bit
+    # (so actually a bit enable)
+    byte 1;
+    
+    # Has one synchronous read/write port called "A"
     port srsw "A" {
-        clock posedge;
-        wrtrans all old;
+        clock posedge; # TODO add support for anyedge by inverting the clock in the tile, PORT_<name>_CLKPOL
+        
+        # Has a clock enable signal (gates both read and write)
+        # In this case it's called MEM - memory enable
+        clken; # PORT_<name>_CLK_EN
+        
+        # Has a read clock enable signal
+        rden; # PORT_<name>_RD_EN
+        
+        # The write byte enables are provided as a separate
+        # signal from the main write enable
+        wrbe_separate; # PORT_<name>_WR_EN, PORT_<name>_WR_BE
+        
+        # When port is writing, the data read is the new value (transparent write)
+        rdwr new;
     }
 }

@@ -3,11 +3,14 @@ module \$__RAM_1024x32_1RW_ (...);
     localparam WIDTH = 32;
     localparam ABITS = 10;
 
-    input PORT_A_CLK;
-    input [WIDTH-1:0] PORT_A_WR_DATA;
-    input [ABITS-1:0] PORT_A_ADDR;
-    input PORT_A_WR_EN;
+    input  PORT_A_CLK;
+    input  PORT_A_CLK_EN;
+    input  [WIDTH-1:0] PORT_A_WR_DATA;
+    input  [ABITS-1:0] PORT_A_ADDR;
+    input  PORT_A_WR_EN;
+    input  [WIDTH-1:0] PORT_A_WR_BE;
     output [WIDTH-1:0] PORT_A_RD_DATA;
+    input  PORT_A_RD_EN;
 
     IHP_SRAM_1024x32_1RW _TECHMAP_REPLACE_ (
         // Port A - Write
@@ -54,41 +57,41 @@ module \$__RAM_1024x32_1RW_ (...);
         .DIN29   (PORT_A_WR_DATA[29]),
         .DIN30   (PORT_A_WR_DATA[30]),
         .DIN31   (PORT_A_WR_DATA[31]),
-        .BM0    (1'b1),
-        .BM1    (1'b1),
-        .BM2    (1'b1),
-        .BM3    (1'b1),
-        .BM4    (1'b1),
-        .BM5    (1'b1),
-        .BM6    (1'b1),
-        .BM7    (1'b1),
-        .BM8    (1'b1),
-        .BM9    (1'b1),
-        .BM10    (1'b1),
-        .BM11    (1'b1),
-        .BM12    (1'b1),
-        .BM13    (1'b1),
-        .BM14    (1'b1),
-        .BM15    (1'b1),
-        .BM16    (1'b1),
-        .BM17    (1'b1),
-        .BM18    (1'b1),
-        .BM19    (1'b1),
-        .BM20    (1'b1),
-        .BM21    (1'b1),
-        .BM22    (1'b1),
-        .BM23    (1'b1),
-        .BM24    (1'b1),
-        .BM25    (1'b1),
-        .BM26    (1'b1),
-        .BM27    (1'b1),
-        .BM28    (1'b1),
-        .BM29    (1'b1),
-        .BM30    (1'b1),
-        .BM31    (1'b1),
+        .BM0    (PORT_A_WR_BE[0]),
+        .BM1    (PORT_A_WR_BE[1]),
+        .BM2    (PORT_A_WR_BE[2]),
+        .BM3    (PORT_A_WR_BE[3]),
+        .BM4    (PORT_A_WR_BE[4]),
+        .BM5    (PORT_A_WR_BE[5]),
+        .BM6    (PORT_A_WR_BE[6]),
+        .BM7    (PORT_A_WR_BE[7]),
+        .BM8    (PORT_A_WR_BE[8]),
+        .BM9    (PORT_A_WR_BE[9]),
+        .BM10    (PORT_A_WR_BE[10]),
+        .BM11    (PORT_A_WR_BE[11]),
+        .BM12    (PORT_A_WR_BE[12]),
+        .BM13    (PORT_A_WR_BE[13]),
+        .BM14    (PORT_A_WR_BE[14]),
+        .BM15    (PORT_A_WR_BE[15]),
+        .BM16    (PORT_A_WR_BE[16]),
+        .BM17    (PORT_A_WR_BE[17]),
+        .BM18    (PORT_A_WR_BE[18]),
+        .BM19    (PORT_A_WR_BE[19]),
+        .BM20    (PORT_A_WR_BE[20]),
+        .BM21    (PORT_A_WR_BE[21]),
+        .BM22    (PORT_A_WR_BE[22]),
+        .BM23    (PORT_A_WR_BE[23]),
+        .BM24    (PORT_A_WR_BE[24]),
+        .BM25    (PORT_A_WR_BE[25]),
+        .BM26    (PORT_A_WR_BE[26]),
+        .BM27    (PORT_A_WR_BE[27]),
+        .BM28    (PORT_A_WR_BE[28]),
+        .BM29    (PORT_A_WR_BE[29]),
+        .BM30    (PORT_A_WR_BE[30]),
+        .BM31    (PORT_A_WR_BE[31]),
         .WEN    (PORT_A_WR_EN),
-        .REN    (!PORT_A_WR_EN),
-        .MEN    (1'b1),
+        .REN    (PORT_A_RD_EN),
+        .MEN    (PORT_A_CLK_EN),
         .DOUT0  (PORT_A_RD_DATA[0]),
         .DOUT1  (PORT_A_RD_DATA[1]),
         .DOUT2  (PORT_A_RD_DATA[2]),
