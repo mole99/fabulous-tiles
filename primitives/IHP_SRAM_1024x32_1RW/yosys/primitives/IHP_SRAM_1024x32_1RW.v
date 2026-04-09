@@ -146,9 +146,9 @@ module IHP_SRAM_1024x32_1RW (
     
     always @(posedge CLK) begin
         if (MEN && WEN) begin
-            mem[ADDR] <= DIN;
+            mem[ADDR] <= (mem[ADDR] & ~BM) | (DIN & BM);
             if (REN) begin
-                DOUT_reg <= DIN;
+                DOUT_reg <= (mem[ADDR] & ~BM) | (DIN & BM);
             end
         end else if (MEN && REN) begin
             DOUT_reg <= mem[ADDR];
