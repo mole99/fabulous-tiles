@@ -12,7 +12,7 @@ inputs:
   derivation:
     description: "The derivation to build"
     required: false
-    default: ".#devShells.${{ inputs.nix_system }}.default"
+    default: ".#devShells.x86_64-linux.default"
 runs:
   using: "composite"
   steps:
