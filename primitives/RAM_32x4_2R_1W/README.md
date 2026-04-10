@@ -1,12 +1,12 @@
-# MEM_32x4_2R_1W
+# RAM_32x4_2R_1W
 
-The `MEM_32x4_2R_1W` primitive implements a memory that is 4 bit wide and 32 words deep.
+The `RAM_32x4_2R_1W` primitive implements a memory that is 4 bit wide and 32 words deep.
 It has two read ports and one write port.
 
 The write is synchronous and the reads can be configured as asynchronous or as asynchronous.
 All synchronous read/writes can be on different clock domains.
 
-![MEM_32x4_2R_1W](images/svg/MEM_32x4_2R_1W.svg){align=center}
+![RAM_32x4_2R_1W](images/svg/RAM_32x4_2R_1W.svg){align=center}
 
 ## Signals
 

@@ -6,15 +6,15 @@
 
 ## Signals
 
-| Name          | Width | Description              |
-|---------------|-------|--------------------------|
-| I             | 4     | Input to FABULOUS_LC.  |
-| O             | 1     | Output of FABULOUS_LC. |
-| Ci            | 1     | Carry-in of the carry-chain. |
-| Co            | 1     | Carry-out of the carry-chain. |
-| SR            | 1     | Set the D-FF to SR_VALUE (synchronous). |
-| EN            | 1     | Enable the FF. |
-| CLK           | 1     | Clock of the FF. |
+| Name          | Direction | Width | Description              |
+|---------------|-----------|-------|--------------------------|
+| I             | input     | 4     | Input to FABULOUS_LC.  |
+| O             | output    | 1     | Output of FABULOUS_LC. |
+| Ci            | input     | 1     | Carry-in of the carry-chain. |
+| Co            | output    | 1     | Carry-out of the carry-chain. |
+| SR            | input     | 1     | Set the D-FF to SR_VALUE (synchronous). |
+| EN            | input     | 1     | Enable the FF. |
+| CLK           | input     | 1     | Clock of the FF. |
 
 ## Attributes
 

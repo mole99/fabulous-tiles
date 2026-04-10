@@ -6,11 +6,11 @@ The OBUF primitive is used to interface the fabric with external signals through
 
 ## Signals
 
-| Name          | Width | Description              |
-|---------------|-------|--------------------------|
-| IN            | 1     | The input of the IOBUF primitive from the fabric (therefore the output the the PAD). |
-| EN            | 1     | The output enable for the output driver. |
-| CLK           | 1     | The clock for the flip-flops. When none of the registers are enabled, it can be tied low. |
+| Name          | Direction | Width | Description              |
+|---------------|-----------|-------|--------------------------|
+| IN            | input     | 1     | The input of the IOBUF primitive from the fabric (therefore the output the the PAD). |
+| EN            | input     | 1     | The output enable for the output driver. |
+| CLK           | input     | 1     | The clock for the flip-flops. When none of the registers are enabled, it can be tied low. |
 
 ## Attributes
 
