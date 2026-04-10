@@ -24,6 +24,9 @@ ram distributed $__RAM_32x4_2R_1W_SA_ {
     }
     port sr "B" {
         clock posedge;
+        
+        # Has a read clock enable signal
+        rden; # PORT_<name>_RD_EN
     }
     port ar "C" {
     }
@@ -39,8 +42,14 @@ ram distributed $__RAM_32x4_2R_1W_SS_ {
     }
     port sr "B" {
         clock posedge;
+        
+        # Has a read clock enable signal
+        rden; # PORT_<name>_RD_EN
     }
     port sr "C" {
         clock posedge;
+        
+        # Has a read clock enable signal
+        rden; # PORT_<name>_RD_EN
     }
 }

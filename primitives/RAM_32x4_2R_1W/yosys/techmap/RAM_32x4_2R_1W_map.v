@@ -3,7 +3,7 @@ module \$__RAM_32x4_2R_1W_XX_ (...);
 
     parameter _TECHMAP_CELLTYPE_ = "";
 
-    // TODO shouldn't this be swapped?
+    // note: string is indexed from right to left
     localparam [0:0] C_SYNC = _TECHMAP_CELLTYPE_[15:8] == "S";
     localparam [0:0] B_SYNC = _TECHMAP_CELLTYPE_[23:16] == "S";
 
@@ -16,9 +16,11 @@ module \$__RAM_32x4_2R_1W_XX_ (...);
 
     output [WIDTH-1:0] PORT_B_RD_DATA;
     input [ABITS-1:0] PORT_B_ADDR;
+    input PORT_B_RD_EN;
 
     output [WIDTH-1:0] PORT_C_RD_DATA;
     input [ABITS-1:0] PORT_C_ADDR;
+    input PORT_C_RD_EN;
 
     input PORT_A_CLK;
     input PORT_B_CLK;
@@ -48,7 +50,7 @@ module \$__RAM_32x4_2R_1W_XX_ (...);
         .B_ADDR2  (PORT_B_ADDR[2]),
         .B_ADDR3  (PORT_B_ADDR[3]),
         .B_ADDR4  (PORT_B_ADDR[4]),
-        .B_REN    (1'b1),
+        .B_REN    (PORT_B_RD_EN),
         .B_DOUT0  (PORT_B_RD_DATA[0]),
         .B_DOUT1  (PORT_B_RD_DATA[1]),
         .B_DOUT2  (PORT_B_RD_DATA[2]),
@@ -61,7 +63,7 @@ module \$__RAM_32x4_2R_1W_XX_ (...);
         .C_ADDR2  (PORT_C_ADDR[2]),
         .C_ADDR3  (PORT_C_ADDR[3]),
         .C_ADDR4  (PORT_C_ADDR[4]),
-        .C_REN    (1'b1),
+        .C_REN    (PORT_C_RD_EN),
         .C_DOUT0  (PORT_C_RD_DATA[0]),
         .C_DOUT1  (PORT_C_RD_DATA[1]),
         .C_DOUT2  (PORT_C_RD_DATA[2]),
