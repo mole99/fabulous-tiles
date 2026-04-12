@@ -129,21 +129,39 @@ tile_sizes = {
     },
     "tiny": {
         "ihp-sg13*": {
-        # Width should be multiple of 0.48 (Metal2 pitch)
-        # Height should be multiple of 0.42 (Metal3 pitch)
-        # Standard cell row height: 3.78 (9 Metal3 tracks)
+            # Width should be multiple of 0.48 (Metal2 pitch)
+            # Height should be multiple of 0.42 (Metal3 pitch)
+            # Standard cell row height: 3.78 (9 Metal3 tracks)
 
-        "LUT4x8_ha"     : (219.84, 185.22),
+            "LUT4x8_ha" : (219.84, 185.22),
 
-        "NE*"       : ( 68.64,  56.70),
-        "NW*"       : ( 68.64,  56.70),
-        "SE*"       : ( 68.64,  56.70),
-        "SW*"       : ( 68.64,  56.70),
-        
-        "N*"        : (219.84,  56.70),
-        "E*"        : ( 68.64, 185.22),
-        "S*"        : (219.84,  56.70),
-        "W*"        : ( 68.64, 185.22),
+            "NE*"       : ( 68.64,  56.70),
+            "NW*"       : ( 68.64,  56.70),
+            "SE*"       : ( 68.64,  56.70),
+            "SW*"       : ( 68.64,  56.70),
+            
+            "N*"        : (219.84,  56.70),
+            "E*"        : ( 68.64, 185.22),
+            "S*"        : (219.84,  56.70),
+            "W*"        : ( 68.64, 185.22),
+        },
+        "sky130*": {
+            # sky130_fd_sc_hd:
+            # Width should be multiple of 0.46 (met2 pitch)
+            # Height should be multiple of 0.68 (met3 pitch)
+            # Standard cell row height: 2.72 (4 met3 tracks)
+
+            "LUT4x8_ha" : (330*0.46, 65*2.72),
+            
+            "NE*"       : (100*0.46, 17*2.72),
+            "NW*"       : (110*0.46, 17*2.72),
+            "SE*"       : (100*0.46, 21*2.72),
+            "SW*"       : (110*0.46, 21*2.72),
+            
+            "N*"        : (330*0.46, 17*2.72),
+            "E*"        : (100*0.46, 65*2.72),
+            "S*"        : (330*0.46, 21*2.72),
+            "W*"        : (110*0.46, 65*2.72),
         },
     },
 }
@@ -167,6 +185,10 @@ tile_densities = {
     },
     "tiny": {
         "ihp-sg13*": {
+            "LUT4x8_ha" : 96,
+            "*"         : None,
+        },
+        "sky130*": {
             "LUT4x8_ha" : 96,
             "*"         : None,
         },

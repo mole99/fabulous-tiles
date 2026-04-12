@@ -35,9 +35,7 @@ jobs:
         pdk: [sky130A, gf180mcuD, ihp-sg13g2]
         tile_library: [classic, tiny]
         exclude:
-        # Disably tiny for sky130A and gf180mcuD
-        - tile_library: tiny
-          pdk: sky130A
+        # Disably tiny for gf180mcuD
         - tile_library: tiny
           pdk: gf180mcuD
     name: Tiles (${{ matrix.tile_library }}/${{ matrix.pdk }})
