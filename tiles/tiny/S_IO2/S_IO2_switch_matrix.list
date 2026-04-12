@@ -1,0 +1,46 @@
+# S_IO2
+
+# These lines are used to feed the GBUFs in SW_term
+W_GBUF_FEED_BEG[0|1|2|3],W_GBUF_FEED_END[0|1|2|3]
+W_GBUF_FEED_BEG[0|1|2|3],[A_OUT|A_OUT|A_OUT|A_OUT]
+W_GBUF_FEED_BEG[0|1|2|3],[B_OUT|B_OUT|B_OUT|B_OUT]
+W_GBUF_FEED_BEG[0|1|2|3],S1END[1|2|3|0]
+W_GBUF_FEED_BEG[0|1|2|3],S2END[7|6|5|4]
+
+# Global nets
+A_[CLK|CLK|CLK|CLK],E_GBUF_END[0|1|2|3]
+B_[CLK|CLK|CLK|CLK],E_GBUF_END[0|1|2|3]
+E_GBUF_BEG[0|1|2|3],E_GBUF_END[0|1|2|3]
+N_GBUF_BEG[0|1|2|3],E_GBUF_END[0|1|2|3]
+
+# Fabric to PAD output multiplexers
+A_[IN|IN|IN|IN|IN|IN|IN|IN],S1END[7|6|5|4|3|2|1|0]
+A_[IN|IN|IN|IN|IN|IN|IN|IN],[S2END7|S2END6|S2END5|S2MID2|S2MID1|S2MID0|VCC0|GND0]
+B_[IN|IN|IN|IN|IN|IN|IN|IN],S1END[7|6|5|4|3|2|1|0]
+B_[IN|IN|IN|IN|IN|IN|IN|IN],[S2END7|S2END6|S2END5|S2MID2|S2MID1|S2MID0|VCC0|GND0]
+
+# Tristate control for those PADs
+A_[EN|EN|EN|EN|EN|EN|EN|EN],[S2END0|S2END2|S2MID4|S2MID7|S1END7|S1END3|VCC0|GND0]
+B_[EN|EN|EN|EN|EN|EN|EN|EN],[S2END0|S2END2|S2MID4|S2MID7|S1END7|S1END3|VCC0|GND0]
+
+# single just go back, we swap bits in vector to get more twists into the graph
+N1BEG[0|1|2|3|4|5|6|7],S1END[7|6|5|4|3|2|1|0]
+N1BEG[0|1|2|3|4|5|6|7],S2END[7|6|5|4|3|2|1|0]
+N1BEG[0|1|2|3|4|5|6|7],S2MID[7|6|5|4|3|2|1|0]
+N1BEG[0|1|2|3|4|5|6|7],[A_OUT|B_OUT|A_OUT|B_OUT|A_OUT|B_OUT|A_OUT|B_OUT]
+
+# The MID are half way in so they get connected to the longest patch (S2BEG)
+# The END are longest so get on the cascading begin (S2BEGb)
+# on top we twist wire indexes for more entropy
+N2BEGb[0|1|2|3|4|5|6|7],S1END[7|6|5|4|3|2|1|0]
+N2BEGb[0|1|2|3|4|5|6|7],S2END[7|6|5|4|3|2|1|0]
+N2BEGb[0|1|2|3|4|5|6|7],S2MID[7|6|5|4|3|2|1|0]
+N2BEGb[0|1|2|3|4|5|6|7],[B_OUT|A_OUT|B_OUT|A_OUT|B_OUT|A_OUT|B_OUT|A_OUT]
+
+N2BEG[0|1|2|3|4|5|6|7],S1END[7|6|5|4|3|2|1|0]
+N2BEG[0|1|2|3|4|5|6|7],S2END[7|6|5|4|3|2|1|0]
+N2BEG[0|1|2|3|4|5|6|7],S2MID[7|6|5|4|3|2|1|0]
+N2BEG[0|1|2|3|4|5|6|7],[A_OUT|B_OUT|A_OUT|B_OUT|A_OUT|B_OUT|A_OUT|B_OUT]
+
+# Carry
+Co0,GND0
