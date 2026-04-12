@@ -172,6 +172,7 @@ tile_densities = {
             "LUT4x8_ha" : 58,
             "S_term_RegFile": 10, # prevent numerical instability during GPL
             "S_term_MACC": 10, # prevent numerical instability during GPL
+            "MACC": 80, # prevent "heap underflow during 3D maze routing"
             "*"         : None,
         },
         "gf180mcu*": {
