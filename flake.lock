@@ -67,16 +67,16 @@
         "nix-eda": "nix-eda"
       },
       "locked": {
-        "lastModified": 1773385605,
-        "narHash": "sha256-jY60vhR9aX/sMkLr67I9cipFKR138eM1rYjFtWMfCvI=",
+        "lastModified": 1774453904,
+        "narHash": "sha256-BZmoneeMpnnQ2wUb5sorLFsFZsLaKclhAtCIiMsW8Qc=",
         "owner": "librelane",
         "repo": "librelane",
-        "rev": "b44bfb47e27cfa84c0a1899afbf01804fc1e0f7d",
+        "rev": "69b2067bd2b5eb89b84649b76e9edaa9e51e6735",
         "type": "github"
       },
       "original": {
         "owner": "librelane",
-        "ref": "dev",
+        "ref": "3.0.0",
         "repo": "librelane",
         "type": "github"
       }
@@ -86,16 +86,16 @@
         "librelane": "librelane"
       },
       "locked": {
-        "lastModified": 1773911550,
-        "narHash": "sha256-+N7bKV2qTzYN6UZixWv5UnJ+LqZMg6ANNqom6kvexv8=",
+        "lastModified": 1775987923,
+        "narHash": "sha256-DbotEm37rUSqH9l9Inhw/xrC9tKLX2RT5LQvKMTlgNs=",
         "owner": "mole99",
         "repo": "librelane_plugin_fabulous",
-        "rev": "99c5f10bccab65b33696337ee2639cb42dea75c2",
+        "rev": "dc59ff207fcfb8281d4207e108f455e4194accd3",
         "type": "github"
       },
       "original": {
         "owner": "mole99",
-        "ref": "1.6.0",
+        "ref": "1.9.0",
         "repo": "librelane_plugin_fabulous",
         "type": "github"
       }
@@ -105,16 +105,16 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1773303822,
-        "narHash": "sha256-Aey3PT/xisIHj8y696NiS65xzNxpW5rDzm2iK9X2DSw=",
+        "lastModified": 1773918136,
+        "narHash": "sha256-nSKBMGP8/ZC7qB3Lzd+FwM8REqOxlh8wpYDf2hlK6Gg=",
         "owner": "fossi-foundation",
         "repo": "nix-eda",
-        "rev": "691472a25cf4d6c1a6e9975b9149f32deba6e0c7",
+        "rev": "8f990fb77529c09e540e453cd836af9930ec58db",
         "type": "github"
       },
       "original": {
         "owner": "fossi-foundation",
-        "ref": "6.9.0",
+        "ref": "6.11.0",
         "repo": "nix-eda",
         "type": "github"
       }
