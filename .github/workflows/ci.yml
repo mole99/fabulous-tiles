@@ -53,7 +53,6 @@ jobs:
         uses: ./.github/actions/build_nix
         with:
           nix_system: x86_64-linux
-          derivation: github:mole99/librelane_plugin_fabulous
       - name: Check Nix
         run: |
           sudo du -hs /nix/store/* | sort -h | tail -n 10
