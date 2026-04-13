@@ -18,6 +18,7 @@ project = 'FABulous Tile Library'
 copyright = '2026, FABulous Contributors'
 author = 'FABulous Contributors'
 release = '1.0.0'
+version = release
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
