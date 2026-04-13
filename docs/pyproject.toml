@@ -6,8 +6,11 @@ requires-python = ">=3.12"
 dependencies = [
   # Sphinx core
   "Sphinx>=8.0.0",
+  # Sphinx theme
+  "furo",
   # Sphinx extensions
   "myst-parser>=3.0.0", # Markdown support (industry standard)
+  "sphinxcontrib-svg2pdfconverter[Cairosvg]>=2.1.0",
 ]
 
 [build-system]

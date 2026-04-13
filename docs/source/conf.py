@@ -26,7 +26,8 @@ custom_extensions = [
     'generate_docs',
 ]
 third_party_extensions = [
-    'myst_parser'
+    'myst_parser',
+    'sphinxcontrib.inkscapeconverter'
 ]
 extensions = third_party_extensions + custom_extensions
 
@@ -40,13 +41,11 @@ root_doc = "index"
 templates_path = ['_templates']
 exclude_patterns = []
 
-
-
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_title = 'FABulous Tile Library'
-html_theme = 'alabaster'
+html_theme = 'furo'
 html_static_path = ['_static']
 
 # Auto-generated header anchors.

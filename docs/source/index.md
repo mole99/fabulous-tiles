@@ -2,10 +2,16 @@
 
 <br>
 
-This is the FABulous tile library.
-It includes a range of tiles and primitives that can be used to create your own FPGA fabrics.
+This is the documentation for the FABulous tile library repository.
+Currently it includes two tile libraries: "classic" and "tiny". These tile libraries are used to create FPGA fabrics.
 
-For documentation about the tiles and primitives, see below.
+- **Simple to use** - Simply follow the instructions to implement the tiles for various open source PDKs.
+
+- **Predefined tiles** - The existing tile libraries include all the tiles required to implement your FPGA fabric.
+
+- **Flexible and extensible** - Create your own tile library and extend one of the available ones.
+
+For documentation about the tiles and primitives, please see the navigation panel.
 
 
 ```{toctree}
