@@ -15,7 +15,7 @@ from sphinx.application import Sphinx
 
 def setup(app: Sphinx):
     app.connect("config-inited", generate_module_docs)
-    return {"version": "1.0", "parallel_read_safe": False}
+    return {"version": "1.0", "parallel_read_safe": True}
 
 
 def generate_module_docs(app: Sphinx, conf: Config):
