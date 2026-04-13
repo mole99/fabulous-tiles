@@ -40,3 +40,17 @@ $(TILES_CLEAN):
 	rm -rf tiles/${TILE_LIBRARY}/$(subst -clean,,$@)/$(subst -clean,,$@)_switch_matrix.csv
 	rm -rf tiles/${TILE_LIBRARY}/$(subst -clean,,$@)/$(subst -clean,,$@)_switch_matrix.v
 .PHONY: $(TILES_CLEAN)
+
+######################
+
+PRIMITIVES :=  $(patsubst primitives/%/,%,$(wildcard primitives/*/))
+PRIMITIVES := $(filter-out common,$(PRIMITIVES))
+
+TILES_SVG := $(addsuffix -svg,$(PRIMITIVES))
+
+$(TILES_SVG):
+	cd primitives/$(subst -svg,,$@)/images && make all
+.PHONY: $(TILES_SVG)
+
+all-images: $(TILES_SVG)
+.PHONY: all-images

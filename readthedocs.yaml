@@ -9,6 +9,8 @@ build:
     post_create_environment:
       # Install uv
       - pip install uv
+      - apt install libreoffice
+      - make all-images
     post_install:
       # Install dependencies with 'docs' dependency group
       # VIRTUAL_ENV needs to be set manually for now.
