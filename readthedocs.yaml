@@ -9,7 +9,7 @@ build:
     post_create_environment:
       # Install uv
       - pip install uv
-      - apt install libreoffice
+      - sudo apt install libreoffice
       - make all-images
     post_install:
       # Install dependencies with 'docs' dependency group
