@@ -20,7 +20,7 @@ module WARMBOOT #(
     input                          TRIGGER,
 
     // External side
-    (* FABulous, EXTERNAL *) output SLOT_top,
+    (* FABulous, EXTERNAL *) output [$clog2(NUM_SLOTS)-1:0] SLOT_top,
     (* FABulous, EXTERNAL *) output TRIGGER_top
 );
 
