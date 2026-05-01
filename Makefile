@@ -7,6 +7,7 @@ TILES := $(filter-out common,$(TILES))
 
 ifneq ($(PDK),ihp-sg13g2)
 TILES := $(filter-out E_IHP_SRAM,$(TILES))
+TILES := $(filter-out E_IHP_BRAM,$(TILES))
 endif
 
 $(info Available tiles for tile library $(TILE_LIBRARY): $(TILES))
