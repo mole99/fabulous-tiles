@@ -86,11 +86,11 @@
         "librelane": "librelane"
       },
       "locked": {
-        "lastModified": 1777893710,
-        "narHash": "sha256-ltHabGfNF4D6bEpITYghKKhDuXAAtommI6asV1CqDjU=",
+        "lastModified": 1777894239,
+        "narHash": "sha256-wkX4eSbT0QJwKPuqlVFahaKla9vcIYD0H/fGmnGHXSQ=",
         "owner": "mole99",
         "repo": "librelane_plugin_fabulous",
-        "rev": "e547d3eab84b41a888b133f4753f550b093089dd",
+        "rev": "dcc038217472822330b33f61fadbc06e0c3cc96d",
         "type": "github"
       },
       "original": {
