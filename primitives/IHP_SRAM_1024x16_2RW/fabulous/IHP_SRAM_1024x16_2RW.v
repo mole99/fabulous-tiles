@@ -13,7 +13,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-module IHP_SRAM_1024x16_2RW (
+(* FABulous, BelMap,
+A_CLK_INV=0,
+B_CLK_INV=1
+*)
+module IHP_SRAM_1024x16_2RW #(
+    parameter NoConfigBits = 2
+)(
     // Fabric side
     input                 A_CLK,
     input  [(10 - 1) : 0] A_ADDR,
@@ -56,11 +62,18 @@ module IHP_SRAM_1024x16_2RW (
     (* FABulous, EXTERNAL *) output                TIE_HIGH_SRAM,
     (* FABulous, EXTERNAL *) output                TIE_LOW_SRAM,
     
-    (* FABulous, EXTERNAL *) input                 CONFIGURED_top
+    (* FABulous, EXTERNAL *) input                 CONFIGURED_top,
+
+    // Static configuration bits
+    (* FABulous, GLOBAL *) input [NoConfigBits-1:0] ConfigBits
 );
+    // Configuration bits
+    wire A_CLK_INV, B_CLK_INV;
+    assign A_CLK_INV = ConfigBits[0];
+    assign B_CLK_INV = ConfigBits[1];
 
     // Fabric -> External
-    assign A_CLK_SRAM     = A_CLK;
+    assign A_CLK_SRAM     = A_CLK_INV ? !A_CLK : A_CLK;
     assign A_ADDR_SRAM    = A_ADDR;
     assign A_DIN_SRAM     = A_DIN;
     assign A_BM_SRAM      = A_BM;
@@ -69,7 +82,7 @@ module IHP_SRAM_1024x16_2RW (
     assign A_MEN_SRAM     = A_MEN && CONFIGURED_top;
     assign A_REN_SRAM     = A_REN;
     
-    assign B_CLK_SRAM     = B_CLK;
+    assign B_CLK_SRAM     = B_CLK_INV ? !B_CLK : B_CLK;
     assign B_ADDR_SRAM    = B_ADDR;
     assign B_DIN_SRAM     = B_DIN;
     assign B_BM_SRAM      = B_BM;

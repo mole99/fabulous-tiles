@@ -15,7 +15,10 @@
 (* keep *)
 module RAM_32x4_2R_1W #(
   parameter B_REG = 1'b0,
-  parameter C_REG = 1'b0
+  parameter C_REG = 1'b0,
+  parameter A_CLK_INV = 1'b0,
+  parameter B_CLK_INV = 1'b0,
+  parameter C_CLK_INV = 1'b0
   )(
     // Port A - Write
     (* clkbuf_sink *) input        A_CLK,
@@ -85,10 +88,16 @@ module RAM_32x4_2R_1W #(
     assign C_DOUT2 = C_DOUT[0];
     assign C_DOUT3 = C_DOUT[0];
 
+    // Clock inversion
+    wire a_clk, b_clk, c_clk;
+    assign a_clk = A_CLK_INV ? !A_CLK : A_CLK;
+    assign b_clk = B_CLK_INV ? !B_CLK : B_CLK;
+    assign c_clk = C_CLK_INV ? !C_CLK : C_CLK;
+
     reg [WIDTH-1:0] mem [2**DEPTH];
     
     // Port A - Write
-    always @(posedge A_CLK) begin
+    always @(posedge a_clk) begin
         if (A_WEN) begin
             mem[A_ADDR] <= A_DIN;
         end
@@ -100,7 +109,7 @@ module RAM_32x4_2R_1W #(
     
     assign B_DOUT_comb = mem[B_ADDR];
     
-    always @(posedge B_CLK) begin
+    always @(posedge b_clk) begin
         if (B_REN) begin
             B_DOUT_reg <= B_DOUT_comb;
         end
@@ -114,7 +123,7 @@ module RAM_32x4_2R_1W #(
     
     assign C_DOUT_comb = mem[C_ADDR];
     
-    always @(posedge C_CLK) begin
+    always @(posedge c_clk) begin
         if (C_REN) begin
             C_DOUT_reg <= C_DOUT_comb;
         end

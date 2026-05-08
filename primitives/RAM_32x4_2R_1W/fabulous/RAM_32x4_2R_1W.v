@@ -14,10 +14,13 @@
 
 (* FABulous, BelMap,
 B_REG=0,
-C_REG=1
+C_REG=1,
+A_CLK_INV=2,
+B_CLK_INV=3,
+C_CLK_INV=4
 *)
 module RAM_32x4_2R_1W #(
-    parameter NoConfigBits = 2,
+    parameter NoConfigBits = 5,
     parameter WIDTH=4,
     parameter DEPTH=5
 )(
@@ -44,10 +47,25 @@ module RAM_32x4_2R_1W #(
     // Static configuration bits
     (* FABulous, GLOBAL *) input [NoConfigBits-1:0] ConfigBits
 );
+    // Configuration bits
+    wire B_REG, C_REG, A_CLK_INV, B_CLK_INV, C_CLK_INV;
+
+    assign B_REG = ConfigBits[0];
+    assign C_REG = ConfigBits[1];
+    assign A_CLK_INV = ConfigBits[2];
+    assign B_CLK_INV = ConfigBits[3];
+    assign C_CLK_INV = ConfigBits[4];
+
+    // Clock inversion
+    wire a_clk, b_clk, c_clk;
+    assign a_clk = A_CLK_INV ? !A_CLK : A_CLK;
+    assign b_clk = B_CLK_INV ? !B_CLK : B_CLK;
+    assign c_clk = C_CLK_INV ? !C_CLK : C_CLK;
+
     reg [WIDTH-1:0] mem [2**DEPTH];
     
     // Port A - Write
-    always @(posedge A_CLK) begin
+    always @(posedge a_clk) begin
         if (A_WEN) begin
             mem[A_ADDR] <= A_DIN;
         end
@@ -59,13 +77,13 @@ module RAM_32x4_2R_1W #(
     
     assign B_DOUT_comb = mem[B_ADDR];
     
-    always @(posedge B_CLK) begin
+    always @(posedge b_clk) begin
         if (B_REN) begin
             B_DOUT_reg <= B_DOUT_comb;
         end
     end
     
-    assign B_DOUT = ConfigBits[0] ? B_DOUT_reg : B_DOUT_comb;
+    assign B_DOUT = B_REG ? B_DOUT_reg : B_DOUT_comb;
     
     // Port C - Read
     wire [WIDTH-1:0] C_DOUT_comb;
@@ -73,12 +91,12 @@ module RAM_32x4_2R_1W #(
     
     assign C_DOUT_comb = mem[C_ADDR];
     
-    always @(posedge C_CLK) begin
+    always @(posedge c_clk) begin
         if (C_REN) begin
             C_DOUT_reg <= C_DOUT_comb;
         end
     end
     
-    assign C_DOUT = ConfigBits[1] ? C_DOUT_reg : C_DOUT_comb;
+    assign C_DOUT = C_REG ? C_DOUT_reg : C_DOUT_comb;
 
 endmodule

@@ -13,7 +13,9 @@
 // limitations under the License.
 
 (* keep *)
-module IHP_SRAM_1024x32_1RW (
+module IHP_SRAM_1024x32_1RW #(
+    parameter CLK_INV = 1'b0
+  )(
     (* clkbuf_sink *) input        CLK,
     input        ADDR0,
     input        ADDR1,
@@ -141,10 +143,14 @@ module IHP_SRAM_1024x32_1RW (
 
     assign {DOUT31, DOUT30, DOUT29, DOUT28, DOUT27, DOUT26, DOUT25, DOUT24, DOUT23, DOUT22, DOUT21, DOUT20, DOUT19, DOUT18, DOUT17, DOUT16, DOUT15, DOUT14, DOUT13, DOUT12, DOUT11, DOUT10, DOUT9, DOUT8, DOUT7, DOUT6, DOUT5, DOUT4, DOUT3, DOUT2, DOUT1, DOUT0} = DOUT;
 
+    // Clock inversion
+    wire clk;
+    assign clk = CLK_INV ? !CLK : CLK;
+
     reg [WIDTH-1:0] mem [2**DEPTH];
     reg  [WIDTH-1:0] DOUT_reg;
     
-    always @(posedge CLK) begin
+    always @(posedge clk) begin
         if (MEN && WEN) begin
             mem[ADDR] <= (mem[ADDR] & ~BM) | (DIN & BM);
             if (REN) begin
