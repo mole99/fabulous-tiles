@@ -324,6 +324,9 @@ def main(tile, pdk_root=None, pdk=None, tag=None, tile_library=None, last_run=No
     if obs:
         config["ROUTING_OBSTRUCTIONS"] = obs
 
+    # Workaround for https://github.com/The-OpenROAD-Project/OpenROAD/issues/10273
+    config["CTS_APPLY_NDR"] = "none"
+
     print(f"config: {config}")
 
     design_dir = os.path.join(__dir__, "tiles", tile_library, tile)
