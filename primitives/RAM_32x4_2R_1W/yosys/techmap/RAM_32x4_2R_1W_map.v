@@ -2,6 +2,11 @@
 module \$__RAM_32x4_2R_1W_XX_ (...);
 
     parameter _TECHMAP_CELLTYPE_ = "";
+    
+    // 1 for posedge clocks and 0 for negedge
+    parameter PORT_A_CLK_POL = 1;
+    parameter PORT_B_CLK_POL = 1;
+    parameter PORT_C_CLK_POL = 1;
 
     // note: string is indexed from right to left
     localparam [0:0] C_SYNC = _TECHMAP_CELLTYPE_[15:8] == "S";
@@ -28,7 +33,10 @@ module \$__RAM_32x4_2R_1W_XX_ (...);
 
     RAM_32x4_2R_1W #(
       .B_REG (B_SYNC),
-      .C_REG (C_SYNC)
+      .C_REG (C_SYNC),
+      .A_CLK_INV (PORT_A_CLK_POL != 1'b1),
+      .B_CLK_INV (PORT_B_CLK_POL != 1'b1),
+      .C_CLK_INV (PORT_C_CLK_POL != 1'b1)
     ) _TECHMAP_REPLACE_ (
         // Port A - Write
         .A_CLK    (PORT_A_CLK),

@@ -1,5 +1,8 @@
 module \$__RAM_1024x32_1RW_ (...);
 
+    // 1 for posedge clocks and 0 for negedge
+    parameter PORT_A_CLK_POL = 1;
+
     localparam WIDTH = 32;
     localparam ABITS = 10;
 
@@ -12,8 +15,10 @@ module \$__RAM_1024x32_1RW_ (...);
     output [WIDTH-1:0] PORT_A_RD_DATA;
     input  PORT_A_RD_EN;
 
-    IHP_SRAM_1024x32_1RW _TECHMAP_REPLACE_ (
-        // Port A - Write
+    IHP_SRAM_1024x32_1RW _TECHMAP_REPLACE_ #(
+        .CLK_INV (PORT_A_CLK_POL != 1'b1)
+    )(
+        // Port A - Read/Write
         .CLK    (PORT_A_CLK),
         .ADDR0  (PORT_A_ADDR[0]),
         .ADDR1  (PORT_A_ADDR[1]),

@@ -6,7 +6,7 @@ ram distributed $__RAM_32x4_2R_1W_AA_ {
     width 4;
     cost 6;
     port sw "A" {
-        clock posedge;
+        clock anyedge; # PORT_<name>_CLK_POL
     }
     port ar "B" {
     }
@@ -19,11 +19,11 @@ ram distributed $__RAM_32x4_2R_1W_SA_ {
     width 4;
     cost 5;
     port sw "A" {
-        clock posedge;
+        clock anyedge; # PORT_<name>_CLK_POL
         wrtrans all old;
     }
     port sr "B" {
-        clock posedge;
+        clock anyedge; # PORT_<name>_CLK_POL
         
         # Has a read clock enable signal
         rden; # PORT_<name>_RD_EN
@@ -37,17 +37,17 @@ ram distributed $__RAM_32x4_2R_1W_SS_ {
     width 4;
     cost 4;
     port sw "A" {
-        clock posedge;
+        clock anyedge; # PORT_<name>_CLK_POL
         wrtrans all old;
     }
     port sr "B" {
-        clock posedge;
+        clock anyedge; # PORT_<name>_CLK_POL
         
         # Has a read clock enable signal
         rden; # PORT_<name>_RD_EN
     }
     port sr "C" {
-        clock posedge;
+        clock anyedge; # PORT_<name>_CLK_POL
         
         # Has a read clock enable signal
         rden; # PORT_<name>_RD_EN

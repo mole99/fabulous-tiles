@@ -1,0 +1,146 @@
+module \$__RAM_1024x16_2RW_ (...);
+
+    // 1 for posedge clocks and 0 for negedge
+    parameter PORT_A_CLK_POL = 1;
+    parameter PORT_B_CLK_POL = 1;
+
+    localparam WIDTH = 16;
+    localparam ABITS = 10;
+
+    input  PORT_A_CLK;
+    input  PORT_A_CLK_EN;
+    input  [WIDTH-1:0] PORT_A_WR_DATA;
+    input  [ABITS-1:0] PORT_A_ADDR;
+    input  PORT_A_WR_EN;
+    input  [WIDTH-1:0] PORT_A_WR_BE;
+    output [WIDTH-1:0] PORT_A_RD_DATA;
+    input  PORT_A_RD_EN;
+
+    IHP_SRAM_1024x32_1RW _TECHMAP_REPLACE_ #(
+        .A_CLK_INV (PORT_A_CLK_POL != 1'b1),
+        .B_CLK_INV (PORT_B_CLK_POL != 1'b1)
+    )(
+        // Port A - Read/Write
+        .A_CLK    (PORT_A_CLK),
+        .A_ADDR0  (PORT_A_ADDR[0]),
+        .A_ADDR1  (PORT_A_ADDR[1]),
+        .A_ADDR2  (PORT_A_ADDR[2]),
+        .A_ADDR3  (PORT_A_ADDR[3]),
+        .A_ADDR4  (PORT_A_ADDR[4]),
+        .A_ADDR5  (PORT_A_ADDR[5]),
+        .A_ADDR6  (PORT_A_ADDR[6]),
+        .A_ADDR7  (PORT_A_ADDR[7]),
+        .A_ADDR8  (PORT_A_ADDR[8]),
+        .A_ADDR9  (PORT_A_ADDR[9]),
+        .A_DIN0   (PORT_A_WR_DATA[0]),
+        .A_DIN1   (PORT_A_WR_DATA[1]),
+        .A_DIN2   (PORT_A_WR_DATA[2]),
+        .A_DIN3   (PORT_A_WR_DATA[3]),
+        .A_DIN4   (PORT_A_WR_DATA[4]),
+        .A_DIN5   (PORT_A_WR_DATA[5]),
+        .A_DIN6   (PORT_A_WR_DATA[6]),
+        .A_DIN7   (PORT_A_WR_DATA[7]),
+        .A_DIN8   (PORT_A_WR_DATA[8]),
+        .A_DIN9   (PORT_A_WR_DATA[9]),
+        .A_DIN10   (PORT_A_WR_DATA[10]),
+        .A_DIN11   (PORT_A_WR_DATA[11]),
+        .A_DIN12   (PORT_A_WR_DATA[12]),
+        .A_DIN13   (PORT_A_WR_DATA[13]),
+        .A_DIN14   (PORT_A_WR_DATA[14]),
+        .A_BM0    (PORT_A_WR_BE[0]),
+        .A_BM1    (PORT_A_WR_BE[1]),
+        .A_BM2    (PORT_A_WR_BE[2]),
+        .A_BM3    (PORT_A_WR_BE[3]),
+        .A_BM4    (PORT_A_WR_BE[4]),
+        .A_BM5    (PORT_A_WR_BE[5]),
+        .A_BM6    (PORT_A_WR_BE[6]),
+        .A_BM7    (PORT_A_WR_BE[7]),
+        .A_BM8    (PORT_A_WR_BE[8]),
+        .A_BM9    (PORT_A_WR_BE[9]),
+        .A_BM10    (PORT_A_WR_BE[10]),
+        .A_BM11    (PORT_A_WR_BE[11]),
+        .A_BM12    (PORT_A_WR_BE[12]),
+        .A_BM13    (PORT_A_WR_BE[13]),
+        .A_BM14    (PORT_A_WR_BE[14]),
+        .A_WEN    (PORT_A_WR_EN),
+        .A_REN    (PORT_A_RD_EN),
+        .A_MEN    (PORT_A_CLK_EN),
+        .A_DOUT0  (PORT_A_RD_DATA[0]),
+        .A_DOUT1  (PORT_A_RD_DATA[1]),
+        .A_DOUT2  (PORT_A_RD_DATA[2]),
+        .A_DOUT3  (PORT_A_RD_DATA[3]),
+        .A_DOUT4  (PORT_A_RD_DATA[4]),
+        .A_DOUT5  (PORT_A_RD_DATA[5]),
+        .A_DOUT6  (PORT_A_RD_DATA[6]),
+        .A_DOUT7  (PORT_A_RD_DATA[7]),
+        .A_DOUT8  (PORT_A_RD_DATA[8]),
+        .A_DOUT9  (PORT_A_RD_DATA[9]),
+        .A_DOUT10  (PORT_A_RD_DATA[10]),
+        .A_DOUT11  (PORT_A_RD_DATA[11]),
+        .A_DOUT12  (PORT_A_RD_DATA[12]),
+        .A_DOUT13  (PORT_A_RD_DATA[13]),
+        .A_DOUT14  (PORT_A_RD_DATA[14]),
+        
+        // Port B - Read/Write
+        .B_CLK    (PORT_A_CLK),
+        .B_ADDR0  (PORT_A_ADDR[0]),
+        .B_ADDR1  (PORT_A_ADDR[1]),
+        .B_ADDR2  (PORT_A_ADDR[2]),
+        .B_ADDR3  (PORT_A_ADDR[3]),
+        .B_ADDR4  (PORT_A_ADDR[4]),
+        .B_ADDR5  (PORT_A_ADDR[5]),
+        .B_ADDR6  (PORT_A_ADDR[6]),
+        .B_ADDR7  (PORT_A_ADDR[7]),
+        .B_ADDR8  (PORT_A_ADDR[8]),
+        .B_ADDR9  (PORT_A_ADDR[9]),
+        .B_DIN0   (PORT_A_WR_DATA[0]),
+        .B_DIN1   (PORT_A_WR_DATA[1]),
+        .B_DIN2   (PORT_A_WR_DATA[2]),
+        .B_DIN3   (PORT_A_WR_DATA[3]),
+        .B_DIN4   (PORT_A_WR_DATA[4]),
+        .B_DIN5   (PORT_A_WR_DATA[5]),
+        .B_DIN6   (PORT_A_WR_DATA[6]),
+        .B_DIN7   (PORT_A_WR_DATA[7]),
+        .B_DIN8   (PORT_A_WR_DATA[8]),
+        .B_DIN9   (PORT_A_WR_DATA[9]),
+        .B_DIN10   (PORT_A_WR_DATA[10]),
+        .B_DIN11   (PORT_A_WR_DATA[11]),
+        .B_DIN12   (PORT_A_WR_DATA[12]),
+        .B_DIN13   (PORT_A_WR_DATA[13]),
+        .B_DIN14   (PORT_A_WR_DATA[14]),
+        .B_BM0    (PORT_A_WR_BE[0]),
+        .B_BM1    (PORT_A_WR_BE[1]),
+        .B_BM2    (PORT_A_WR_BE[2]),
+        .B_BM3    (PORT_A_WR_BE[3]),
+        .B_BM4    (PORT_A_WR_BE[4]),
+        .B_BM5    (PORT_A_WR_BE[5]),
+        .B_BM6    (PORT_A_WR_BE[6]),
+        .B_BM7    (PORT_A_WR_BE[7]),
+        .B_BM8    (PORT_A_WR_BE[8]),
+        .B_BM9    (PORT_A_WR_BE[9]),
+        .B_BM10    (PORT_A_WR_BE[10]),
+        .B_BM11    (PORT_A_WR_BE[11]),
+        .B_BM12    (PORT_A_WR_BE[12]),
+        .B_BM13    (PORT_A_WR_BE[13]),
+        .B_BM14    (PORT_A_WR_BE[14]),
+        .B_WEN    (PORT_A_WR_EN),
+        .B_REN    (PORT_A_RD_EN),
+        .B_MEN    (PORT_A_CLK_EN),
+        .B_DOUT0  (PORT_A_RD_DATA[0]),
+        .B_DOUT1  (PORT_A_RD_DATA[1]),
+        .B_DOUT2  (PORT_A_RD_DATA[2]),
+        .B_DOUT3  (PORT_A_RD_DATA[3]),
+        .B_DOUT4  (PORT_A_RD_DATA[4]),
+        .B_DOUT5  (PORT_A_RD_DATA[5]),
+        .B_DOUT6  (PORT_A_RD_DATA[6]),
+        .B_DOUT7  (PORT_A_RD_DATA[7]),
+        .B_DOUT8  (PORT_A_RD_DATA[8]),
+        .B_DOUT9  (PORT_A_RD_DATA[9]),
+        .B_DOUT10  (PORT_A_RD_DATA[10]),
+        .B_DOUT11  (PORT_A_RD_DATA[11]),
+        .B_DOUT12  (PORT_A_RD_DATA[12]),
+        .B_DOUT13  (PORT_A_RD_DATA[13]),
+        .B_DOUT14  (PORT_A_RD_DATA[14])
+    );
+
+endmodule

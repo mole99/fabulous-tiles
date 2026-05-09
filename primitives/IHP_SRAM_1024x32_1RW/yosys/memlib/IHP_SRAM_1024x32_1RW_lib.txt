@@ -16,7 +16,7 @@ ram block $__RAM_1024x32_1RW_ {
     
     # Has one synchronous read/write port called "A"
     port srsw "A" {
-        clock posedge; # TODO add support for anyedge by inverting the clock in the tile, PORT_<name>_CLKPOL
+        clock anyedge; #  PORT_<name>_CLK_POL
         
         # Has a clock enable signal (gates both read and write)
         # In this case it's called MEM - memory enable
