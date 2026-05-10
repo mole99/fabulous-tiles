@@ -16,10 +16,10 @@ module \$__RAM_1024x16_2RW_ (...);
     output [WIDTH-1:0] PORT_A_RD_DATA;
     input  PORT_A_RD_EN;
 
-    IHP_SRAM_1024x32_1RW _TECHMAP_REPLACE_ #(
+    IHP_SRAM_1024x32_1RW #(
         .A_CLK_INV (PORT_A_CLK_POL != 1'b1),
         .B_CLK_INV (PORT_B_CLK_POL != 1'b1)
-    )(
+    ) _TECHMAP_REPLACE_ (
         // Port A - Read/Write
         .A_CLK    (PORT_A_CLK),
         .A_ADDR0  (PORT_A_ADDR[0]),
