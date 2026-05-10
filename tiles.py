@@ -164,6 +164,24 @@ tile_sizes = {
             "S*"        : (330*0.46, 21*2.72),
             "W*"        : (110*0.46, 65*2.72),
         },
+        "gf180mcu*": {
+            # gf180mcu_fd_sc_mcu7t5v0:
+            # Width should be multiple of 0.56 (Metal2 pitch)
+            # Height should be multiple of 0.56 (Metal3 pitch)
+            # Standard cell row height: 3.92 (7 Metal3 tracks)
+
+            "LUT4x8_ha" : (450*0.56, 66*3.92),
+            
+            "NE*"       : (135*0.56, 19*3.92),
+            "NW*"       : (135*0.56, 19*3.92),
+            "SE*"       : (135*0.56, 19*3.92),
+            "SW*"       : (135*0.56, 19*3.92),
+            
+            "N*"        : (450*0.56, 19*3.92),
+            "E*"        : (135*0.56, 66*3.92),
+            "S*"        : (450*0.56, 19*3.92),
+            "W*"        : (135*0.56, 66*3.92),
+        },
     },
 }
 
@@ -191,6 +209,10 @@ tile_densities = {
             "*"         : None,
         },
         "sky130*": {
+            "LUT4x8_ha" : 96,
+            "*"         : None,
+        },
+        "gf180mcu*": {
             "LUT4x8_ha" : 96,
             "*"         : None,
         },
