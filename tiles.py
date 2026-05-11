@@ -72,8 +72,6 @@ tile_sizes = {
             # Width should be multiple of 0.56 (Metal2 pitch)
             # Height should be multiple of 0.56 (Metal3 pitch)
             # Standard cell row height: 3.92 (8 Metal3 track)
-            # TODO: there seem to be delay buffers in the
-            # framedata signals due to the SDC constraints
 
             "LUT4x8_ha" : (302.96, 302.96),
 
@@ -168,7 +166,7 @@ tile_sizes = {
             # gf180mcu_fd_sc_mcu7t5v0:
             # Width should be multiple of 0.56 (Metal2 pitch)
             # Height should be multiple of 0.56 (Metal3 pitch)
-            # Standard cell row height: 3.92 (7 Metal3 tracks)
+            # Standard cell row height: 3.92 (8 Metal3 tracks)
 
             "LUT4x8_ha" : (450*0.56, 66*3.92),
             
