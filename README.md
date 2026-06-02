@@ -26,6 +26,12 @@ To implement all tiles, run:
 make all
 ```
 
+To implement all tiles in parallel, run:
+
+```
+make all --jobs $(shell nproc)
+```
+
 To implement a single tile, run:
 
 ```
