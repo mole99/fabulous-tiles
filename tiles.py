@@ -319,7 +319,7 @@ def main(tile, pdk_root=None, pdk=None, scl=None, tag=None, tile_library=None, l
     config.update(tile_config)
     
     # TODO: get default SCL from LibreLane
-    if scl == None:
+    if scl == None or scl == "default":
         if fnmatch.fnmatch(pdk, "sky130*"):
             scl = "sky130_fd_sc_hd"
         if fnmatch.fnmatch(pdk, "ihp-sg13*"):
@@ -421,6 +421,9 @@ def main(tile, pdk_root=None, pdk=None, scl=None, tag=None, tile_library=None, l
             exit(1)
         
         include_libraries = ["default"]
+        if scl is not None:
+            include_libraries.append(scl)
+        
         version = ciel.fetch(
             ciel_home,
             pdk_family,
