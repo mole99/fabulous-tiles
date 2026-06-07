@@ -63,12 +63,14 @@ pdk::gf180mcuD:
 
     # PDN
     PDN_VPITCH: 100
-    
-    # PDK does not have a latch map yet
-    SYNTH_LATCH_MAP: dir::../common/latch_map.v
 
     # Displacement for cells
     PL_MAX_DISPLACEMENT_Y: 300
+    
+    SYNTH_LATCH_MAP: dir::../common/latch_map_gf180mcu_fd_sc_mcu7t5v0.v
+    scl::gf180mcu_as_sc_mcu7t3v3:
+        #SYNTH_LATCH_MAP: pdk_dir::libs.tech/librelane/gf180mcu_as_sc_mcu7t3v3/latch_map.v
+        SYNTH_LATCH_MAP: dir::../common/latch_map_gf180mcu_as_sc_mcu7t3v3.v
 
 # Use the minimum length for pins
 # that satisfies the minimum area constraint

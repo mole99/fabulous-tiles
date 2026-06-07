@@ -33,152 +33,198 @@ from librelane.logging import (
 
 __dir__ = os.path.dirname(os.path.realpath(__file__))
 
-
-# Define the tile sizes
+# Tile Configuration
+#
 # The order of the patterns is important:
-# the first pattern that matches will be used
+# the first mathcing pattern will be used.
+#
+# The config is split into the following levels:
+# level 1: tile library
+# level 2: PDK
+# level 3: SCL (standard cell library)
+# level 4: tile name
+#
+# TODO: allow to supply configs externally
+#       via YAML or Python script
 tile_sizes = {
     "classic": {
         "sky130*": {
-            # High density cells
-            # Width should be multiple of 0.46 (met2 pitch)
-            # Height should be multiple of 0.68 (met3 pitch)
-            # Standard cell row height: 2.72 (4 met3 track)
-        
-            "LUT4x8_ha" : (458*0.46, 328*0.68),
-
-            "RegFile"       : (458*0.46+0.46*90, 328*0.68),
-            "S_term_RegFile": (458*0.46+0.46*90,  84*0.68),
-            "N_term_RegFile": (458*0.46+0.46*90,  84*0.68),
-
-            "MACC"          : (458*0.46+0.46*20, 328*0.68*2),
-            "S_term_MACC"   : (458*0.46+0.46*20,  84*0.68),
-            "N_term_MACC"   : (458*0.46+0.46*20,  84*0.68),
-
-            "*_TT_IF2"      : (122*0.46+20*0.46, 328*0.68*2),
-            "*_TT_IF"       : (122*0.46+20*0.46, 328*0.68),
-
-            "NE*"       : (122*0.46,  84*0.68),
-            "NW*"       : (122*0.46,  84*0.68),
-            "SE*"       : (122*0.46,  84*0.68),
-            "SW*"       : (122*0.46,  84*0.68),
+            "*": {
+                # High density cells
+                # Width should be multiple of 0.46 (met2 pitch)
+                # Height should be multiple of 0.68 (met3 pitch)
+                # Standard cell row height: 2.72 (4 met3 track)
             
-            "N*"        : (458*0.46,  84*0.68),
-            "E*"        : (122*0.46, 328*0.68),
-            "S*"        : (458*0.46,  84*0.68),
-            "W*"        : (122*0.46, 328*0.68),
+                "LUT4x8_ha" : (458*0.46, 328*0.68),
+
+                "RegFile"       : (458*0.46+0.46*90, 328*0.68),
+                "S_term_RegFile": (458*0.46+0.46*90,  84*0.68),
+                "N_term_RegFile": (458*0.46+0.46*90,  84*0.68),
+
+                "MACC"          : (458*0.46+0.46*20, 328*0.68*2),
+                "S_term_MACC"   : (458*0.46+0.46*20,  84*0.68),
+                "N_term_MACC"   : (458*0.46+0.46*20,  84*0.68),
+
+                "*_TT_IF2"      : (122*0.46+20*0.46, 328*0.68*2),
+                "*_TT_IF"       : (122*0.46+20*0.46, 328*0.68),
+
+                "NE*"       : (122*0.46,  84*0.68),
+                "NW*"       : (122*0.46,  84*0.68),
+                "SE*"       : (122*0.46,  84*0.68),
+                "SW*"       : (122*0.46,  84*0.68),
+                
+                "N*"        : (458*0.46,  84*0.68),
+                "E*"        : (122*0.46, 328*0.68),
+                "S*"        : (458*0.46,  84*0.68),
+                "W*"        : (122*0.46, 328*0.68),
+            },
         },
         "gf180mcu*": {
-            # Width should be multiple of 0.56 (Metal2 pitch)
-            # Height should be multiple of 0.56 (Metal3 pitch)
-            # Standard cell row height: 3.92 (8 Metal3 track)
+            "gf180mcu_as_sc_mcu7t3v3": {
+                # Width should be multiple of 0.56 (Metal2 pitch)
+                # Height should be multiple of 0.56 (Metal3 pitch)
+                # Standard cell row height: 3.92 (8 Metal3 track)
 
-            "LUT4x8_ha" : (302.96, 302.96),
+                "LUT4x8_ha" : (512*0.56, 75*3.92),
+            },
+            "*": {
+                # Width should be multiple of 0.56 (Metal2 pitch)
+                # Height should be multiple of 0.56 (Metal3 pitch)
+                # Standard cell row height: 3.92 (8 Metal3 track)
 
-            "RegFile"       : (302.96+0.56*90, 302.96),
-            "S_term_RegFile": (302.96+0.56*90,  86.24),
-            "N_term_RegFile": (302.96+0.56*90,  86.24),
+                "LUT4x8_ha" : (302.96, 302.96),
 
-            "MACC"          : (302.96, 302.96*2),
-            "S_term_MACC"   : (302.96,  86.24),
-            "N_term_MACC"   : (302.96,  86.24),
+                "RegFile"       : (302.96+0.56*90, 302.96),
+                "S_term_RegFile": (302.96+0.56*90,  86.24),
+                "N_term_RegFile": (302.96+0.56*90,  86.24),
 
-            "*_TT_IF2"      : ( 86.24+25*0.56, 302.96*2),
-            "*_TT_IF"       : ( 86.24+25*0.56, 302.96),
+                "MACC"          : (302.96, 302.96*2),
+                "S_term_MACC"   : (302.96,  86.24),
+                "N_term_MACC"   : (302.96,  86.24),
 
-            "NE*"       : ( 86.24,  86.24),
-            "NW*"       : ( 86.24,  86.24),
-            "SE*"       : ( 86.24,  86.24),
-            "SW*"       : ( 86.24,  86.24),
-            
-            "N*"        : (302.96,  86.24),
-            "E*"        : ( 86.24, 302.96),
-            "S*"        : (302.96,  86.24),
-            "W*"        : ( 86.24, 302.96),
+                "*_TT_IF2"      : ( 86.24+25*0.56, 302.96*2),
+                "*_TT_IF"       : ( 86.24+25*0.56, 302.96),
+
+                "NE*"       : ( 86.24,  86.24),
+                "NW*"       : ( 86.24,  86.24),
+                "SE*"       : ( 86.24,  86.24),
+                "SW*"       : ( 86.24,  86.24),
+                
+                "N*"        : (302.96,  86.24),
+                "E*"        : ( 86.24, 302.96),
+                "S*"        : (302.96,  86.24),
+                "W*"        : ( 86.24, 302.96),
+            },
         },
         "ihp-sg13*": {
-            # Width should be multiple of 0.48 (Metal2 pitch)
-            # Height should be multiple of 0.42 (Metal3 pitch)
-            # Standard cell row height: 3.78 (9 Metal3 tracks)
+            "*": {
+                # Width should be multiple of 0.48 (Metal2 pitch)
+                # Height should be multiple of 0.42 (Metal3 pitch)
+                # Standard cell row height: 3.78 (9 Metal3 tracks)
 
-            "LUT4x8_ha"     : (219.84, 219.24),
+                "LUT4x8_ha"     : (219.84, 219.24),
 
-            "RegFile"       : (219.84+0.48*96, 219.24),
-            "S_term_RegFile": (219.84+0.48*96,  56.70),
-            "N_term_RegFile": (219.84+0.48*96,  56.70),
+                "RegFile"       : (219.84+0.48*96, 219.24),
+                "S_term_RegFile": (219.84+0.48*96,  56.70),
+                "N_term_RegFile": (219.84+0.48*96,  56.70),
 
-            "MACC"          : (219.84, 219.24*2),
-            "S_term_MACC"   : (219.84,  56.70),
-            "N_term_MACC"   : (219.84,  56.70),
+                "MACC"          : (219.84, 219.24*2),
+                "S_term_MACC"   : (219.84,  56.70),
+                "N_term_MACC"   : (219.84,  56.70),
 
-            "*_TT_IF2"      : ( 68.64, 219.24*2),
-            "E_IHP_SRAM"    : ( 68.64, 219.24*2),
-            "E_IHP_BRAM"    : ( 68.64, 219.24*2),
+                "*_TT_IF2"      : ( 68.64, 219.24*2),
+                "E_IHP_SRAM"    : ( 68.64, 219.24*2),
+                "E_IHP_BRAM"    : ( 68.64, 219.24*2),
 
-            "NE*"       : ( 68.64,  56.70),
-            "NW*"       : ( 68.64,  56.70),
-            "SE*"       : ( 68.64,  56.70),
-            "SW*"       : ( 68.64,  56.70),
-            
-            "N*"        : (219.84,  56.70),
-            "E*"        : ( 68.64, 219.24),
-            "S*"        : (219.84,  56.70),
-            "W*"        : ( 68.64, 219.24),
+                "NE*"       : ( 68.64,  56.70),
+                "NW*"       : ( 68.64,  56.70),
+                "SE*"       : ( 68.64,  56.70),
+                "SW*"       : ( 68.64,  56.70),
+                
+                "N*"        : (219.84,  56.70),
+                "E*"        : ( 68.64, 219.24),
+                "S*"        : (219.84,  56.70),
+                "W*"        : ( 68.64, 219.24),
+            },
         },
     },
     "tiny": {
         "ihp-sg13*": {
-            # Width should be multiple of 0.48 (Metal2 pitch)
-            # Height should be multiple of 0.42 (Metal3 pitch)
-            # Standard cell row height: 3.78 (9 Metal3 tracks)
+            "*": {
+                # Width should be multiple of 0.48 (Metal2 pitch)
+                # Height should be multiple of 0.42 (Metal3 pitch)
+                # Standard cell row height: 3.78 (9 Metal3 tracks)
 
-            "LUT4x8_ha" : (219.84, 185.22),
+                "LUT4x8_ha" : (219.84, 185.22),
 
-            "NE*"       : ( 68.64,  56.70),
-            "NW*"       : ( 68.64,  56.70),
-            "SE*"       : ( 68.64,  56.70),
-            "SW*"       : ( 68.64,  56.70),
-            
-            "N*"        : (219.84,  56.70),
-            "E*"        : ( 68.64, 185.22),
-            "S*"        : (219.84,  56.70),
-            "W*"        : ( 68.64, 185.22),
+                "NE*"       : ( 68.64,  56.70),
+                "NW*"       : ( 68.64,  56.70),
+                "SE*"       : ( 68.64,  56.70),
+                "SW*"       : ( 68.64,  56.70),
+                
+                "N*"        : (219.84,  56.70),
+                "E*"        : ( 68.64, 185.22),
+                "S*"        : (219.84,  56.70),
+                "W*"        : ( 68.64, 185.22),
+            },
         },
         "sky130*": {
-            # sky130_fd_sc_hd:
-            # Width should be multiple of 0.46 (met2 pitch)
-            # Height should be multiple of 0.68 (met3 pitch)
-            # Standard cell row height: 2.72 (4 met3 tracks)
+            "*": {
+                # sky130_fd_sc_hd:
+                # Width should be multiple of 0.46 (met2 pitch)
+                # Height should be multiple of 0.68 (met3 pitch)
+                # Standard cell row height: 2.72 (4 met3 tracks)
 
-            "LUT4x8_ha" : (330*0.46, 65*2.72),
-            
-            "NE*"       : (100*0.46, 17*2.72),
-            "NW*"       : (110*0.46, 17*2.72),
-            "SE*"       : (100*0.46, 21*2.72),
-            "SW*"       : (110*0.46, 21*2.72),
-            
-            "N*"        : (330*0.46, 17*2.72),
-            "E*"        : (100*0.46, 65*2.72),
-            "S*"        : (330*0.46, 21*2.72),
-            "W*"        : (110*0.46, 65*2.72),
+                "LUT4x8_ha" : (330*0.46, 65*2.72),
+                
+                "NE*"       : (100*0.46, 17*2.72),
+                "NW*"       : (110*0.46, 17*2.72),
+                "SE*"       : (100*0.46, 21*2.72),
+                "SW*"       : (110*0.46, 21*2.72),
+                
+                "N*"        : (330*0.46, 17*2.72),
+                "E*"        : (100*0.46, 65*2.72),
+                "S*"        : (330*0.46, 21*2.72),
+                "W*"        : (110*0.46, 65*2.72),
+            },
         },
         "gf180mcu*": {
-            # gf180mcu_fd_sc_mcu7t5v0:
-            # Width should be multiple of 0.56 (Metal2 pitch)
-            # Height should be multiple of 0.56 (Metal3 pitch)
-            # Standard cell row height: 3.92 (8 Metal3 tracks)
+            "gf180mcu_as_sc_mcu7t3v3": {
+                # Width should be multiple of 0.56 (Metal2 pitch)
+                # Height should be multiple of 0.56 (Metal3 pitch)
+                # Standard cell row height: 3.92 (8 Metal3 track)
 
-            "LUT4x8_ha" : (450*0.56, 66*3.92),
-            
-            "NE*"       : (135*0.56, 19*3.92),
-            "NW*"       : (135*0.56, 19*3.92),
-            "SE*"       : (135*0.56, 19*3.92),
-            "SW*"       : (135*0.56, 19*3.92),
-            
-            "N*"        : (450*0.56, 19*3.92),
-            "E*"        : (135*0.56, 66*3.92),
-            "S*"        : (450*0.56, 19*3.92),
-            "W*"        : (135*0.56, 66*3.92),
+                # currently larger because of missing mux4
+                "LUT4x8_ha" : (494*0.56, 66*3.92),
+                
+                "NE*"       : (135*0.56, 19*3.92),
+                "NW*"       : (135*0.56, 19*3.92),
+                "SE*"       : (135*0.56, 19*3.92),
+                "SW*"       : (135*0.56, 19*3.92),
+                
+                "N*"        : (494*0.56, 19*3.92),
+                "E*"        : (135*0.56, 66*3.92),
+                "S*"        : (494*0.56, 19*3.92),
+                "W*"        : (135*0.56, 66*3.92),
+            },
+            "*": {
+                # gf180mcu_fd_sc_mcu7t5v0:
+                # Width should be multiple of 0.56 (Metal2 pitch)
+                # Height should be multiple of 0.56 (Metal3 pitch)
+                # Standard cell row height: 3.92 (8 Metal3 tracks)
+
+                "LUT4x8_ha" : (450*0.56, 66*3.92),
+                
+                "NE*"       : (135*0.56, 19*3.92),
+                "NW*"       : (135*0.56, 19*3.92),
+                "SE*"       : (135*0.56, 19*3.92),
+                "SW*"       : (135*0.56, 19*3.92),
+                
+                "N*"        : (450*0.56, 19*3.92),
+                "E*"        : (135*0.56, 66*3.92),
+                "S*"        : (450*0.56, 19*3.92),
+                "W*"        : (135*0.56, 66*3.92),
+            },
         },
     },
 }
@@ -186,33 +232,45 @@ tile_sizes = {
 tile_densities = {
     "classic": {
         "sky130*": {
-            "LUT4x8_ha" : 58,
-            "S_term_RegFile": 10, # prevent numerical instability during GPL
-            "S_term_MACC": 10, # prevent numerical instability during GPL
-            "MACC": 75, # prevent "heap underflow during 3D maze routing"
-            "*"         : None,
+            "*": {
+                "LUT4x8_ha" : 58,
+                "S_term_RegFile": 10, # prevent numerical instability during GPL
+                "S_term_MACC": 10, # prevent numerical instability during GPL
+                "MACC": 75, # prevent "heap underflow during 3D maze routing"
+                "*"         : None,
+            },
         },
         "gf180mcu*": {
-            "LUT4x8_ha" : 85,
-            "*"         : None,
+            "*": {
+                "LUT4x8_ha" : 85,
+                "*"         : None,
+            },
         },
         "ihp-sg13*": {
-            "LUT4x8_ha" : 96,
-            "*"         : None,
+            "*": {
+                "LUT4x8_ha" : 96,
+                "*"         : None,
+            },
         },
     },
     "tiny": {
         "ihp-sg13*": {
-            "LUT4x8_ha" : 96,
-            "*"         : None,
+            "*": {
+                "LUT4x8_ha" : 96,
+                "*"         : None,
+            },
         },
         "sky130*": {
-            "LUT4x8_ha" : 96,
-            "*"         : None,
+            "*": {
+                "LUT4x8_ha" : 96,
+                "*"         : None,
+            },
         },
         "gf180mcu*": {
-            "LUT4x8_ha" : 96,
-            "*"         : None,
+            "*": {
+                "LUT4x8_ha" : 96,
+                "*"         : None,
+            },
         },
     },
 }
@@ -220,18 +278,24 @@ tile_densities = {
 tile_obstruction_layers = {
     "*": {
         "sky130*": {
-            "*"         : ["met1", "met2", "met3", "met4", "met5"],
+            "*": {
+                "*"         : ["met1", "met2", "met3", "met4", "met5"],
+            },
         },
         "gf180mcu*": {
-            "*"         : ["Metal1", "Metal2", "Metal3", "Metal4", "Metal5"],
+            "*": {
+                "*"         : ["Metal1", "Metal2", "Metal3", "Metal4", "Metal5"],
+            },
         },
         "ihp-sg13*": {
-            "*"         : ["Metal1", "Metal2", "Metal3", "Metal4", "Metal5", "TopMetal1", "TopMetal2"],
+            "*": {
+                "*"         : ["Metal1", "Metal2", "Metal3", "Metal4", "Metal5", "TopMetal1", "TopMetal2"],
+            },
         },
     },
 }
 
-def main(tile, pdk_root=None, pdk=None, tag=None, tile_library=None, last_run=None, gui=None):
+def main(tile, pdk_root=None, pdk=None, scl=None, tag=None, tile_library=None, last_run=None, gui=None):
     target_flow = Flow.factory.get("FABulousTile")
 
     if gui == "openroad":
@@ -254,82 +318,63 @@ def main(tile, pdk_root=None, pdk=None, tag=None, tile_library=None, last_run=No
     tile_config = yaml.safe_load(open(tile_config_path))
     config.update(tile_config)
     
-    if not tile_library in tile_sizes:
-        raise FlowError(f"Error: Couldn't find tile library {tile_library} in tile_sizes") from None
-    if not tile_library in tile_densities:
-        raise FlowError(f"Error: Couldn't find tile library {tile_library} in tile_densities") from None
+    # TODO: get default SCL from LibreLane
+    if scl == None:
+        if fnmatch.fnmatch(pdk, "sky130*"):
+            scl = "sky130_fd_sc_hd"
+        if fnmatch.fnmatch(pdk, "ihp-sg13*"):
+            scl = "sg13g2_stdcell"
+        if fnmatch.fnmatch(pdk, "gf180mcu*"):
+            scl = "gf180mcu_fd_sc_mcu7t5v0"
+
+    def match_config(config, tile_library, pdk, scl, tile):
+        found_value = None
+        found = False
+
+        # Level 1: tile library
+        for tile_library_pattern, pdk_dict in config.items():
+            if fnmatch.fnmatch(tile_library, tile_library_pattern):
+                print(f"Matched tile library {tile_library} with {tile_library_pattern}")
+                # Level 2: PDK
+                for pdk_pattern, scl_dict in pdk_dict.items():
+                    if fnmatch.fnmatch(pdk, pdk_pattern):
+                        print(f"Matched PDK {pdk} with {pdk_pattern}")
+                        # Level 3: SCL
+                        for scl_pattern, tile_dict in scl_dict.items():
+                            if fnmatch.fnmatch(scl, scl_pattern):
+                                print(f"Matched SCL {scl} with {scl_pattern}")
+                                # Level 3: tile name
+                                for tile_pattern, value in tile_dict.items():
+                                    if fnmatch.fnmatch(tile, tile_pattern):
+                                        print(f"Matched tile {tile} with {tile_pattern}")
+                                        found_value = value
+                                        found = True
+                                        break
+                                break
+                        break
+                break
+        
+        if not found:
+            raise FlowError(f"Couldn't find a match for {tile} with {tile_library}, {pdk}, {scl}") from None
+        
+        return found_value
 
     # Get the tile size
-    tile_size = None
-    # -> match the tile library
-    for tile_library_pattern, pdk_tile_values in tile_sizes.items():
-        if fnmatch.fnmatch(tile_library, tile_library_pattern):
-            print(f"Matched tile library {tile_library} with {tile_library_pattern}")
-            # -> match the pdk
-            for pdk_pattern, tile_values in pdk_tile_values.items():
-                if fnmatch.fnmatch(pdk, pdk_pattern):
-                    print(f"Matched pdk {pdk} with {pdk_pattern}")
-                    # -> match the tile
-                    for tile_pattern, size in tile_values.items():
-                        if fnmatch.fnmatch(tile, tile_pattern):
-                            print(f"Matched tile {tile} with {tile_pattern}")
-                            tile_size = size
-                            break
-                    break
-            break
-    
-    if not tile_size:
-        raise FlowError(f"Couldn't match a tile size for {tile} with {pdk}") from None
+    tile_size = match_config(tile_sizes, tile_library, pdk, scl, tile)
 
     # Get the target density
-    target_density = None
-    # -> match the tile library
-    for tile_library_pattern, pdk_tile_values in tile_densities.items():
-        if fnmatch.fnmatch(tile_library, tile_library_pattern):
-            print(f"Matched tile library {tile_library} with {tile_library_pattern}")
-            # -> match the pdk
-            for pdk_pattern, tile_values in pdk_tile_values.items():
-                if fnmatch.fnmatch(pdk, pdk_pattern):
-                    print(f"Matched pdk {pdk} with {pdk_pattern}")
-                    # -> match the tile
-                    for tile_pattern, density in tile_values.items():
-                        if fnmatch.fnmatch(tile, tile_pattern):
-                            print(f"Matched tile {tile} with {tile_pattern}")
-                            target_density = density
-                            break
-                    break
-            break
+    target_density = match_config(tile_densities, tile_library, pdk, scl, tile)
 
-    # Get the obstruction layers
     obs = []
-    # -> match the tile library
-    for tile_library_pattern, pdk_tile_values in tile_obstruction_layers.items():
-        if fnmatch.fnmatch(tile_library, tile_library_pattern):
-            print(f"Matched tile library {tile_library} with {tile_library_pattern}")
-            # -> match the pdk
-            for pdk_pattern, tile_values in pdk_tile_values.items():
-                if fnmatch.fnmatch(pdk, pdk_pattern):
-                    print(f"Matched pdk {pdk} with {pdk_pattern}")
-                    # -> match the tile
-                    for tile_pattern, obstruction_layers in tile_values.items():
-                        if fnmatch.fnmatch(tile, tile_pattern):
-                            print(f"Matched tile {tile} with {tile_pattern}")
-                            target_density = density
-                            # Add blockages
-                            # This ensures that no wire/via is close enough to the edge
-                            # which could lead to DRC violations after stitchign the fabric
-                            for layer in obstruction_layers:
-                                # bottom
-                                obs.append([layer, 0, -1, tile_size[0], 0])
-                                # top
-                                obs.append([layer, 0, tile_size[1], tile_size[0], tile_size[1]+1])
-                                # left
-                                obs.append([layer, -1, 0, 0, tile_size[1]])
-                                # right
-                                obs.append([layer, tile_size[0], 0, tile_size[0]+1, tile_size[1]])
-                            break
-                    break
-            break
+    for layer in match_config(tile_obstruction_layers, tile_library, pdk, scl, tile):
+        # bottom
+        obs.append([layer, 0, -1, tile_size[0], 0])
+        # top
+        obs.append([layer, 0, tile_size[1], tile_size[0], tile_size[1]+1])
+        # left
+        obs.append([layer, -1, 0, 0, tile_size[1]])
+        # right
+        obs.append([layer, tile_size[0], 0, tile_size[0]+1, tile_size[1]])
 
     print(f"Tile size: {tile_size}")
     print(f"Tile target density: {target_density}")
@@ -393,6 +438,7 @@ def main(tile, pdk_root=None, pdk=None, tag=None, tile_library=None, last_run=No
         design_dir=design_dir,
         pdk_root=pdk_root,
         pdk=pdk,
+        scl=scl,
     )
     
     state_out = flow.start(tag=tag, last_run=last_run)
@@ -412,6 +458,7 @@ if __name__ == "__main__":
     
     pdk = os.getenv("PDK")
     pdk_root = os.getenv("PDK_ROOT")
+    scl = os.getenv("SCL")
     
     if pdk is None:
         raise FlowError(f"Please define PDK") from None
@@ -423,4 +470,4 @@ if __name__ == "__main__":
         last_run = True
 
     # Implement the tile
-    main(args.tilename, gui=args.gui, pdk=pdk, pdk_root=pdk_root, tile_library=tile_library, last_run=last_run)
+    main(args.tilename, gui=args.gui, pdk=pdk, pdk_root=pdk_root, scl=scl if (scl != "") else None, tile_library=tile_library, last_run=last_run)
