@@ -34,16 +34,14 @@ jobs:
       matrix:
         pdk: [sky130A, gf180mcuD, ihp-sg13g2]
         tile_library: [classic, tiny]
+        scl: [default]
         include:
-          - scl: sky130_fd_sc_hd
-            pdk: sky130A
-          - scl: sg13g2_stdcell
-            pdk: ihp-sg13g2
-          - scl: gf180mcu_fd_sc_mcu7t5v0
-            pdk: gf180mcuD
+          - pdk: gf180mcuD
+            tile_library: tiny
+            scl: gf180mcu_as_sc_mcu7t3v3
     name: Tiles (${{ matrix.tile_library }}/${{ matrix.pdk }}/${{ matrix.scl }})
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: 'true'
       - name: Setup Nix
