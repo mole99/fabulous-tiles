@@ -23,7 +23,7 @@ clean: $(TILES_CLEAN)
 .PHONY: clean
 
 $(TILES):
-	PDK=${PDK} TILE_LIBRARY=${TILE_LIBRARY} python3 tiles.py $@
+	PDK=${PDK} TILE_LIBRARY=${TILE_LIBRARY} SCL=${SCL} python3 tiles.py $@
 .PHONY: $(TILES)
 
 $(TILES_OPENROAD):

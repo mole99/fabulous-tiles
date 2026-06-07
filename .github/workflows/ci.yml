@@ -34,7 +34,14 @@ jobs:
       matrix:
         pdk: [sky130A, gf180mcuD, ihp-sg13g2]
         tile_library: [classic, tiny]
-    name: Tiles (${{ matrix.tile_library }}/${{ matrix.pdk }})
+        include:
+          - scl: sky130_fd_sc_hd
+            pdk: sky130A
+          - scl: sg13g2_stdcell
+            pdk: ihp-sg13g2
+          - scl: gf180mcu_fd_sc_mcu7t5v0
+            pdk: gf180mcuD
+    name: Tiles (${{ matrix.tile_library }}/${{ matrix.pdk }}/${{ matrix.scl }})
     steps:
       - uses: actions/checkout@v4
         with:
@@ -55,4 +62,4 @@ jobs:
           sudo tree /nix/store/*-librelane || true
       - name: Implement the tiles
         run: |
-          PDK=${{ matrix.pdk }} TILE_LIBRARY=${{ matrix.tile_library }} nix develop --command make all
+          PDK=${{ matrix.pdk }} SCL=${{ matrix.scl }} TILE_LIBRARY=${{ matrix.tile_library }} nix develop --command make all
