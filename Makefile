@@ -10,6 +10,16 @@ TILES := $(filter-out E_IHP_SRAM,$(TILES))
 TILES := $(filter-out E_IHP_BRAM,$(TILES))
 endif
 
+ifeq ($(SCL),gf180mcu_as_sc_mcu7t3v3)
+TILES := $(filter-out MACC,$(TILES))
+TILES := $(filter-out S_term_MACC,$(TILES))
+TILES := $(filter-out N_term_MACC,$(TILES))
+TILES := $(filter-out E_TT_IF2,$(TILES))
+TILES := $(filter-out E_TT_IF,$(TILES))
+TILES := $(filter-out W_TT_IF2,$(TILES))
+TILES := $(filter-out W_TT_IF,$(TILES))
+endif
+
 $(info Available tiles for tile library $(TILE_LIBRARY): $(TILES))
 
 TILES_OPENROAD := $(addsuffix -openroad,$(TILES))
