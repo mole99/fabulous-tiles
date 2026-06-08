@@ -39,6 +39,9 @@ jobs:
           - pdk: gf180mcuD
             tile_library: tiny
             scl: gf180mcu_as_sc_mcu7t3v3
+          - pdk: gf180mcuD
+            tile_library: classic
+            scl: gf180mcu_as_sc_mcu7t3v3
     name: Tiles (${{ matrix.tile_library }}/${{ matrix.pdk }}/${{ matrix.scl }})
     steps:
       - uses: actions/checkout@v6
