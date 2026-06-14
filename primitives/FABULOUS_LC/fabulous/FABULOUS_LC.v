@@ -94,39 +94,42 @@ module FABULOUS_LC #(
     (* FABulous, GLOBAL *) input [N_CONFIG_BITS-1:0] ConfigBits // Config bits as vector
 );
 
-	  wire [LUT_ENTRIES-1 : 0] LUT_values;
+    // Configuration bits
+	  wire [LUT_ENTRIES-1 : 0] INIT;
+	  wire FF, I0mux, SET_NORESET;
+
+	  assign INIT   = ConfigBits[LUT_ENTRIES-1:0];
+	  assign FF           = ConfigBits[LUT_ENTRIES+0];
+	  assign I0mux        = ConfigBits[LUT_ENTRIES+1];
+	  assign SET_NORESET  = ConfigBits[LUT_ENTRIES+2];
+
+    // Signals
 	  wire [K-1 : 0] LUT_index;
 	  wire LUT_out;
 	  reg  LUT_flop;
-	  wire I0mux; // normal input '0', or carry input '1'
-	  wire c_out_mux, c_I0mux, c_reset_value;	// extra configuration bits
+	  wire I0mux_wire; // normal input '0', or carry input '1'
 
-	  assign LUT_values     = ConfigBits[LUT_ENTRIES-1:0];
-	  assign c_out_mux      = ConfigBits[LUT_ENTRIES+0];
-	  assign c_I0mux        = ConfigBits[LUT_ENTRIES+1];
-	  assign c_reset_value  = ConfigBits[LUT_ENTRIES+2];
+	  assign I0mux_wire = I0mux ? Ci : I[0];
 
-	  assign I0mux = c_I0mux ? Ci : I[0];
-
-	  assign LUT_index = {I[K-1:1], I0mux};
+	  assign LUT_index = {I[K-1:1], I0mux_wire};
 
     // The look-up table
     LUTK #(
         .K (4)
     ) LUT4 (
         .I    (LUT_index),
-        .INIT (LUT_values),
+        .INIT (INIT),
         .O    (LUT_out)
     );
 
-	  assign O = c_out_mux ? LUT_flop : LUT_out;
+	  assign O = FF ? LUT_flop : LUT_out;
 	  
 	  // iCE40 like carry chain (as this is supported in Yosys; would normally go for fractured LUT)
 	  assign Co = (Ci & I[1]) | (Ci & I[2]) | (I[1] & I[2]);
 
 	  always @ (posedge CLK) begin
         if (SR) begin
-            LUT_flop <= c_reset_value;
+            LUT_flop <= SET_NORESET;
         end else begin
             if (EN) begin
                 LUT_flop <= LUT_out;
