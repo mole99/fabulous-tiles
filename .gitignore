@@ -19,7 +19,9 @@ runs/
 *.png
 *.svg
 
-
 # Python
 *.egg-info/
 __pycache__/
+
+# LibreOffice
+.~lock.*
