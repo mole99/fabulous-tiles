@@ -17,7 +17,10 @@ module WARMBOOT #(
     parameter NUM_SLOTS = 16
 )(
     // Fabric side
-    input  [$clog2(NUM_SLOTS)-1:0] SLOT,
-    input                          TRIGGER
+    input  SLOT0,
+    input  SLOT1,
+    input  SLOT2,
+    input  SLOT3,
+    input  TRIGGER
 );
 endmodule
