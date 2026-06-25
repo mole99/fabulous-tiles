@@ -305,9 +305,14 @@ tile_obstruction_layers = {
                 "*"         : ["Metal1", "Metal2", "Metal3", "Metal4", "Metal5"],
             },
         },
-        "ihp-sg13*": {
+        "ihp-sg13g2": {
             "*": {
                 "*"         : ["Metal1", "Metal2", "Metal3", "Metal4", "Metal5", "TopMetal1", "TopMetal2"],
+            },
+        },
+        "ihp-sg13cmos5l": {
+            "*": {
+                "*"         : ["Metal1", "Metal2", "Metal3", "Metal4", "TopMetal1"],
             },
         },
     },
@@ -340,8 +345,10 @@ def main(tile, pdk_root=None, pdk=None, scl=None, tag=None, tile_library=None, l
     if scl == None or scl == "default":
         if fnmatch.fnmatch(pdk, "sky130*"):
             scl = "sky130_fd_sc_hd"
-        if fnmatch.fnmatch(pdk, "ihp-sg13*"):
+        if fnmatch.fnmatch(pdk, "ihp-sg13g2"):
             scl = "sg13g2_stdcell"
+        if fnmatch.fnmatch(pdk, "ihp-sg13cmos5l"):
+            scl = "sg13cmos5l_stdcell"
         if fnmatch.fnmatch(pdk, "gf180mcu*"):
             scl = "gf180mcu_fd_sc_mcu7t5v0"
 
@@ -416,7 +423,7 @@ def main(tile, pdk_root=None, pdk=None, scl=None, tag=None, tile_library=None, l
     print(f"design_dir: {design_dir}")
 
     # Fetch the PDK using ciel
-    if pdk_root is None:
+    if pdk_root is None or pdk_root == "":
         import ciel
         from ciel.source import StaticWebDataSource
 
@@ -453,6 +460,9 @@ def main(tile, pdk_root=None, pdk=None, scl=None, tag=None, tile_library=None, l
         )
         pdk_root = version.get_dir(ciel_home)
     
+    print(f"pdk_root: {pdk_root}")
+    print(f"pdk: {pdk}")
+    print(f"scl: {scl}")
     
     flow = target_flow(
         config,
