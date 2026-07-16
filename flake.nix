@@ -9,11 +9,7 @@
   };
 
   inputs = {
-    librelane.url = "github:librelane/librelane/dev";
-    librelane_plugin_fabulous = {
-      url = "github:mole99/librelane_plugin_fabulous/1.13.1";
-      inputs.librelane.follows = "librelane";
-    };
+    librelane_plugin_fabulous.url = "github:KelvinChung2000/FABulous/feat/as-librelane-plugin";
   };
 
   outputs =
