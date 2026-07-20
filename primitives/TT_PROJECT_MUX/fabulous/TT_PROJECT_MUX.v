@@ -14,10 +14,11 @@
 // limitations under the License.
 
 (*FABulous, BelMap,
-    ENABLE_POWER=0
+    ENABLE_POWER=0,
+    SELECT_SLOT=1
 *)
-module TT_PROJECT #(
-    parameter N_CONFIG_BITS = 1
+module TT_PROJECT_MUX #(
+    parameter N_CONFIG_BITS = 2
 )(	
     // Fabric side
     input  wire [7:0] UI_IN,
@@ -31,6 +32,7 @@ module TT_PROJECT #(
 
     // External side
     (* FABulous, EXTERNAL *) output wire       ENABLE_POWER_TT_PROJECT,
+    (* FABulous, EXTERNAL *) output wire       SELECT_SLOT_TT_PROJECT,
     (* FABulous, EXTERNAL *) output wire [7:0] UI_IN_TT_PROJECT,
     (* FABulous, EXTERNAL *) input  wire [7:0] UO_OUT_TT_PROJECT,
     (* FABulous, EXTERNAL *) output wire [7:0] UIO_IN_TT_PROJECT,
@@ -43,11 +45,13 @@ module TT_PROJECT #(
     (* FABulous, GLOBAL *) input [N_CONFIG_BITS-1:0] ConfigBits // Config bits as vector
 );
     // Configuration bits
-    wire ENABLE_POWER;
+    wire ENABLE_POWER, SELECT_SLOT;
 	  assign ENABLE_POWER = ConfigBits[0];
+  	  assign SELECT_SLOT = ConfigBits[1];
 
     // Fabric -> External
     assign ENABLE_POWER_TT_PROJECT = ENABLE_POWER;
+    assign SELECT_SLOT_TT_PROJECT  = SELECT_SLOT;
     assign CLK_TT_PROJECT       = CLK;
     assign UI_IN_TT_PROJECT     = UI_IN;
     assign UIO_IN_TT_PROJECT    = UIO_IN;

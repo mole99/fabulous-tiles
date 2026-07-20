@@ -1,4 +1,4 @@
-TILE,W_TT_IF2_top,,,,,,,,,,,,,,,,,
+TILE,W_TT_IF_MUX,,,,,,,,,,,,,,,,,
 #direction,source_name,X-offset,Y-offset,destination_name,wires,,,,,,,,,,,,,
 SOUTH,S_GBUF_FEED_BEG,0,1,S_GBUF_FEED_END,4,# feed global buffers
 NORTH,N_GBUF_BEG,0,-1,N_GBUF_END,4,# global buffers
@@ -14,8 +14,6 @@ EAST,EE4BEG,4,0,NULL,4,,,,,,,,,,,,,
 EAST,E6BEG,6,0,NULL,2,,,,,,,,,,,,,
 JUMP,NULL,0,0,GND,1,,,,,,,,,,,,,
 JUMP,NULL,0,0,VCC,1,,,,,,,,,,,,,
-NORTH,NULL,0,-1,bot2top_UIO_OUT,16,,,,,,,,,,,,,
-NORTH,NULL,0,-1,bot2top_UIO_OE,16,,,,,,,,,,,,,
-SOUTH,top2bot_UIO_IN,0,1,NULL,16,,,,,,,,,,,,,
-MATRIX,./W_TT_IF2_top_switch_matrix.list,,,,,,,,,,,,,,,,,
+BEL,./../../../primitives/TT_PROJECT_MUX/fabulous/TT_PROJECT_MUX.v,,,,,,,,,,,,,,,,,
+MATRIX,./W_TT_IF_MUX_switch_matrix.list,,,,,,,,,,,,,,,,,
 EndTILE,,,,,,,,,,,,,,,,,,

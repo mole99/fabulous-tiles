@@ -16,29 +16,29 @@
 (*FABulous, BelMap,
     ENABLE_POWER=0
 *)
-module TT_PROJECT #(
+module TT_PROJECT_LARGE #(
     parameter N_CONFIG_BITS = 1
 )(	
     // Fabric side
-    input  wire [7:0] UI_IN,
-    output wire [7:0] UO_OUT,
-    input  wire [7:0] UIO_IN,
-    output wire [7:0] UIO_OUT,
-    output wire [7:0] UIO_OE,
+    input  wire [15:0] UI_IN,
+    output wire [15:0] UO_OUT,
+    input  wire [15:0] UIO_IN,
+    output wire [15:0] UIO_OUT,
+    output wire [15:0] UIO_OE,
     input  wire       ENA,
     input  wire       CLK,
     input  wire       RST_N,
 
     // External side
-    (* FABulous, EXTERNAL *) output wire       ENABLE_POWER_TT_PROJECT,
-    (* FABulous, EXTERNAL *) output wire [7:0] UI_IN_TT_PROJECT,
-    (* FABulous, EXTERNAL *) input  wire [7:0] UO_OUT_TT_PROJECT,
-    (* FABulous, EXTERNAL *) output wire [7:0] UIO_IN_TT_PROJECT,
-    (* FABulous, EXTERNAL *) input  wire [7:0] UIO_OUT_TT_PROJECT,
-    (* FABulous, EXTERNAL *) input  wire [7:0] UIO_OE_TT_PROJECT,
-    (* FABulous, EXTERNAL *) output wire       ENA_TT_PROJECT,
-    (* FABulous, EXTERNAL *) output wire       CLK_TT_PROJECT,
-    (* FABulous, EXTERNAL *) output wire       RST_N_TT_PROJECT,
+    (* FABulous, EXTERNAL *) output wire        ENABLE_POWER_TT_PROJECT,
+    (* FABulous, EXTERNAL *) output wire [15:0] UI_IN_TT_PROJECT,
+    (* FABulous, EXTERNAL *) input  wire [15:0] UO_OUT_TT_PROJECT,
+    (* FABulous, EXTERNAL *) output wire [15:0] UIO_IN_TT_PROJECT,
+    (* FABulous, EXTERNAL *) input  wire [15:0] UIO_OUT_TT_PROJECT,
+    (* FABulous, EXTERNAL *) input  wire [15:0] UIO_OE_TT_PROJECT,
+    (* FABulous, EXTERNAL *) output wire        ENA_TT_PROJECT,
+    (* FABulous, EXTERNAL *) output wire        CLK_TT_PROJECT,
+    (* FABulous, EXTERNAL *) output wire        RST_N_TT_PROJECT,
     
     (* FABulous, GLOBAL *) input [N_CONFIG_BITS-1:0] ConfigBits // Config bits as vector
 );

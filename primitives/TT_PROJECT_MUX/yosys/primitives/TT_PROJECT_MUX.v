@@ -14,8 +14,9 @@
 // limitations under the License.
 
 (* blackbox, keep *)
-module TT_PROJECT #(
-    parameter ENABLE_POWER=0
+module TT_PROJECT_MUX #(
+    parameter ENABLE_POWER=0,
+    parameter SELECT_SLOT=0
 )(
     input  UI_IN0,
     input  UI_IN1,
