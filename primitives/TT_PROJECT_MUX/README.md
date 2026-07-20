@@ -22,3 +22,4 @@ The `TT_PROJECT` primitive implements an interface to a [Tiny Tapeout](https://t
 | Name          | Width | Description              |
 |---------------|-------|--------------------------|
 | ENABLE_POWER  | 1     | Enable the power gate.   |
+| SELECT_SLOT   | 1     | Select which project is active (0 = first project, 1 = second project). |

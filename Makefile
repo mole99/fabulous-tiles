@@ -18,8 +18,10 @@ TILES := $(filter-out S_term_MACC,$(TILES))
 TILES := $(filter-out N_term_MACC,$(TILES))
 TILES := $(filter-out E_TT_IF2,$(TILES))
 TILES := $(filter-out E_TT_IF,$(TILES))
+TILES := $(filter-out E_TT_IF_MUX,$(TILES))
 TILES := $(filter-out W_TT_IF2,$(TILES))
 TILES := $(filter-out W_TT_IF,$(TILES))
+TILES := $(filter-out W_TT_IF_MUX,$(TILES))
 endif
 
 ifeq ($(PDK),ihp-sg13cmos5l)
@@ -58,11 +60,11 @@ $(TILES):
 .PHONY: $(TILES)
 
 $(TILES_OPENROAD):
-	PDK=${PDK} TILE_LIBRARY=${TILE_LIBRARY} python3 tiles.py $(subst -openroad,,$@) --gui openroad
+	PDK_ROOT=${PDK_ROOT} PDK=${PDK} TILE_LIBRARY=${TILE_LIBRARY} SCL=${SCL} python3 tiles.py $(subst -openroad,,$@) --gui openroad
 .PHONY: $(TILES_OPENROAD)
 
 $(TILES_KLAYOUT):
-	PDK=${PDK} TILE_LIBRARY=${TILE_LIBRARY} python3 tiles.py $(subst -klayout,,$@) --gui klayout
+	PDK_ROOT=${PDK_ROOT} PDK=${PDK} TILE_LIBRARY=${TILE_LIBRARY} SCL=${SCL} python3 tiles.py $(subst -klayout,,$@) --gui klayout
 .PHONY: $(TILES_KLAYOUT)
 
 $(TILES_CLEAN):
