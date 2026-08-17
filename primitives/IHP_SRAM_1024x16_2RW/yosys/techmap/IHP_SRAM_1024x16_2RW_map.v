@@ -47,6 +47,7 @@ module \$__RAM_1024x16_2RW_ (...);
         .A_DIN12   (PORT_A_WR_DATA[12]),
         .A_DIN13   (PORT_A_WR_DATA[13]),
         .A_DIN14   (PORT_A_WR_DATA[14]),
+        .A_DIN15   (PORT_A_WR_DATA[15]),
         .A_BM0    (PORT_A_WR_BE[0]),
         .A_BM1    (PORT_A_WR_BE[1]),
         .A_BM2    (PORT_A_WR_BE[2]),
@@ -62,6 +63,7 @@ module \$__RAM_1024x16_2RW_ (...);
         .A_BM12    (PORT_A_WR_BE[12]),
         .A_BM13    (PORT_A_WR_BE[13]),
         .A_BM14    (PORT_A_WR_BE[14]),
+        .A_BM15    (PORT_A_WR_BE[15]),
         .A_WEN    (PORT_A_WR_EN),
         .A_REN    (PORT_A_RD_EN),
         .A_MEN    (PORT_A_CLK_EN),
@@ -80,7 +82,8 @@ module \$__RAM_1024x16_2RW_ (...);
         .A_DOUT12  (PORT_A_RD_DATA[12]),
         .A_DOUT13  (PORT_A_RD_DATA[13]),
         .A_DOUT14  (PORT_A_RD_DATA[14]),
-        
+        .A_DOUT15  (PORT_A_RD_DATA[15]),
+
         // Port B - Read/Write
         .B_CLK    (PORT_A_CLK),
         .B_ADDR0  (PORT_A_ADDR[0]),
@@ -108,6 +111,7 @@ module \$__RAM_1024x16_2RW_ (...);
         .B_DIN12   (PORT_A_WR_DATA[12]),
         .B_DIN13   (PORT_A_WR_DATA[13]),
         .B_DIN14   (PORT_A_WR_DATA[14]),
+        .B_DIN15   (PORT_A_WR_DATA[15]),
         .B_BM0    (PORT_A_WR_BE[0]),
         .B_BM1    (PORT_A_WR_BE[1]),
         .B_BM2    (PORT_A_WR_BE[2]),
@@ -123,6 +127,7 @@ module \$__RAM_1024x16_2RW_ (...);
         .B_BM12    (PORT_A_WR_BE[12]),
         .B_BM13    (PORT_A_WR_BE[13]),
         .B_BM14    (PORT_A_WR_BE[14]),
+        .B_BM15    (PORT_A_WR_BE[15]),
         .B_WEN    (PORT_A_WR_EN),
         .B_REN    (PORT_A_RD_EN),
         .B_MEN    (PORT_A_CLK_EN),
@@ -140,7 +145,8 @@ module \$__RAM_1024x16_2RW_ (...);
         .B_DOUT11  (PORT_A_RD_DATA[11]),
         .B_DOUT12  (PORT_A_RD_DATA[12]),
         .B_DOUT13  (PORT_A_RD_DATA[13]),
-        .B_DOUT14  (PORT_A_RD_DATA[14])
+        .B_DOUT14  (PORT_A_RD_DATA[14]),
+        .B_DOUT15  (PORT_A_RD_DATA[15])
     );
 
 endmodule

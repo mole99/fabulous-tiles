@@ -43,6 +43,7 @@ module IHP_SRAM_1024x16_2RW #(
     input        A_DIN12,
     input        A_DIN13,
     input        A_DIN14,
+    input        A_DIN15,
     input        A_BM0,
     input        A_BM1,
     input        A_BM2,
@@ -58,6 +59,7 @@ module IHP_SRAM_1024x16_2RW #(
     input        A_BM12,
     input        A_BM13,
     input        A_BM14,
+    input        A_BM15,
     input        A_WEN,
     input        A_MEN,
     input        A_REN,
@@ -76,6 +78,7 @@ module IHP_SRAM_1024x16_2RW #(
     output       A_DOUT12,
     output       A_DOUT13,
     output       A_DOUT14,
+    output       A_DOUT15,
 
     (* clkbuf_sink *) input        B_CLK,
     input        B_ADDR0,
@@ -103,6 +106,7 @@ module IHP_SRAM_1024x16_2RW #(
     input        B_DIN12,
     input        B_DIN13,
     input        B_DIN14,
+    input        B_DIN15,
     input        B_BM0,
     input        B_BM1,
     input        B_BM2,
@@ -118,6 +122,7 @@ module IHP_SRAM_1024x16_2RW #(
     input        B_BM12,
     input        B_BM13,
     input        B_BM14,
+    input        B_BM15,
     input        B_WEN,
     input        B_MEN,
     input        B_REN,
@@ -135,7 +140,8 @@ module IHP_SRAM_1024x16_2RW #(
     output       B_DOUT11,
     output       B_DOUT12,
     output       B_DOUT13,
-    output       B_DOUT14
+    output       B_DOUT14,
+    output       B_DOUT15
 );
     localparam WIDTH = 16;
     localparam DEPTH = 10;
@@ -148,16 +154,16 @@ module IHP_SRAM_1024x16_2RW #(
     wire [WIDTH-1:0] A_DOUT, B_DOUT;
     
     assign A_ADDR = {A_ADDR9, A_ADDR8, A_ADDR7, A_ADDR6, A_ADDR5, A_ADDR4, A_ADDR3, A_ADDR2, A_ADDR1, A_ADDR0};
-    assign A_DIN = {A_DIN14, A_DIN13, A_DIN12, A_DIN11, A_DIN10, A_DIN9, A_DIN8, A_DIN7, A_DIN6, A_DIN5, A_DIN4, A_DIN3, A_DIN2, A_DIN1, A_DIN0};
-    assign A_BM = {A_BM14, A_BM13, A_BM12, A_BM11, A_BM10, A_BM9, A_BM8, A_BM7, A_BM6, A_BM5, A_BM4, A_BM3, A_BM2, A_BM1, A_BM0};
+    assign A_DIN = {A_DIN15, A_DIN14, A_DIN13, A_DIN12, A_DIN11, A_DIN10, A_DIN9, A_DIN8, A_DIN7, A_DIN6, A_DIN5, A_DIN4, A_DIN3, A_DIN2, A_DIN1, A_DIN0};
+    assign A_BM = {A_BM15, A_BM14, A_BM13, A_BM12, A_BM11, A_BM10, A_BM9, A_BM8, A_BM7, A_BM6, A_BM5, A_BM4, A_BM3, A_BM2, A_BM1, A_BM0};
 
-    assign {A_DOUT14, A_DOUT13, A_DOUT12, A_DOUT11, A_DOUT10, A_DOUT9, A_DOUT8, A_DOUT7, A_DOUT6, A_DOUT5, A_DOUT4, A_DOUT3, A_DOUT2, A_DOUT1, A_DOUT0} = A_DOUT;
+    assign {A_DOUT15, A_DOUT14, A_DOUT13, A_DOUT12, A_DOUT11, A_DOUT10, A_DOUT9, A_DOUT8, A_DOUT7, A_DOUT6, A_DOUT5, A_DOUT4, A_DOUT3, A_DOUT2, A_DOUT1, A_DOUT0} = A_DOUT;
 
     assign B_ADDR = {B_ADDR9, B_ADDR8, B_ADDR7, B_ADDR6, B_ADDR5, B_ADDR4, B_ADDR3, B_ADDR2, B_ADDR1, B_ADDR0};
-    assign B_DIN = {B_DIN14, B_DIN13, B_DIN12, B_DIN11, B_DIN10, B_DIN9, B_DIN8, B_DIN7, B_DIN6, B_DIN5, B_DIN4, B_DIN3, B_DIN2, B_DIN1, B_DIN0};
-    assign B_BM = {B_BM14, B_BM13, B_BM12, B_BM11, B_BM10, B_BM9, B_BM8, B_BM7, B_BM6, B_BM5, B_BM4, B_BM3, B_BM2, B_BM1, B_BM0};
+    assign B_DIN = {B_DIN15, B_DIN14, B_DIN13, B_DIN12, B_DIN11, B_DIN10, B_DIN9, B_DIN8, B_DIN7, B_DIN6, B_DIN5, B_DIN4, B_DIN3, B_DIN2, B_DIN1, B_DIN0};
+    assign B_BM = {B_BM15, B_BM14, B_BM13, B_BM12, B_BM11, B_BM10, B_BM9, B_BM8, B_BM7, B_BM6, B_BM5, B_BM4, B_BM3, B_BM2, B_BM1, B_BM0};
 
-    assign {B_DOUT14, B_DOUT13, B_DOUT12, B_DOUT11, B_DOUT10, B_DOUT9, B_DOUT8, B_DOUT7, B_DOUT6, B_DOUT5, B_DOUT4, B_DOUT3, B_DOUT2, B_DOUT1, B_DOUT0} = B_DOUT;
+    assign {B_DOUT15, B_DOUT14, B_DOUT13, B_DOUT12, B_DOUT11, B_DOUT10, B_DOUT9, B_DOUT8, B_DOUT7, B_DOUT6, B_DOUT5, B_DOUT4, B_DOUT3, B_DOUT2, B_DOUT1, B_DOUT0} = B_DOUT;
 
     // Clock inversion
     wire a_clk, b_clk;
