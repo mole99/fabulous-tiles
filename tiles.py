@@ -165,6 +165,34 @@ tile_sizes = {
                 "W*"        : ( 68.64, 219.24),
             },
         },
+        "icsprout55*": {
+            "*": {
+                # ics55_LLSC_H7CR
+                # Standard cell site: 0.2 x 1.4
+                "LUT4x8_ha" : (532*0.2, 80*1.4),
+
+                "RegFile"       : (532*0.2, 80*1.4),
+                "S_term_RegFile": (532*0.2,  20*1.4),
+                "N_term_RegFile": (532*0.2,  20*1.4),
+
+                "MACC"          : (532*0.2, 80*1.4*2),
+                "S_term_MACC"   : (532*0.2,  20*1.4),
+                "N_term_MACC"   : (532*0.2,  20*1.4),
+
+                "*_TT_IF2"      : (133*0.2, 80*1.4*2),
+                "*_TT_IF"       : (133*0.2, 80*1.4),
+
+                "NE*"       : (133*0.2, 20*1.4),
+                "NW*"       : (133*0.2, 20*1.4),
+                "SE*"       : (133*0.2, 20*1.4),
+                "SW*"       : (133*0.2, 20*1.4),
+                
+                "N*"        : (532*0.2, 20*1.4),
+                "E*"        : (133*0.2, 80*1.4),
+                "S*"        : (532*0.2, 20*1.4),
+                "W*"        : (133*0.2, 80*1.4),
+            },
+        },
     },
     "tiny": {
         "ihp-sg13*": {
@@ -270,6 +298,12 @@ tile_densities = {
                 "*"         : None,
             },
         },
+        "icsprout55*": {
+            "*": {
+                "LUT4x8_ha" : 96,
+                "*"         : None,
+            },
+        },
     },
     "tiny": {
         "ihp-sg13*": {
@@ -315,11 +349,24 @@ tile_obstruction_layers = {
                 "*"         : ["Metal1", "Metal2", "Metal3", "Metal4", "TopMetal1"],
             },
         },
+        "icsprout55": {
+            "*": {
+                "*"         : ["MET1", "MET2", "MET3", "MET4", "MET5", "T4M2", "RDL"],
+            },
+        },
     },
 }
 
 def main(tile, pdk_root=None, pdk=None, scl=None, tag=None, tile_library=None, last_run=None, gui=None):
     target_flow = Flow.factory.get("FABulousTile")
+
+    if pdk == "icsprout55":
+        # Magic support seems to be mostly broken/wip
+        target_flow = target_flow.Substitute([("Magic.Streamout", None)])
+        target_flow = target_flow.Substitute([("KLayout.XOR", None)])
+        target_flow = target_flow.Substitute([("Magic.DRC", None)])
+        target_flow = target_flow.Substitute([("Magic.SpiceExtraction", None)])
+        target_flow = target_flow.Substitute([("Netgen.LVS", None)])
 
     if gui == "openroad":
         target_flow = Flow.factory.get("OpenInOpenROAD")
@@ -351,6 +398,8 @@ def main(tile, pdk_root=None, pdk=None, scl=None, tag=None, tile_library=None, l
             scl = "sg13cmos5l_stdcell"
         if fnmatch.fnmatch(pdk, "gf180mcu*"):
             scl = "gf180mcu_fd_sc_mcu7t5v0"
+        if fnmatch.fnmatch(pdk, "icsprout55"):
+            scl = "ics55_LLSC_H7CR"
 
     def match_config(config, tile_library, pdk, scl, tile):
         found_value = None
