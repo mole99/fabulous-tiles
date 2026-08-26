@@ -321,6 +321,8 @@ tile_obstruction_layers = {
 def main(tile, pdk_root=None, pdk=None, scl=None, tag=None, tile_library=None, last_run=None, gui=None):
     target_flow = Flow.factory.get("FABulousTile")
 
+    target_flow = target_flow.Substitute([("Checker.NetlistAssignStatements", None)])
+
     if gui == "openroad":
         target_flow = Flow.factory.get("OpenInOpenROAD")
 

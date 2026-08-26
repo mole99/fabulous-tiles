@@ -26,3 +26,13 @@ SYNTH_STRATEGY: "AREA 2"
 # Clock
 CLOCK_PERIOD: 20
 #CLOCK_PORT: N_GBUF_END[0]
+
+# Remove synth buffers and only add
+# explicit buffers add output ports
+DESIGN_REPAIR_BUFFER_INPUT_PORTS: False
+DESIGN_REPAIR_BUFFER_OUTPUT_PORTS: True
+DESIGN_REPAIR_REMOVE_BUFFERS: True
+
+# Checker.NetlistAssignStatements needs to be null
+#SYNTH_DIRECT_WIRE_BUFFERING: False
+#MAGIC_EXT_SHORT_RESISTOR: True

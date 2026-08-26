@@ -4,7 +4,7 @@ module config_latch (input D, E, output reg Q, QN);
     begin
         if (E == 1'b1) begin
             Q = D;
-            QN = ~D;
+            //QN = ~D;
         end
     end
 endmodule
