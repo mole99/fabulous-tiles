@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       matrix:
-        pdk: [sky130A, gf180mcuD, ihp-sg13g2, ihp-sg13cmos5l]
+        pdk: [sky130A, gf180mcuD, ihp-sg13g2, ihp-sg13cmos5l, icsprout55]
         tile_library: [classic, tiny]
         scl: [default]
         include:
@@ -62,9 +62,9 @@ jobs:
           sudo du -hs /nix/store/* | sort -h | tail -n 10
           sudo tree /nix/store/*-librelane || true
       - name: Clone ihp-sg13cmos5l PDK
-        if: matrix.pdk == 'ihp-sg13cmos5l'
+        if: matrix.pdk == 'icsprout55'
         run: |
-          PDK=${{ matrix.pdk }} SCL=${{ matrix.scl }} make clone-ihp-sg13cmos5l
+          PDK=${{ matrix.pdk }} SCL=${{ matrix.scl }} make clone-icsprout55
       - name: Implement the tiles
         run: |
           PDK=${{ matrix.pdk }} SCL=${{ matrix.scl }} TILE_LIBRARY=${{ matrix.tile_library }} nix develop --command make all
