@@ -24,31 +24,12 @@ TILES := $(filter-out W_TT_IF,$(TILES))
 TILES := $(filter-out W_TT_IF_MUX,$(TILES))
 endif
 
-ifeq ($(PDK),ihp-sg13cmos5l)
-PDK_ROOT ?= $(MAKEFILE_DIR)/IHP-Open-PDK
-PDK ?= ihp-sg13cmos5l
-
-PDK_REPO_IHP ?= https://github.com/IHP-GmbH/IHP-Open-PDK
-PDK_COMMIT_IHP ?= 22f2a25f1734796de3debbbf29cf697cbbc54081
-
-PDK_REPO ?= https://github.com/IHP-GmbH/ihp-sg13cmos5l
-PDK_COMMIT ?= e8a87d708b8977e7c07684b033658a0f80af59a0
-endif
-
 ifeq ($(PDK),icsprout55)
 PDK_ROOT ?= $(MAKEFILE_DIR)/icsprout55-openpdk
 PDK ?= icsprout55
 PDK_REPO ?= https://github.com/ckdur/icsprout55-openpdk
 PDK_COMMIT ?= 9567646e86e660d3a8c9e1bd535aadf614937de9
 endif
-
-clone-ihp-sg13cmos5l:
-	#ciel enable $(PDK_COMMIT) --pdk-root $(PDK_ROOT) --pdk-family $(PDK)
-	mkdir -p $(PDK_ROOT)
-	#git clone $(PDK_REPO) --recurse-submodules --depth=1 --single-branch -b $(PDK_BRANCH) $(PDK_ROOT)
-	git clone $(PDK_REPO_IHP) --recurse-submodules --depth=1 --revision $(PDK_COMMIT_IHP) $(PDK_ROOT)
-	git clone $(PDK_REPO) --recurse-submodules --depth=1 --revision $(PDK_COMMIT) $(PDK_ROOT)/$(PDK)
-.PHONY: clone-ihp-sg13cmos5l
 
 clone-icsprout55:
 	mkdir -p $(PDK_ROOT)
