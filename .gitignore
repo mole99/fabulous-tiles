@@ -26,5 +26,5 @@ __pycache__/
 # LibreOffice
 .~lock.*
 
-IHP-Open-PDK/
+# icsprout55 PDK
 icsprout55-openpdk/
