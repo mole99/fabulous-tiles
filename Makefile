@@ -25,6 +25,10 @@ TILES := $(filter-out W_TT_IF_MUX,$(TILES))
 endif
 
 ifeq ($(PDK),icsprout55)
+TILES := LUT4x8_ha N_IO E_IO S_IO W_IO SW_term SE_term NW_term NE_term
+endif
+
+ifeq ($(PDK),icsprout55)
 PDK_ROOT ?= $(MAKEFILE_DIR)/icsprout55-openpdk
 PDK ?= icsprout55
 PDK_REPO ?= https://github.com/ckdur/icsprout55-openpdk
