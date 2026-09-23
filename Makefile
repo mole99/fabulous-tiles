@@ -10,18 +10,18 @@ TILES := $(filter-out common,$(TILES))
 ifeq ($(filter $(PDK),ihp-sg13g2 ihp-sg13cmos5l),)
 TILES := $(filter-out E_IHP_SRAM,$(TILES))
 TILES := $(filter-out E_IHP_BRAM,$(TILES))
-endif
-
-ifeq ($(SCL),gf180mcu_as_sc_mcu7t3v3)
-TILES := $(filter-out MACC,$(TILES))
-TILES := $(filter-out S_term_MACC,$(TILES))
-TILES := $(filter-out N_term_MACC,$(TILES))
 TILES := $(filter-out E_TT_IF2,$(TILES))
 TILES := $(filter-out E_TT_IF,$(TILES))
 TILES := $(filter-out E_TT_IF_MUX,$(TILES))
 TILES := $(filter-out W_TT_IF2,$(TILES))
 TILES := $(filter-out W_TT_IF,$(TILES))
 TILES := $(filter-out W_TT_IF_MUX,$(TILES))
+endif
+
+ifeq ($(SCL),gf180mcu_as_sc_mcu7t3v3)
+TILES := $(filter-out MACC,$(TILES))
+TILES := $(filter-out S_term_MACC,$(TILES))
+TILES := $(filter-out N_term_MACC,$(TILES))
 endif
 
 ifeq ($(PDK),icsprout55)
