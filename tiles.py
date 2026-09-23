@@ -85,24 +85,24 @@ tile_sizes = {
                 # Height should be multiple of 0.56 (Metal3 pitch)
                 # Standard cell row height: 3.92 (8 Metal3 track)
 
-                "LUT4x8_ha" : (0.56*512, 3.92*75),
+                "LUT4x8_ha" : (0.56*540, 3.92*75),
                 
-                "RegFile"       : (0.56*512+0.56*60, 3.92*75),
-                "S_term_RegFile": (0.56*512+0.56*60, 3.92*22),
-                "N_term_RegFile": (0.56*512+0.56*60, 3.92*22),
+                "RegFile"       : (0.56*540+0.56*60, 3.92*75),
+                "S_term_RegFile": (0.56*540+0.56*60, 3.92*22),
+                "N_term_RegFile": (0.56*540+0.56*60, 3.92*22),
 
-                "MACC"          : (0.56*512+0.56*512+0.56*100, 3.92*75),
-                "S_term_MACC"   : (0.56*512+0.56*512+0.56*100, 3.92*22),
-                "N_term_MACC"   : (0.56*512+0.56*512+0.56*100, 3.92*22),
+                "MACC"          : (0.56*540+0.56*540+0.56*100, 3.92*75),
+                "S_term_MACC"   : (0.56*540+0.56*540+0.56*100, 3.92*22),
+                "N_term_MACC"   : (0.56*540+0.56*540+0.56*100, 3.92*22),
                 
                 "NE*"       : ( 3.92*22, 3.92*22),
                 "NW*"       : ( 3.92*22, 3.92*22),
                 "SE*"       : ( 3.92*22, 3.92*22),
                 "SW*"       : ( 3.92*22, 3.92*22),
                 
-                "N*"        : ( 0.56*512, 3.92*22),
+                "N*"        : ( 0.56*540, 3.92*22),
                 "E*"        : ( 3.92*22,  3.92*75),
-                "S*"        : ( 0.56*512, 3.92*22),
+                "S*"        : ( 0.56*540, 3.92*22),
                 "W*"        : ( 3.92*22,  3.92*75),
             },
             "*": {
@@ -315,6 +315,10 @@ tile_densities = {
             },
         },
         "gf180mcu*": {
+            "gf180mcu_as_sc_mcu7t3v3": {
+                "LUT4x8_ha" : 75,
+                "*"         : None,
+            },
             "*": {
                 "LUT4x8_ha" : 85,
                 "*"         : None,
@@ -323,6 +327,7 @@ tile_densities = {
         "ihp-sg13*": {
             "*": {
                 "LUT4x8_ha" : 96,
+                "RegFile"   : 80,
                 "*"         : None,
             },
         },
@@ -490,7 +495,7 @@ def main(tile, pdk_root=None, pdk=None, scl=None, tag=None, tile_library=None, l
     
     config["FP_SIZING"] = "absolute"
     config["DIE_AREA"] = [0, 0, tile_size[0], tile_size[1]]
-    
+
     if target_density:
         config["PL_TARGET_DENSITY_PCT"] = target_density
 
