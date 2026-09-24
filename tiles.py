@@ -323,6 +323,7 @@ tile_densities = {
         "ihp-sg13*": {
             "*": {
                 "LUT4x8_ha" : 96,
+                "RegFile"   : 80,
                 "*"         : None,
             },
         },
