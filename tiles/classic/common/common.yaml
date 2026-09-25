@@ -91,6 +91,12 @@ pdk::gf180mcuD:
         #SYNTH_LATCH_MAP: pdk_dir::libs.tech/librelane/gf180mcu_as_sc_mcu7t3v3/latch_map.v
         SYNTH_LATCH_MAP: dir::../common/latch_map_gf180mcu_as_sc_mcu7t3v3.v
 
+pdk::icsprout55:
+    # Routing
+    RT_MAX_LAYER: MET5
+    PDN_MULTILAYER: true
+    
+
 # Use the minimum length for pins
 # that satisfies the minimum area constraint
 IO_PIN_H_LENGTH: null
