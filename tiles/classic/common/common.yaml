@@ -5,6 +5,9 @@ PDN_MULTILAYER: false
 #PDN_CFG: dir::../common/pdn_cfg.tcl
 PDN_EXTEND_TO: "boundary"
 
+# Minimal area
+SYNTH_STRATEGY: "AREA 0"
+
 GRT_ALLOW_CONGESTION: true
 
 # Add buffers
@@ -90,6 +93,12 @@ pdk::gf180mcuD:
     scl::gf180mcu_as_sc_mcu7t3v3:
         #SYNTH_LATCH_MAP: pdk_dir::libs.tech/librelane/gf180mcu_as_sc_mcu7t3v3/latch_map.v
         SYNTH_LATCH_MAP: dir::../common/latch_map_gf180mcu_as_sc_mcu7t3v3.v
+
+pdk::icsprout55:
+    # Routing
+    RT_MAX_LAYER: MET5
+    PDN_MULTILAYER: true
+    
 
 # Use the minimum length for pins
 # that satisfies the minimum area constraint
