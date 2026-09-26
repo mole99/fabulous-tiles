@@ -5,6 +5,9 @@ PDN_MULTILAYER: false
 #PDN_CFG: dir::../common/pdn_cfg.tcl
 PDN_EXTEND_TO: "boundary"
 
+# Minimal area
+SYNTH_STRATEGY: "AREA 0"
+
 GRT_ALLOW_CONGESTION: true
 
 # Add buffers
