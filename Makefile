@@ -32,7 +32,7 @@ ifeq ($(PDK),icsprout55)
 PDK_ROOT ?= $(MAKEFILE_DIR)/icsprout55-openpdk
 PDK ?= icsprout55
 PDK_REPO ?= https://github.com/ckdur/icsprout55-openpdk
-PDK_COMMIT ?= 9567646e86e660d3a8c9e1bd535aadf614937de9
+PDK_COMMIT ?= a34e0d3e32af1eb3c92db155fd88169e21dd0aa5
 endif
 
 clone-icsprout55:
