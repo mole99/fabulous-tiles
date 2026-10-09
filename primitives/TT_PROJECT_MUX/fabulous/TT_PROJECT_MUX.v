@@ -13,13 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-`ifndef PDK_ihp_sg13cmos5l
-`ifndef PDK_ihp_sg13g2
-module sg13g2_sighold (inout SH);
-endmodule
-`endif
-`endif
-
 (*FABulous, BelMap,
     ENABLE_POWER=0,
     SELECT_SLOT=1
@@ -76,33 +69,18 @@ module TT_PROJECT_MUX #(
     generate
     // verilator lint_off ASSIGNIN
     for (genvar i=0; i<8; i++) begin : UO_OUT_TT_PROJECT_sighold
-        (* keep *)
-        `ifdef PDK_ihp_sg13cmos5l
-        sg13cmos5l_sighold sighold (
-        `else
-        sg13g2_sighold sighold (
-        `endif
-            .SH (UO_OUT_TT_PROJECT[i])
+        bus_keeper sighold (
+            .X (UO_OUT_TT_PROJECT[i])
         );
     end
     for (genvar i=0; i<8; i++) begin : UIO_OUT_TT_PROJECT_sighold
-        (* keep *)
-        `ifdef PDK_ihp_sg13cmos5l
-        sg13cmos5l_sighold sighold (
-        `else
-        sg13g2_sighold sighold (
-        `endif
-            .SH (UIO_OUT_TT_PROJECT[i])
+        bus_keeper sighold (
+            .X (UIO_OUT_TT_PROJECT[i])
         );
     end
     for (genvar i=0; i<8; i++) begin : UIO_OE_TT_PROJECT_sighold
-        (* keep *)
-        `ifdef PDK_ihp_sg13cmos5l
-        sg13cmos5l_sighold sighold (
-        `else
-        sg13g2_sighold sighold (
-        `endif
-            .SH (UIO_OE_TT_PROJECT[i])
+        bus_keeper sighold (
+            .X (UIO_OE_TT_PROJECT[i])
         );
     end
     // verilator lint_on ASSIGNIN
