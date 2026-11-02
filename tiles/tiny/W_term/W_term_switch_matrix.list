@@ -1,0 +1,28 @@
+# W_term
+
+# These lines are used to feed the GBUFs in SW_term
+S_GBUF_FEED_BEG[0|1|2|3],S_GBUF_FEED_END[0|1|2|3]
+S_GBUF_FEED_BEG[0|1|2|3],W1END[1|2|3|0]
+S_GBUF_FEED_BEG[0|1|2|3],W2END[7|6|5|4]
+
+# Global nets
+N_GBUF_BEG[0|1|2|3],N_GBUF_END[0|1|2|3]
+
+# single just go back, we swap bits in vector to get more twists into the graph
+E1BEG[0|1|2|3|4|5|6|7],W1END[7|6|5|4|3|2|1|0]
+E1BEG[0|1|2|3|4|5|6|7],W2END[7|6|5|4|3|2|1|0]
+E1BEG[0|1|2|3|4|5|6|7],W2MID[7|6|5|4|3|2|1|0]
+E1BEG[0|1|2|3|4|5|6|7],[W1END5|W1END3|W2END1|W2END6|W2MID0|W2MID7|VCC0|GND0]
+
+# The MID are half way in so they get connected to the longest patch (S2BEG)
+# The END are longest so get on the cascading begin (S2BEGb)
+# on top we twist wire indexes for more entropy
+E2BEGb[0|1|2|3|4|5|6|7],W1END[7|6|5|4|3|2|1|0]
+E2BEGb[0|1|2|3|4|5|6|7],W2END[7|6|5|4|3|2|1|0]
+E2BEGb[0|1|2|3|4|5|6|7],W2MID[7|6|5|4|3|2|1|0]
+E2BEGb[0|1|2|3|4|5|6|7],[W1END5|W1END3|W2END1|W2END6|W2MID0|W2MID7|VCC0|GND0]
+
+E2BEG[0|1|2|3|4|5|6|7],W1END[7|6|5|4|3|2|1|0]
+E2BEG[0|1|2|3|4|5|6|7],W2END[7|6|5|4|3|2|1|0]
+E2BEG[0|1|2|3|4|5|6|7],W2MID[7|6|5|4|3|2|1|0]
+E2BEG[0|1|2|3|4|5|6|7],[W1END5|W1END3|W2END1|W2END6|W2MID0|W2MID7|VCC0|GND0]
