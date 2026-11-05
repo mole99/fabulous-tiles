@@ -2,6 +2,12 @@
 INCLUDE, ../common/Base.list
 
 # Global nets
+
+# Yosys will infer 1'b0 for the clock of an unused port
+[A_CLK|A_CLK],[VCC0|GND0]
+[B_CLK|B_CLK],[VCC0|GND0]
+[C_CLK|C_CLK],[VCC0|GND0]
+
 [A_CLK|A_CLK|A_CLK|A_CLK],N_GBUF_END[0|1|2|3]
 [B_CLK|B_CLK|B_CLK|B_CLK],N_GBUF_END[0|1|2|3]
 [C_CLK|C_CLK|C_CLK|C_CLK],N_GBUF_END[0|1|2|3]

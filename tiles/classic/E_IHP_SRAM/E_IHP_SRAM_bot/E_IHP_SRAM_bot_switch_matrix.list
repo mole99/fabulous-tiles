@@ -1,6 +1,7 @@
 # E_IHP_SRAM_bot
 
 # Global nets
+[CLK|CLK],[VCC0|GND0]
 [CLK|CLK|CLK|CLK],N_GBUF_END[0|1|2|3]
 N_GBUF_BEG[0|1|2|3],N_GBUF_END[0|1|2|3]
 
