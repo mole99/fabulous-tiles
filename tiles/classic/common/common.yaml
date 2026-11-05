@@ -104,3 +104,6 @@ pdk::icsprout55:
 # that satisfies the minimum area constraint
 IO_PIN_H_LENGTH: null
 IO_PIN_V_LENGTH: null
+
+# Export only areas marked as pin
+MAGIC_WRITE_LEF_PINONLY: True
