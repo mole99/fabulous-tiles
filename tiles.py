@@ -328,6 +328,7 @@ tile_densities = {
             "*": {
                 "LUT4x8_ha" : 96,
                 "RegFile"   : 80,
+                "N_IO4"     : 90,
                 "*"         : None,
             },
         },
