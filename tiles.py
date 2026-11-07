@@ -328,6 +328,7 @@ tile_densities = {
             "*": {
                 "LUT4x8_ha" : 96,
                 "RegFile"   : 80,
+                "N_IO4"     : 90,
                 "*"         : None,
             },
         },
@@ -503,7 +504,7 @@ def main(tile, pdk_root=None, pdk=None, scl=None, tag=None, tile_library=None, l
         config["ROUTING_OBSTRUCTIONS"] = obs
 
     # Workaround for https://github.com/The-OpenROAD-Project/OpenROAD/issues/10273
-    config["CTS_APPLY_NDR"] = "none"
+    # config["CTS_APPLY_NDR"] = "none"
 
     print(f"config: {config}")
 

@@ -61,7 +61,7 @@ jobs:
         run: |
           sudo du -hs /nix/store/* | sort -h | tail -n 10
           sudo tree /nix/store/*-librelane || true
-      - name: Clone ihp-sg13cmos5l PDK
+      - name: Clone icsprout55 PDK
         if: matrix.pdk == 'icsprout55'
         run: |
           PDK=${{ matrix.pdk }} SCL=${{ matrix.scl }} make clone-icsprout55
