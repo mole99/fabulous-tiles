@@ -89,16 +89,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1793979052,
-        "narHash": "sha256-wLxHU49ADUk1EDe2CFyF7ZvY85UDI+RH55t/ma7tqOo=",
+        "lastModified": 1794157925,
+        "narHash": "sha256-JFFweRIrWuV0BpmKHHJHJ3hHPDfkCP75jO9Z8K0Hcw4=",
         "owner": "mole99",
         "repo": "librelane_plugin_fabulous",
-        "rev": "fbb87cfaa9b28e280b423baea7bfc45f6d02c52a",
+        "rev": "985155363f6b20098bc5659b0bab041c889b041c",
         "type": "github"
       },
       "original": {
         "owner": "mole99",
-        "ref": "1.15.0",
+        "ref": "1.15.1",
         "repo": "librelane_plugin_fabulous",
         "type": "github"
       }
