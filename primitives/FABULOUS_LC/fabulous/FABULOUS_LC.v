@@ -89,7 +89,7 @@ module FABULOUS_LC #(
     output        Co,  // Carry chain output
     input         SR,  // Shared reset
     input         EN,  // Shared enable
-    input         CLK, // Sahred clock
+    input         CLK, // Shared clock
     
     (* FABulous, GLOBAL *) input [N_CONFIG_BITS-1:0] ConfigBits // Config bits as vector
 );
