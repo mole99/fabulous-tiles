@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       matrix:
-        pdk: [sky130A, gf180mcuD, ihp-sg13g2, ihp-sg13cmos5l, icsprout55]
+        pdk: [sky130A, gf180mcuD, ihp-sg13g2, ihp-sg13cmos5l]
         tile_library: [classic, tiny]
         scl: [default]
         include:

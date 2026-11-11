@@ -1,6 +1,6 @@
 // Models for the embedded FPGA fabric
 module config_latch (input D, E, output reg Q, QN);
-    always @(*)
+    always_latch
     begin
         if (E == 1'b1) begin
             Q = D;
