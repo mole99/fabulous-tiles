@@ -316,7 +316,7 @@ tile_densities = {
         },
         "gf180mcu*": {
             "gf180mcu_as_sc_mcu7t3v3": {
-                "LUT4x8_ha" : 75,
+                "LUT4x8_ha" : 96,
                 "*"         : None,
             },
             "*": {
