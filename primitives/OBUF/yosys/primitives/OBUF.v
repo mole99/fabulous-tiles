@@ -15,7 +15,7 @@
 (* keep *)
 module OBUF #(
   parameter EN_REG = 1'b0,
-  parameter IN_REG = 1'b0,
+  parameter IN_REG = 1'b0
   )(
   (* clkbuf_sink *) input  CLK,
   input  EN,

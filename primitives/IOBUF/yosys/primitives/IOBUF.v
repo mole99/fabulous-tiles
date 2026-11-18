@@ -39,7 +39,7 @@ module IOBUF #(
     assign IN_mux = IN_REG ? IN_q : IN;
     assign PAD_mux = OUT_REG ? PAD_q : PAD;
 
-    assign PAD = EN_mux ? 1'bz : IN_mux;
+    assign PAD = EN_mux ? IN_mux : 1'bz;
     assign OUT = PAD_mux;
 
 endmodule

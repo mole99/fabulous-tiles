@@ -15,7 +15,7 @@
 (* keep *)
 module IHP_SRAM_1024x16_2RW #(
     parameter A_CLK_INV = 1'b0,
-    parameter B_CLK_INV = 1'b0,
+    parameter B_CLK_INV = 1'b0
   )(
     (* clkbuf_sink *) input        A_CLK,
     input        A_ADDR0,
