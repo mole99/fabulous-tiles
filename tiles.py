@@ -55,7 +55,9 @@ tile_sizes = {
                 # Height should be multiple of 0.68 (met3 pitch)
                 # Standard cell row height: 2.72 (4 met3 track)
             
-                "LUT4x8_ha" : (458*0.46, 328*0.68),
+                "LUT4x8_ha"     : (458*0.46, 328*0.68),
+
+                "MUL"           : (458*0.46, 328*0.68),
 
                 "RegFile"       : (458*0.46+0.46*90, 328*0.68),
                 "S_term_RegFile": (458*0.46+0.46*90,  84*0.68),
@@ -85,15 +87,17 @@ tile_sizes = {
                 # Height should be multiple of 0.56 (Metal3 pitch)
                 # Standard cell row height: 3.92 (8 Metal3 track)
 
-                "LUT4x8_ha" : (0.56*512, 3.92*75),
+                "LUT4x8_ha"     : (0.56*512, 3.92*75),
+                
+                "MUL"           : (0.56*512, 3.92*75),
                 
                 "RegFile"       : (0.56*512+0.56*60, 3.92*75),
                 "S_term_RegFile": (0.56*512+0.56*60, 3.92*22),
                 "N_term_RegFile": (0.56*512+0.56*60, 3.92*22),
 
-                "MACC"          : (0.56*512+0.56*512+0.56*100, 3.92*75),
-                "S_term_MACC"   : (0.56*512+0.56*512+0.56*100, 3.92*22),
-                "N_term_MACC"   : (0.56*512+0.56*512+0.56*100, 3.92*22),
+                "MACC"          : (0.56*512+0.56*120, 3.92*75*2),
+                "S_term_MACC"   : (0.56*512+0.56*120, 3.92*22),
+                "N_term_MACC"   : (0.56*512+0.56*120, 3.92*22),
                 
                 "NE*"       : ( 3.92*22, 3.92*22),
                 "NW*"       : ( 3.92*22, 3.92*22),
@@ -110,7 +114,9 @@ tile_sizes = {
                 # Height should be multiple of 0.56 (Metal3 pitch)
                 # Standard cell row height: 3.92 (8 Metal3 track)
 
-                "LUT4x8_ha" : (302.96, 302.96),
+                "LUT4x8_ha"     : (302.96, 302.96),
+
+                "MUL"           : (302.96, 302.96),
 
                 "RegFile"       : (302.96+0.56*90, 302.96),
                 "S_term_RegFile": (302.96+0.56*90,  86.24),
@@ -142,6 +148,8 @@ tile_sizes = {
 
                 "LUT4x8_ha"     : (219.84, 219.24),
 
+                "MUL"           : (219.84, 219.24),
+
                 "RegFile"       : (219.84+0.48*96, 219.24),
                 "S_term_RegFile": (219.84+0.48*96,  56.70),
                 "N_term_RegFile": (219.84+0.48*96,  56.70),
@@ -169,7 +177,9 @@ tile_sizes = {
             "*": {
                 # ics55_LLSC_H7CR
                 # Standard cell site: 0.2 x 1.4
-                "LUT4x8_ha" : (532*0.2, 80*1.4),
+                "LUT4x8_ha"     : (532*0.2, 80*1.4),
+
+                "MUL"           : (532*0.2, 80*1.4),
 
                 "RegFile"       : (532*0.2, 80*1.4),
                 "S_term_RegFile": (532*0.2,  20*1.4),
