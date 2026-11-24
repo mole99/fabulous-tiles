@@ -39,7 +39,7 @@ module \$__FABULOUS_MUL (A, B, Y);
 
     assign Y = Y_out[Y_WIDTH-1:0];
 
-    MACC_8x8_20 #(
+    MUL_8x8 #(
         .A_REG    (1'b0),
         .B_REG    (1'b0),
         .Y_REG    (1'b0),

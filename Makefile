@@ -18,12 +18,6 @@ TILES := $(filter-out W_TT_IF,$(TILES))
 TILES := $(filter-out W_TT_IF_MUX,$(TILES))
 endif
 
-ifeq ($(SCL),gf180mcu_as_sc_mcu7t3v3)
-TILES := $(filter-out MACC,$(TILES))
-TILES := $(filter-out S_term_MACC,$(TILES))
-TILES := $(filter-out N_term_MACC,$(TILES))
-endif
-
 ifeq ($(PDK),icsprout55)
 TILES := LUT4x8_ha N_IO E_IO S_IO W_IO SW_term SE_term NW_term NE_term
 endif

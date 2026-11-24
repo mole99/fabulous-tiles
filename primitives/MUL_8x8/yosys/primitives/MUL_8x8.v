@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 (* keep *)
-module MUL_8x8_20 #(
+module MUL_8x8 #(
     parameter A_REG = 1'b0,
     parameter B_REG = 1'b0,
     parameter Y_REG = 1'b0,
